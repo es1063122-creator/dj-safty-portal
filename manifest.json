@@ -1,0 +1,20 @@
+{
+  "name": "동진안전 통합 포털",
+  "short_name": "동진안전",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0048ff",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/es1063122-creator/ani/main/djlogo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/es1063122-creator/ani/main/djlogo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
