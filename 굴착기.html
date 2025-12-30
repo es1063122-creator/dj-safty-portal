@@ -1,0 +1,1125 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>굴착기 안전보건 작업지침 | 현장 안전작업 절차·체크리스트</title>
+  <meta name="description" content="굴착기 굴착·상차·파쇄·정지작업 안전보건 작업지침(전도/충돌/협착/감전 예방), 작업 전·중·후 절차, 일일점검 체크리스트 제공" />
+  <meta name="theme-color" content="#004080" />
+
+  <!-- Pretendard -->
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+  <style>
+    :root{
+      --blue:#004080;         /* 동진 블루 계열 */
+      --blue2:#007bff;
+      --ink:#0b1220;
+      --muted:#586174;
+      --bg:#f5f8ff;
+      --card:#ffffff;
+      --line:rgba(0,64,128,.14);
+      --shadow:0 18px 60px rgba(0,64,128,.10);
+      --radius:18px;
+      --radius2:26px;
+    }
+    [data-theme="dark"]{
+      --ink:#eaf1ff;
+      --muted:#b8c4da;
+      --bg:#071225;
+      --card:#0b1b33;
+      --line:rgba(127,170,255,.18);
+      --shadow:0 18px 60px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 18% 10%, rgba(0,123,255,.18), transparent 55%),
+        radial-gradient(900px 520px at 80% 0%, rgba(0,64,128,.22), transparent 50%),
+        var(--bg);
+      line-height:1.7;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1200px, calc(100% - 40px)); margin:0 auto}
+
+    /* Top bar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background:linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.52));
+      border-bottom:1px solid rgba(0,64,128,.10);
+    }
+    [data-theme="dark"] .topbar{
+      background:linear-gradient(180deg, rgba(11,27,51,.78), rgba(11,27,51,.55));
+      border-bottom:1px solid rgba(127,170,255,.14);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 0;
+      gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background:linear-gradient(135deg, var(--blue), var(--blue2));
+      box-shadow:0 14px 40px rgba(0,64,128,.25);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo:before{
+      content:"";
+      position:absolute; inset:-40%;
+      background:conic-gradient(from 120deg, rgba(255,255,255,.0), rgba(255,255,255,.55), rgba(255,255,255,.0));
+      animation:spin 4.5s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .brand small{display:block; font-size:12px; color:var(--muted); font-weight:700; margin-top:2px}
+
+    .nav{
+      display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end;
+      font-size:13px; font-weight:800; color:var(--muted);
+    }
+    .nav a{
+      padding:8px 10px; border-radius:999px;
+      border:1px solid transparent;
+    }
+    .nav a:hover{border-color:var(--line); background:rgba(0,64,128,.06); color:var(--ink)}
+
+    .actions{display:flex; align-items:center; gap:10px}
+    .btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.65);
+      color:var(--ink);
+      border-radius:999px;
+      padding:10px 12px;
+      font-weight:900;
+      cursor:pointer;
+      transition:.18s ease;
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    [data-theme="dark"] .btn{background:rgba(11,27,51,.65)}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 10px 22px rgba(0,64,128,.12)}
+    .btn.primary{
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      border-color:transparent;
+      color:#fff;
+      box-shadow:0 18px 45px rgba(0,64,128,.22);
+    }
+    .btn.primary:hover{box-shadow:0 22px 55px rgba(0,64,128,.28)}
+
+    /* Hero */
+    .hero{padding:42px 0 22px}
+    .hero-grid{
+      display:grid; gap:22px;
+      grid-template-columns: 1.15fr .85fr;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .nav{display:none}
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.70));
+      border:1px solid rgba(0,64,128,.14);
+      border-radius:var(--radius2);
+      box-shadow:var(--shadow);
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+    }
+    [data-theme="dark"] .hero-card{
+      background:linear-gradient(180deg, rgba(11,27,51,.86), rgba(11,27,51,.66));
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 12px; border-radius:999px;
+      background:rgba(0,64,128,.08);
+      border:1px solid rgba(0,64,128,.14);
+      color:var(--ink);
+      font-weight:900; font-size:12px;
+    }
+    [data-theme="dark"] .badge{
+      background:rgba(127,170,255,.10);
+      border:1px solid rgba(127,170,255,.18);
+    }
+    .dot{width:8px; height:8px; border-radius:99px; background:linear-gradient(135deg,var(--blue),var(--blue2))}
+    h1{
+      margin:14px 0 10px;
+      font-size:36px;
+      letter-spacing:-.03em;
+      line-height:1.15;
+    }
+    @media (max-width: 560px){ h1{font-size:28px} }
+    .lead{margin:0; color:var(--muted); font-weight:700}
+    .hero-kpis{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+      margin-top:18px;
+    }
+    .kpi{
+      background:rgba(0,64,128,.06);
+      border:1px solid rgba(0,64,128,.12);
+      border-radius:16px;
+      padding:12px;
+    }
+    [data-theme="dark"] .kpi{
+      background:rgba(127,170,255,.08);
+      border-color:rgba(127,170,255,.16);
+    }
+    .kpi b{display:block; font-size:12px; color:var(--muted)}
+    .kpi strong{display:block; margin-top:4px; font-size:18px}
+
+    .hero-side{
+      display:grid; gap:14px;
+      align-content:start;
+    }
+    .mini{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:0 12px 34px rgba(0,64,128,.08);
+      padding:16px;
+    }
+    .mini h3{margin:0 0 8px; font-size:14px}
+    .mini p{margin:0; color:var(--muted); font-weight:650; font-size:13px}
+
+    /* Sections */
+    section{padding:26px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+      margin:0 0 14px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-.02em;
+    }
+    .section-title .hint{color:var(--muted); font-weight:700; font-size:13px}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 12px 30px rgba(0,64,128,.08);
+    }
+    .card h3{margin:0 0 10px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-weight:650}
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted); font-weight:650}
+    .list li{margin:6px 0}
+
+    /* Risk table */
+    .toolbar{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      margin:10px 0 12px;
+    }
+    .search{
+      flex:1;
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .input, select{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.7);
+      color:var(--ink);
+      border-radius:12px;
+      padding:10px 12px;
+      font-weight:800;
+      outline:none;
+      min-width: 180px;
+    }
+    [data-theme="dark"] .input, [data-theme="dark"] select{
+      background:rgba(11,27,51,.7);
+    }
+    .input{flex:1; min-width:220px}
+    .table-wrap{
+      overflow:auto;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:var(--card);
+    }
+    table{
+      border-collapse:separate;
+      border-spacing:0;
+      width:100%;
+      min-width:860px;
+      font-size:13px;
+    }
+    thead th{
+      position:sticky; top:0;
+      background:linear-gradient(180deg, rgba(0,64,128,.10), rgba(0,64,128,.06));
+      color:var(--ink);
+      text-align:left;
+      padding:12px 12px;
+      border-bottom:1px solid var(--line);
+      font-weight:950;
+      z-index:1;
+    }
+    tbody td{
+      padding:12px 12px;
+      border-bottom:1px solid rgba(0,64,128,.10);
+      color:var(--muted);
+      vertical-align:top;
+      font-weight:650;
+    }
+    tbody tr:hover td{background:rgba(0,64,128,.04); color:var(--ink)}
+    .tag{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,64,128,.14);
+      background:rgba(0,64,128,.06);
+      color:var(--ink);
+      font-weight:950;
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    /* Steps */
+    .steps{
+      display:grid; gap:14px;
+      grid-template-columns:repeat(3,1fr);
+    }
+    @media (max-width: 980px){ .steps{grid-template-columns:1fr} }
+    .step{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 12px 30px rgba(0,64,128,.08);
+    }
+    .step .no{
+      width:34px; height:34px; border-radius:12px;
+      display:grid; place-items:center;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      color:#fff; font-weight:950;
+      box-shadow:0 14px 30px rgba(0,64,128,.18);
+    }
+    .step h3{margin:10px 0 8px; font-size:16px}
+    .step ul{margin:0; padding-left:18px; color:var(--muted); font-weight:650}
+    .step li{margin:6px 0}
+
+    /* Checklist */
+    .checklist{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .cl-head{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+    .cl-head h3{margin:0; font-size:16px}
+    .cl-meta{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .cl-meta .input{min-width:180px; flex:unset}
+    .cl-items{
+      display:grid; gap:10px;
+    }
+    .cl-item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid rgba(0,64,128,.12);
+      background:rgba(0,64,128,.05);
+    }
+    [data-theme="dark"] .cl-item{
+      border-color:rgba(127,170,255,.16);
+      background:rgba(127,170,255,.08);
+    }
+    .cl-item input[type="checkbox"]{
+      margin-top:4px;
+      width:18px; height:18px;
+      accent-color: var(--blue2);
+      cursor:pointer;
+    }
+    .cl-item b{display:block; font-size:13px}
+    .cl-item small{display:block; color:var(--muted); font-weight:650; margin-top:2px}
+    .progress{
+      height:10px;
+      background:rgba(0,64,128,.10);
+      border:1px solid rgba(0,64,128,.12);
+      border-radius:999px;
+      overflow:hidden;
+    }
+    .bar{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,var(--blue),var(--blue2));
+      transition:width .25s ease;
+    }
+
+    /* Footer */
+    footer{
+      padding:26px 0 40px;
+      color:var(--muted);
+      font-weight:700;
+      font-size:12px;
+    }
+    .foot{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(0,64,128,.12);
+      padding-top:16px;
+    }
+
+    /* Print */
+    @media print{
+      .topbar, .actions, .nav, .btn, .toolbar, .hint, .hero-side { display:none !important; }
+      body{background:#fff}
+      .hero{padding:0}
+      .hero-card, .card, .step, .checklist { box-shadow:none !important; }
+      .container{width:100%}
+      a{color:#000}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            굴착기 안전보건 작업지침
+            <small>현장 작업절차 · 위험요인 · 일일점검 체크리스트</small>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="주요 메뉴">
+          <a href="#overview">개요</a>
+          <a href="#attachments">장비·작업장치</a>
+          <a href="#risks">위험요인/대책</a>
+          <a href="#procedure">작업절차</a>
+          <a href="#checklist">일일점검</a>
+        </nav>
+
+        <div class="actions">
+          <button class="btn" id="themeBtn" type="button" title="다크모드 전환">🌙 테마</button>
+          <button class="btn" id="printBtn" type="button" title="인쇄/저장(PDF)">🖨️ 인쇄</button>
+          <a class="btn primary" href="#checklist" title="바로 점검하기">✅ 바로 점검</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <span class="badge"><span class="dot"></span> 현장 적용형 · 안전작업 표준</span>
+          <h1>굴착기 작업 재해를<br/>“절차 + 통제 + 점검”으로 예방합니다.</h1>
+          <p class="lead">
+            굴착기 굴착·상차·파쇄·정지 작업에서 발생 가능한 <b>침하·전도·추락·협착</b> 등을 예방하기 위한
+            작업단계별 지침을 한 화면으로 정리했습니다.
+          </p>
+
+          <div class="hero-kpis" role="list">
+            <div class="kpi" role="listitem">
+              <b>중점 재해유형</b>
+              <strong>전도·전락</strong>
+            </div>
+            <div class="kpi" role="listitem">
+              <b>중점 재해유형</b>
+              <strong>충돌·협착</strong>
+            </div>
+            <div class="kpi" role="listitem">
+              <b>중점 재해유형</b>
+              <strong>충돌</strong>
+            </div>
+          </div>
+
+          <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn" href="#risks">⚠️ 위험요인 바로보기</a>
+            <a class="btn" href="#procedure">🧭 작업절차</a>
+            <a class="btn" href="#checklist">🧾 체크리스트</a>
+          </div>
+
+          <p style="margin:14px 0 0; color:var(--muted); font-weight:700; font-size:12px;">
+            ※ 본 페이지는 “KOSHA GUIDE C-105-2022 굴착기 안전보건작업 지침(2022.12)” 내용을 기반으로 현장 활용성을 위해 재구성했습니다.
+          </p>
+        </div>
+
+        <aside class="hero-side" aria-label="핵심 요약">
+          <div class="mini">
+            <h3>🎯 적용범위</h3>
+            <p>굴착기를 사용하는 건설현장의 토사 굴착·상차·파쇄·정지 작업</p>
+          </div>
+          <div class="mini">
+            <h3>🧠 핵심 원칙</h3>
+            <p>작업계획(위험성평가) → 작업 전 점검 → 작업 중 통제 → 종료·주차·예방정비</p>
+          </div>
+          <div class="mini">
+            <h3>🔎 현장 포인트</h3>
+            <p>작업반경 출입통제 + 유도자 배치 + 후진경보기/후방영상/경고음 작동 확인</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <div class="container">
+        <div class="section-title">
+          <h2>개요</h2>
+          <div class="hint">목적·정의·적용범위를 한눈에</div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>1) 목적</h3>
+            <p>굴착기 굴착·상차·파쇄·정지 작업에서 발생 가능한 장비 침하·전도·추락·협착 재해 예방을 위한 작업단계별 안전작업 사항을 정함.</p>
+          </div>
+          <div class="card">
+            <h3>2) 적용범위</h3>
+            <p>굴착기를 사용하는 건설현장의 토사 굴착·상차·파쇄·정지 작업에 적용.</p>
+          </div>
+          <div class="card">
+            <h3>3) 굴착기(정의)</h3>
+            <p>하부구조 움직임 없이 360° 회전, 작업목적에 따른 선택작업장치 탈·장착 가능(무한궤도/타이어식 분류).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ATTACHMENTS -->
+    <section id="attachments">
+      <div class="container">
+        <div class="section-title">
+          <h2>장비·선택작업장치(Attachment) 이해</h2>
+          <div class="hint">작업 목적에 맞는 장비/장치 선정이 사고를 줄입니다</div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>하부장치 기준 분류</h3>
+            <ul class="list">
+              <li><b>무한궤도식</b>: 견인력 크고 습지·모래지반·경사지 등 험지 작업 유리</li>
+              <li><b>타이어식</b>: 기동성/이동거리 긴 작업장 유리(주행속도 30~40km/h 수준)</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>대표 선택작업장치</h3>
+            <ul class="list">
+              <li><b>버킷</b>: 굴착·상차 기본</li>
+              <li><b>클램쉘</b>: 수직 굴착/클램쉘 작업</li>
+              <li><b>브레이커</b>: 콘크리트/암석 파쇄</li>
+              <li><b>퀵커플러</b>: 작업장치 신속 교체 연결장치</li>
+              <li><b>블레이드</b>: 측구 메움/소량 평탄화</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>관리 포인트</h3>
+            <ul class="list">
+              <li><b>퀵커플러 안전핀</b> 체결상태 확인</li>
+              <li>작업 전 안전장치(전조등/후사경/경광등/경고음/후방카메라 등) 작동 확인</li>
+              <li>목적 외 사용(견인·운반 등) 금지 원칙 준수</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RISKS -->
+    <section id="risks">
+      <div class="container">
+        <div class="section-title">
+          <h2>중점 위험요인 및 안전대책</h2>
+          <div class="hint">현장 교육·TBM 때 바로 쓰는 표</div>
+        </div>
+
+        <div class="toolbar">
+          <div class="search">
+            <input class="input" id="q" placeholder="예) 후진경보기, 전도, 퀵커플러, 고압선…" />
+            <select id="type">
+              <option value="">재해유형(전체)</option>
+              <option value="전도·전락">전도·전락</option>
+              <option value="충돌">충돌</option>
+              <option value="협착">협착</option>
+              <option value="감전">감전</option>
+            </select>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn" id="reset" type="button">↺ 초기화</button>
+          </div>
+        </div>
+
+        <div class="table-wrap" role="region" aria-label="위험요인 및 안전대책 표" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:160px">재해유형</th>
+                <th>위험요인(예시)</th>
+                <th>안전대책(핵심)</th>
+              </tr>
+            </thead>
+            <tbody id="riskBody"></tbody>
+          </table>
+        </div>
+
+        <p style="margin:10px 0 0; color:var(--muted); font-weight:700; font-size:12px;">
+          ※ 표 항목은 지침의 “중점 유해·위험요인 파악” 내용을 현장 활용형으로 정리했습니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROCEDURE -->
+    <section id="procedure">
+      <div class="container">
+        <div class="section-title">
+          <h2>굴착기 안전작업 절차</h2>
+          <div class="hint">작업계획 → 작업 전 → 작업 중 → 종료</div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="no">1</div>
+            <h3>작업계획 수립·검토</h3>
+            <ul>
+              <li>위험성평가로 유해·위험요인 파악 → 빈도/강도 추정 → 감소대책 수립</li>
+              <li>작업여건/물량/운반장비 조합 고려하여 굴착기 선정</li>
+              <li>운전자 보호(헤드가드 설치) 등 안전사양 확인</li>
+            </ul>
+          </div>
+
+          <div class="step">
+            <div class="no">2</div>
+            <h3>작업 전 준수사항</h3>
+            <ul>
+              <li>관리감독자: 운전자 자격(면허)·교육 이수 확인(무자격 운전 금지)</li>
+              <li>누수·누유·외관 이상 확인</li>
+              <li>전조등/후사경/경광등/경고음(전·후진)/후방카메라 등 작동 확인</li>
+              <li>지반상태·이동경로 사전 확인(침하·전도 예방)</li>
+              <li>작업반경 내 근로자/장애물 유무 확인</li>
+              <li>퀵커플러 안전핀 정상체결 확인(표식 등으로 확인 용이화)</li>
+            </ul>
+          </div>
+
+          <div class="step">
+            <div class="no">3</div>
+            <h3>작업 중 준수사항</h3>
+            <ul>
+              <li>장비 매뉴얼 준수, 경로/지형/지반/경사도 확인 후 운행</li>
+              <li>작업반경 내 근로자 확인, 관계자 외 출입금지·유도자 배치</li>
+              <li>급작스런 작동 금지, 시야 문제 시 유도자 신호에 따라 작업</li>
+              <li>경사지 저속 이동, 블레이드 하부 방향 위치, 붐 급선회 금지</li>
+              <li>좌석안전띠 착용</li>
+              <li>불안전행동 금지(엔진 가동 중 이탈, 장치 올린채 정차, 버킷으로 밀며 주행 등)</li>
+              <li>지하매설물/장애물 발견 시 즉시 정지·보고 후 지시에 따라 작업</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:14px" class="card">
+          <h3>작업 종료(주차·정지·이탈)</h3>
+          <ul class="list">
+            <li>평탄한 장소 주차(불가피한 경사지 주차 시 구름방지 등 조치)</li>
+            <li>선택작업장치를 안전한 지반에 내려놓고 엔진 정지</li>
+            <li>주차브레이크 → 키 제거 → 문/창 잠금 후 이탈</li>
+            <li>일일점검 체크리스트로 예방정비 및 이력관리</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+<!-- ================= TBM SCRIPT GENERATOR ================= -->
+<section id="tbm">
+  <div class="container">
+    <div class="section-title">
+      <h2>작업 전 안전교육(TBM) 10초 스크립트</h2>
+      <div class="hint">현장명·작업내용 입력 → 즉시 생성</div>
+    </div>
+
+    <div class="card">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <input class="input" id="tbmSite" placeholder="현장명 (예: 파주 ○○현장)" />
+        <input class="input" id="tbmWork" placeholder="오늘 작업내용 (예: 굴착 및 상차작업)" />
+      </div>
+
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn primary" id="genTBM">🎙️ 10초 TBM 생성</button>
+        <button class="btn" id="copyTBM">📋 문구 복사</button>
+      </div>
+
+      <div style="margin-top:14px;">
+        <textarea id="tbmResult" rows="5"
+          style="width:100%; border-radius:14px; padding:12px; font-weight:700; line-height:1.6;"
+          placeholder="여기에 작업 전 안전교육 문구가 생성됩니다."></textarea>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- CHECKLIST -->
+    <section id="checklist">
+      <div class="container">
+        <div class="section-title">
+          <h2>굴착기 안전점검 체크리스트(일일점검)</h2>
+          <div class="hint">체크 상태는 브라우저에 저장됩니다(현장용)</div>
+        </div>
+
+        <div class="checklist">
+          <div class="cl-head">
+            <h3>✅ 오늘 점검</h3>
+            <div class="cl-meta">
+              <input class="input" id="site" placeholder="현장명 (예: 파주 ○○현장)" />
+              <input class="input" id="machine" placeholder="장비번호/호기 (예: EX-03)" />
+              <input class="input" id="inspector" placeholder="점검자 (예: 김대홍)" />
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button class="btn" id="saveMeta" type="button">💾 정보 저장</button>
+              <button class="btn" id="clearAll" type="button">🧹 전체 해제</button>
+              <button class="btn primary" id="exportTxt" type="button">📄 점검결과 복사</button>
+            </div>
+          </div>
+
+          <div class="progress" aria-label="점검 진행률">
+            <div class="bar" id="bar"></div>
+          </div>
+
+          <div style="height:10px"></div>
+          <div class="cl-items" id="cl"></div>
+
+          <p style="margin:12px 0 0; color:var(--muted); font-weight:700; font-size:12px;">
+            ※ 항목은 지침의 “표 1 굴착기 안전점검 체크리스트”를 현장 입력형으로 재구성했습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div>
+            © 2010–2025 DONGJIN CONSTRUCTION Co., Ltd. · Excavator Safety Guidance UI
+          </div>
+          <div>
+            자료기반: KOSHA GUIDE C-105-2022 (2022.12) · 현장 사용 목적의 요약/재구성
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // -------------------------------
+    // Theme
+    // -------------------------------
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const savedTheme = localStorage.getItem('ex_theme');
+    if(savedTheme){ root.setAttribute('data-theme', savedTheme); }
+    themeBtn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('ex_theme', cur);
+    });
+
+    // Print
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+    // -------------------------------
+    // Risk data (from guideline, reorganized)
+    // -------------------------------
+    const risks = [
+      {
+        type:"전도·전락",
+        hazard:"비탈면 굴착 중 토사붕괴로 장비 전도·전락 및 매몰 위험",
+        measure:"굴착면 기울기 유지(설계도서 기울기 준수)"
+      },
+      {
+        type:"전도·전락",
+        hazard:"운행 중 노면폭 부족 및 지반상태 불량으로 전도·전락",
+        measure:"노면폭 확보 및 지반상태 확인, 이동경로 사전 확인"
+      },
+      {
+        type:"전도·전락",
+        hazard:"강우 시 경사지 작업으로 미끄럼/전도 위험",
+        measure:"강우 시(특히 경사지) 작업 금지"
+      },
+      {
+        type:"전도·전락",
+        hazard:"중량물 운반 등 목적 외 사용으로 전도 위험",
+        measure:"장비 목적 외 사용 금지"
+      },
+      {
+        type:"전도·전락",
+        hazard:"무자격 운전 또는 미숙 조작으로 전도·전락",
+        measure:"운전원 외 장비조작 금지(자격 확인)"
+      },
+      {
+        type:"충돌",
+        hazard:"붐·암·버킷 선회 범위 내 근로자 접근, 유도자 미배치",
+        measure:"작업반경 출입통제 및 유도자 배치"
+      },
+      {
+        type:"충돌",
+        hazard:"후진경보기 미작동, 후방영상표시장치/후사경 파손",
+        measure:"후진경보기 작동 확인 및 후방영상/후사경 정비·교체"
+      },
+      {
+        type:"충돌",
+        hazard:"시동 중 운전석 이탈로 갑작스런 이동/충돌",
+        measure:"시동 중 운전석 이탈 금지"
+      },
+      {
+        type:"협착",
+        hazard:"퀵커플러 안전핀 미체결/불량으로 버킷 탈락 → 협착",
+        measure:"퀵커플러 안전핀 체결상태 확인(표식 등으로 확인 강화)"
+      },
+      {
+        type:"감전",
+        hazard:"붐을 올린 상태로 운행 중 고압선 접촉",
+        measure:"붐 올린 상태 운행 금지, 고압선 절연·방호설비 유무 확인"
+      },
+    ];
+
+    const riskBody = document.getElementById('riskBody');
+    const q = document.getElementById('q');
+    const typeSel = document.getElementById('type');
+    const resetBtn = document.getElementById('reset');
+
+    function esc(s){
+      return String(s)
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'","&#039;");
+    }
+
+    function renderRisks(){
+      const keyword = q.value.trim().toLowerCase();
+      const t = typeSel.value;
+
+      const filtered = risks.filter(r => {
+        const okType = !t || r.type === t;
+        const hay = (r.type + " " + r.hazard + " " + r.measure).toLowerCase();
+        const okKey = !keyword || hay.includes(keyword);
+        return okType && okKey;
+      });
+
+      riskBody.innerHTML = filtered.map(r => `
+        <tr>
+          <td><span class="tag">${esc(r.type)}</span></td>
+          <td>${esc(r.hazard)}</td>
+          <td>${esc(r.measure)}</td>
+        </tr>
+      `).join('') || `
+        <tr><td colspan="3" style="padding:18px;color:var(--muted);font-weight:800;">
+          검색 결과가 없습니다. 다른 키워드로 시도해보세요.
+        </td></tr>
+      `;
+    }
+
+    q.addEventListener('input', renderRisks);
+    typeSel.addEventListener('change', renderRisks);
+    resetBtn.addEventListener('click', () => {
+      q.value = "";
+      typeSel.value = "";
+      renderRisks();
+    });
+    renderRisks();
+
+    // -------------------------------
+    // Checklist (from Table 1, reorganized)
+    // -------------------------------
+    const checklist = [
+      {
+        title:"안전장치 설치 및 작동상태",
+        items:[
+          {k:"퀵커플러 안전핀 체결여부", d:"작업 전/교체 후 즉시 확인"},
+          {k:"전조등·후진경보·경고음·후방카메라 등", d:"작동상태 점검 및 이상 시 정비"},
+          {k:"소화기 및 고임목 구비·사용상태", d:"비상대응 장비 확보"}
+        ]
+      },
+      {
+        title:"장비 이상유무 확인",
+        items:[
+          {k:"외관/누수·누유 상태", d:"오일·유압 누유 흔적 확인"},
+          {k:"운전자의 시야확보", d:"후사경/카메라 상태 포함"},
+          {k:"붐(암) 유압장치·선회장치 이상", d:"작동 이상/소음/진동 확인"},
+          {k:"무한궤도 트랙·슈 / 타이어 손상·마모", d:"주행부 상태 확인"},
+          {k:"조작장치 및 제동장치 이상", d:"브레이크/레버/페달 기능 확인"}
+        ]
+      },
+      {
+        title:"예방정비/이력관리",
+        items:[
+          {k:"일일점검 및 예방정비 실시", d:"정비 누락 방지"},
+          {k:"수리·점검 이력관리", d:"반복 고장 원인 추적"}
+        ]
+      },
+      {
+        title:"운전자격 적정여부",
+        items:[
+          {k:"면허/교육 적정", d:"3톤 미만: 소형건설기계조종교육 / 3톤 이상: 건설기계조종사면허"}
+        ]
+      },
+      {
+        title:"작업계획서/현장조건",
+        items:[
+          {k:"지형·지반 사전조사", d:"침하/전도 위험 포인트 확인"},
+          {k:"작업계획서 작성 적정", d:"작업절차·통제·신호체계 포함"}
+        ]
+      },
+      {
+        title:"안전작업 준수사항",
+        items:[
+          {k:"정기검사 실시여부(3톤 이상)", d:"법정 검사"},
+          {k:"유도자/신호수 배치(작업지휘)", d:"시야불량·혼재작업 시 필수"},
+          {k:"상·하 동시작업 금지", d:"낙하/협착 위험"},
+          {k:"버킷 근로자 탑승 금지", d:"절대 금지"},
+          {k:"노폭 유지·노견 붕괴/침하 방지", d:"굴착면·경사면 포함"},
+          {k:"운전석 이탈 시 버킷 지상에 내려놓기", d:"갑작스런 이동·낙하 방지"},
+          {k:"운반·하역작업 사용 금지", d:"목적 외 사용 금지 원칙"}
+        ]
+      }
+    ];
+
+    const cl = document.getElementById('cl');
+    const bar = document.getElementById('bar');
+
+    const KEY = "ex_checklist_v1";
+    const META = "ex_meta_v1";
+
+    function loadState(){
+      try{ return JSON.parse(localStorage.getItem(KEY) || "{}"); }catch(e){ return {}; }
+    }
+    function saveState(state){
+      localStorage.setItem(KEY, JSON.stringify(state));
+    }
+
+    function flatten(){
+      const flat = [];
+      checklist.forEach((g, gi) => {
+        g.items.forEach((it, ii) => flat.push({gi, ii, group:g.title, ...it}));
+      });
+      return flat;
+    }
+
+    function renderChecklist(){
+      const state = loadState();
+      const flat = flatten();
+
+      cl.innerHTML = checklist.map((g, gi) => {
+        const items = g.items.map((it, ii) => {
+          const id = `${gi}-${ii}`;
+          const checked = !!state[id];
+          return `
+            <label class="cl-item">
+              <input type="checkbox" data-id="${id}" ${checked ? "checked":""} />
+              <div>
+                <b>${esc(it.k)}</b>
+                <small>${esc(it.d)}</small>
+              </div>
+            </label>
+          `;
+        }).join("");
+
+        return `
+          <div class="card" style="box-shadow:none; margin:0; padding:14px 14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+              <div style="font-weight:950">${esc(g.title)}</div>
+              <button class="btn" type="button" data-group="${gi}" style="padding:8px 10px;font-size:12px;">그룹 전체체크</button>
+            </div>
+            <div style="height:10px"></div>
+            <div style="display:grid; gap:10px;">${items}</div>
+          </div>
+        `;
+      }).join("");
+
+      // bind checkbox
+      cl.querySelectorAll('input[type="checkbox"][data-id]').forEach(cb => {
+        cb.addEventListener('change', (e) => {
+          const id = e.target.getAttribute('data-id');
+          const s = loadState();
+          s[id] = e.target.checked;
+          saveState(s);
+          updateProgress();
+        });
+      });
+
+      // group check
+      cl.querySelectorAll('button[data-group]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const gi = btn.getAttribute('data-group');
+          const s = loadState();
+          checklist[gi].items.forEach((_, ii) => { s[`${gi}-${ii}`] = true; });
+          saveState(s);
+          renderChecklist();
+          updateProgress();
+        });
+      });
+
+      updateProgress();
+    }
+
+    function updateProgress(){
+      const state = loadState();
+      const flat = flatten();
+      const total = flat.length;
+      const done = flat.filter((_, idx) => state[`${flat[idx].gi}-${flat[idx].ii}`]).length;
+      const pct = total ? Math.round((done/total)*100) : 0;
+      bar.style.width = pct + "%";
+      bar.title = `진행률 ${pct}% (${done}/${total})`;
+    }
+
+    // Meta
+    const site = document.getElementById('site');
+    const machine = document.getElementById('machine');
+    const inspector = document.getElementById('inspector');
+    const saveMeta = document.getElementById('saveMeta');
+
+    function loadMeta(){
+      try{ return JSON.parse(localStorage.getItem(META) || "{}"); }catch(e){ return {}; }
+    }
+    function applyMeta(){
+      const m = loadMeta();
+      if(m.site) site.value = m.site;
+      if(m.machine) machine.value = m.machine;
+      if(m.inspector) inspector.value = m.inspector;
+    }
+    saveMeta.addEventListener('click', () => {
+      localStorage.setItem(META, JSON.stringify({
+        site: site.value.trim(),
+        machine: machine.value.trim(),
+        inspector: inspector.value.trim()
+      }));
+      alert("점검 정보가 저장되었습니다.");
+    });
+
+    // Clear
+    document.getElementById('clearAll').addEventListener('click', () => {
+      if(!confirm("체크를 모두 해제할까요?")) return;
+      localStorage.removeItem(KEY);
+      renderChecklist();
+    });
+
+    // Export text
+    document.getElementById('exportTxt').addEventListener('click', async () => {
+      const m = loadMeta();
+      const metaText = [
+        `현장명: ${site.value.trim() || m.site || "-"}`,
+        `장비: ${machine.value.trim() || m.machine || "-"}`,
+        `점검자: ${inspector.value.trim() || m.inspector || "-"}`,
+        `일시: ${new Date().toLocaleString()}`
+      ].join("\n");
+
+      const state = loadState();
+      const flat = flatten();
+      const done = [];
+      const notyet = [];
+      flat.forEach((it) => {
+        const id = `${it.gi}-${it.ii}`;
+        (state[id] ? done : notyet).push(`- [${state[id] ? "x":" "}] (${it.group}) ${it.k}`);
+      });
+
+      const text = [
+        "굴착기 일일점검 결과",
+        "====================",
+        metaText,
+        "",
+        "완료 항목",
+        "--------",
+        done.join("\n") || "(없음)",
+        "",
+        "미완료 항목",
+        "----------",
+        notyet.join("\n") || "(없음)",
+        "",
+        "※ 본 체크리스트는 KOSHA GUIDE C-105-2022 내용을 기반으로 현장 점검용으로 재구성되었습니다."
+      ].join("\n");
+
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("점검결과가 클립보드에 복사되었습니다. (카톡/문서/일지에 붙여넣기 가능)");
+      }catch(e){
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        alert("점검결과가 복사되었습니다.");
+      }
+    });
+
+    // Init
+    applyMeta();
+    renderChecklist();
+
+  // ===============================
+  // ★★★ 여기부터 TBM 스크립트 추가 ★★★
+  // ===============================
+
+  const genTBM = document.getElementById("genTBM");
+  const copyTBM = document.getElementById("copyTBM");
+
+  genTBM.addEventListener("click", () => {
+    const site =
+      document.getElementById("tbmSite").value.trim() || "본 현장";
+    const work =
+      document.getElementById("tbmWork").value.trim() || "굴착기 작업";
+
+    const script = `
+지금부터 작업 전 안전교육을 실시하겠습니다.
+
+여기는 ${site}이며,
+오늘 작업은 ${work}입니다.
+
+굴착기 작업 중에는
+▶ 장비 반경 내 접근 금지
+▶ 유도자 신호 준수
+▶ 전도·협착 위험에 특히 주의하십시오.
+
+모든 작업자는 보호구를 철저히 착용하고,
+이상 발생 시 즉시 작업을 중지하고 보고 바랍니다.
+    `.trim();
+
+    document.getElementById("tbmResult").value = script;
+  });
+
+  copyTBM.addEventListener("click", async () => {
+    const text = document.getElementById("tbmResult").value;
+    if (!text) {
+      alert("먼저 TBM 문구를 생성하세요.");
+      return;
+    }
+    await navigator.clipboard.writeText(text);
+    alert("TBM 문구가 복사되었습니다.");
+  });
+
+  </script>
+</body>
+</html>

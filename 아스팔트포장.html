@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>아스팔트콘크리트 포장공사 안전보건작업 지침 | TBM · 점검 · 유도신호</title>
+  <meta name="description" content="KOSHA GUIDE C-50-2012 기반. 아스팔트콘크리트 포장공사 기계운전·근접작업 재해 예방, 유도신호, 위험요인 검색, 체크리스트 저장, 10초 TBM 자동 생성." />
+  <meta name="theme-color" content="#ff8c00" />
+
+  <!-- Pretendard -->
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+  <style>
+    :root{
+      --blue:#ff8c00;
+      --blue2:#ffb347;
+      --ink:#0b1220;
+      --muted:#5a6477;
+      --bg:#fff7ee;
+      --card:#ffffff;
+      --line:rgba(255,140,0,.18);
+      --shadow:0 18px 60px rgba(255,140,0,.14);
+      --radius:18px;
+      --radius2:26px;
+    }
+    [data-theme="dark"]{
+      --ink:#fff1df; --muted:#ffd9ad;
+      --bg:#1a1208; --card:#2a1a0b;
+      --line:rgba(255,190,120,.28);
+      --shadow:0 18px 60px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Pretendard,system-ui,-apple-system,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 15% 0%, rgba(255,140,0,.18), transparent 55%),
+        radial-gradient(900px 520px at 85% 0%, rgba(255,180,90,.18), transparent 50%),
+        var(--bg);
+      line-height:1.7;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1200px, calc(100% - 40px)); margin:0 auto}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background:linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.58));
+      border-bottom:1px solid var(--line);
+    }
+    [data-theme="dark"] .topbar{
+      background:linear-gradient(180deg, rgba(42,26,11,.86), rgba(42,26,11,.66));
+    }
+    .topbar-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:-.02em}
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      box-shadow:0 14px 40px rgba(255,140,0,.35);
+      position:relative; overflow:hidden;
+    }
+    .logo:before{
+      content:""; position:absolute; inset:-40%;
+      background:conic-gradient(from 120deg, rgba(255,255,255,0), rgba(255,255,255,.6), rgba(255,255,255,0));
+      animation:spin 4.5s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .brand small{display:block; font-size:12px; color:var(--muted); font-weight:700}
+
+    .nav{display:flex; gap:14px; font-size:13px; font-weight:800; color:var(--muted)}
+    .nav a{padding:8px 10px; border-radius:999px}
+    .nav a:hover{background:rgba(255,140,0,.10); color:var(--ink)}
+    .actions{display:flex; gap:10px}
+    .btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.65);
+      border-radius:999px;
+      padding:10px 12px;
+      font-weight:900; cursor:pointer;
+      display:inline-flex; gap:8px; align-items:center;
+    }
+    [data-theme="dark"] .btn{background:rgba(42,26,11,.65); color:var(--ink)}
+    .btn.primary{
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      border:none; color:#fff;
+      box-shadow:0 18px 45px rgba(255,140,0,.35);
+    }
+
+    /* Hero */
+    .hero{padding:42px 0 22px}
+    .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:22px}
+    @media(max-width:980px){.hero-grid{grid-template-columns:1fr}.nav{display:none}}
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.75));
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      padding:26px; box-shadow:var(--shadow);
+    }
+    [data-theme="dark"] .hero-card{
+      background:linear-gradient(180deg, rgba(42,26,11,.9), rgba(42,26,11,.7));
+    }
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:7px 12px; border-radius:999px;
+      background:rgba(255,140,0,.14); border:1px solid var(--line);
+      font-weight:900; font-size:12px;
+    }
+    .dot{width:8px;height:8px;border-radius:99px;background:linear-gradient(135deg,var(--blue),var(--blue2))}
+    h1{margin:14px 0 10px; font-size:36px; letter-spacing:-.03em}
+    .lead{color:var(--muted); font-weight:700}
+    .hero-kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px}
+    .kpi{
+      background:rgba(255,140,0,.12);
+      border:1px solid var(--line);
+      border-radius:16px; padding:12px;
+    }
+    .kpi b{font-size:12px; color:var(--muted)}
+    .kpi strong{display:block; font-size:18px; margin-top:4px}
+
+    /* Sections */
+    section{padding:26px 0}
+    .section-title{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:14px}
+    .section-title h2{margin:0; font-size:22px}
+    .hint{color:var(--muted); font-weight:700; font-size:13px}
+
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    @media(max-width:980px){.grid{grid-template-columns:1fr}}
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 12px 30px rgba(255,140,0,.14);
+    }
+    .card h3{margin:0 0 8px; font-size:16px; letter-spacing:-.01em}
+    .card p{margin:0; color:var(--muted); font-weight:650}
+    .list{padding-left:18px; color:var(--muted); font-weight:650}
+
+    /* Toolbar / inputs */
+    .toolbar{display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center}
+    .inputs{display:flex; gap:10px; flex-wrap:wrap; width:100%}
+    .input, select, textarea{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:10px 12px;
+      font-weight:800;
+      background:rgba(255,255,255,.7);
+      color:var(--ink);
+      outline:none;
+    }
+    [data-theme="dark"] .input,
+    [data-theme="dark"] select,
+    [data-theme="dark"] textarea{
+      background:rgba(42,26,11,.7);
+    }
+    textarea{width:100%; font-weight:750; line-height:1.65}
+    .input{flex:1; min-width:220px}
+    select{min-width:180px}
+    .mini-actions{display:flex; gap:10px; flex-wrap:wrap}
+
+    /* Risk table */
+    .table-wrap{overflow:auto; border:1px solid var(--line); border-radius:16px; background:var(--card)}
+    table{border-collapse:separate; border-spacing:0; min-width:980px; width:100%}
+    thead th{
+      position:sticky; top:0;
+      background:rgba(255,140,0,.18);
+      padding:12px;
+      font-weight:950;
+      text-align:left;
+    }
+    tbody td{
+      padding:12px;
+      border-bottom:1px solid rgba(255,140,0,.18);
+      color:var(--muted);
+      font-weight:650;
+      vertical-align:top;
+    }
+    .tag{
+      display:inline-flex; padding:6px 10px; border-radius:999px;
+      border:1px solid var(--line); background:rgba(255,140,0,.12);
+      font-weight:950; font-size:12px; color:var(--ink);
+      white-space:nowrap;
+    }
+
+    /* Steps */
+    .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    @media(max-width:980px){.steps{grid-template-columns:1fr}}
+    .step{
+      background:var(--card); border:1px solid var(--line);
+      border-radius:var(--radius); padding:18px;
+      box-shadow:0 12px 30px rgba(255,140,0,.14);
+    }
+    .no{
+      width:34px;height:34px;border-radius:12px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      color:#fff;font-weight:950;
+      margin-bottom:10px;
+    }
+
+    /* Checklist */
+    .checklist{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .progress{height:10px; background:rgba(255,140,0,.2); border-radius:999px; overflow:hidden}
+    .bar{height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--blue2))}
+    .cl-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:14px}
+    @media(max-width:980px){.cl-grid{grid-template-columns:1fr}}
+    .cl-item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px;
+      border-radius:16px;
+      background:rgba(255,140,0,.10);
+      border:1px solid rgba(255,140,0,.16);
+    }
+    .cl-item input{margin-top:4px; accent-color:var(--blue)}
+    .cl-item b{display:block}
+    .cl-item span{display:block; color:var(--muted); font-weight:650; font-size:13px}
+
+    /* Print */
+    @media print{
+      .topbar,.nav,.actions,.toolbar,.mini-actions{display:none!important}
+      body{background:#fff}
+      .card,.hero-card,.checklist,.step{box-shadow:none!important}
+      .table-wrap{border:1px solid #ddd}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="logo"></div>
+          <div>
+            아스팔트콘크리트 포장공사 안전보건작업 지침
+            <small>C-50-2012 기반 · 기계운전/근접작업 재해 예방</small>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="#overview">개요</a>
+          <a href="#roles">준수사항</a>
+          <a href="#signals">유도신호</a>
+          <a href="#risks">위험요인</a>
+          <a href="#checklist">점검</a>
+          <a href="#tbm">TBM</a>
+        </nav>
+        <div class="actions">
+          <button class="btn" id="themeBtn" title="다크모드">🌙</button>
+          <button class="btn" onclick="window.print()" title="인쇄/PDF">🖨️</button>
+          <a class="btn primary" href="#tbm">🎙️ TBM</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <span class="badge"><span class="dot"></span> 현장 교육용 표준 지침</span>
+          <h1>포장공사 재해는<br/>“근접작업 + 후진”에서 터진다</h1>
+          <p class="lead">
+            본 지침은 <b>아스팔트콘크리트 포장작업 중 기계운전과 근접작업</b> 시 발생되는 재해 예방을 목적으로 합니다.
+          </p>
+
+          <div class="hero-kpis">
+            <div class="kpi"><b>중점 재해</b><strong>차량·장비 충돌</strong></div>
+            <div class="kpi"><b>중점 재해</b><strong>협착·끼임</strong></div>
+            <div class="kpi"><b>중점 재해</b><strong>고온 화상</strong></div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3 style="margin-top:0;">🎯 즉시 통제 포인트</h3>
+          <ul class="list">
+            <li><b>후진 작업</b> 시 유도자 배치·호각+수신호 병행</li>
+            <li><b>작업반경</b> 내 출입 통제(근접작업은 감독자 지시)</li>
+            <li><b>야간</b> 반사조끼 + 전자신호봉/깃발</li>
+            <li><b>전압</b> 시 롤러–피니셔 최소 1m, 마무리공 2~3m 유지</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 개요 -->
+    <section id="overview">
+      <div class="container">
+        <div class="section-title">
+          <h2>개요</h2>
+          <div class="hint">목적 · 적용범위 · 용어</div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>목적</h3>
+            <p>아스팔트콘크리트 포장작업 중 <b>기계운전·근접작업</b>에서 발생되는 재해를 예방하기 위한 안전보건지침을 정함.</p>
+          </div>
+          <div class="card">
+            <h3>적용범위</h3>
+            <p>본 지침은 <b>아스팔트콘크리트 포장공사</b>에 적용.</p>
+          </div>
+          <div class="card">
+            <h3>용어의 정의</h3>
+            <p>산업안전보건법/시행령/시행규칙 및 안전보건규칙 등 관련 규정에서 정하는 바에 따름.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 준수사항 -->
+    <section id="roles">
+      <div class="container">
+        <div class="section-title">
+          <h2>기계운전과 근접작업 준수사항</h2>
+          <div class="hint">기계운전자 · 근접작업 근로자 · 관리감독자</div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>기계운전자의 준수사항</h3>
+            <ul class="list">
+              <li>작업 전 기계를 정비하고 운전 시 안전수칙 준수</li>
+              <li>후진 시 경고음/경광등 작동 조치</li>
+              <li>현장·통행차량·부근작업 현황 및 위험개소/위급사항 사전 파악</li>
+              <li>진행방향 5m, 좌우 2m 이내 근로자 존재 시 경적 등 조치</li>
+              <li>급전·급후진·급선회 금지</li>
+              <li>주차 시 경사지·붕괴 우려 지반 회피, 제동 확인 후 받침목 설치</li>
+              <li>야간 도로 주차 지양(불가피 시 휀스/차량유도등 표시)</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>근접작업 근로자의 준수사항</h3>
+            <ul class="list">
+              <li>주행작업 중 기계 작업범위 내 출입 금지</li>
+              <li>부득이한 근접작업은 관리감독자에게 보고 후 작업방법 지시</li>
+              <li>관리감독자 또는 유도자 신호 준수</li>
+              <li>아스팔트 콘크리트 고열로 인한 화상 주의</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>관리감독자의 준수사항</h3>
+            <ul class="list">
+              <li>기계 주행작업 중 작업범위 내 근로자 출입 통제</li>
+              <li>근접작업 필요 시 주의사항/작업방법 사전 주지</li>
+              <li>유도자 배치 후 호각/수신호 등 정해진 신호방법으로 대피·후진작업 수행</li>
+              <li>주행로 정리정돈(운전·주행 지장 제거)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 유도신호 -->
+    <section id="signals">
+      <div class="container">
+        <div class="section-title">
+          <h2>건설기계 유도신호</h2>
+          <div class="hint">유도자 배치 · 주의사항 · 신호방법 · 근접작업</div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>유도자 배치(요지)</h3>
+            <ul class="list">
+              <li><b>아스팔트피니셔</b>: 덤프트럭이 후진하여 호퍼에 혼합재 투입/공급 시</li>
+              <li><b>타이어/머캐덤/탠덤 롤러</b>: 전압 작업 중 부근에 근로자 존재 시</li>
+              <li><b>디스트리뷰터</b>: 살포 작업 중 부근에 근로자 존재 시</li>
+              <li><b>덤프트럭</b>: 후진하는 경우</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>유도자 주의사항</h3>
+            <ul class="list">
+              <li>정해진 신호방법에 의해 기계·차량 유도</li>
+              <li>주행속도 파악 + 운행경로 확인</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>유도 신호방법(핵심)</h3>
+            <ul class="list">
+              <li>유도신호는 <b>호각 + 수신호 병용</b></li>
+              <li>야간: <b>반사조끼</b> 착용 + <b>전자신호봉/깃발</b> 사용</li>
+              <li>위치: 운전자와 연락 신호가 잘 되고, 접근자 식별 가능하며, 진행선에서 떨어진 곳</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <h3>근접작업 유도신호(포설/전압)</h3>
+          <div class="grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="card" style="box-shadow:none; margin:0;">
+              <h3 style="margin-top:0;">아스팔트피니셔 포설(덤프 후진 공급)</h3>
+              <ul class="list">
+                <li>유도자는 <b>덤프 운전자와 같은 방향</b>에서, 호퍼 부근 또는 전방 <b>5~10m</b> 사이 안전한 위치에서 신호</li>
+                <li>피니셔 운전자·유도자는 덤프 후진 공급 상태를 수시 확인</li>
+                <li>유도자는 덤프 운전자가 잘 보이는 위치에서 신호</li>
+                <li>신호는 <b>호각+수신호 병용</b></li>
+              </ul>
+            </div>
+            <div class="card" style="box-shadow:none; margin:0;">
+              <h3 style="margin-top:0;">포설 후 롤러 전압(피니셔 뒤 바로 전압)</h3>
+              <ul class="list">
+                <li>롤러–피니셔 근접거리 <b>최소 1m 이상</b></li>
+                <li>마무리공은 롤러와 <b>2~3m 이상</b> 거리 유지</li>
+                <li>신호는 <b>호각+수신호 병용</b></li>
+                <li>동절기: 롤러 살수 물의 수증기로 <b>시야 차단</b> 가능 → 운전자 주의</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 위험요인 -->
+    <section id="risks">
+      <div class="container">
+        <div class="section-title">
+          <h2>중점 위험요인</h2>
+          <div class="hint">검색 · 필터</div>
+        </div>
+
+        <div class="toolbar">
+          <div class="inputs">
+            <input class="input" id="q" placeholder="검색 (예: 후진, 호퍼, 전압, 야간, 화상, 유도자)">
+            <select id="fProc">
+              <option value="">공정 전체</option>
+              <option value="운반">운반</option>
+              <option value="포설">포설</option>
+              <option value="전압">전압</option>
+              <option value="살포">살포</option>
+              <option value="교통">교통혼재</option>
+            </select>
+            <select id="fEquip">
+              <option value="">장비 전체</option>
+              <option value="덤프트럭">덤프트럭</option>
+              <option value="피니셔">아스팔트피니셔</option>
+              <option value="타이어롤러">타이어롤러</option>
+              <option value="머캐덤롤러">머캐덤롤러</option>
+              <option value="탠덤롤러">탠덤롤러</option>
+              <option value="디스트리뷰터">디스트리뷰터</option>
+            </select>
+            <select id="fType">
+              <option value="">재해유형 전체</option>
+              <option value="충돌">충돌</option>
+              <option value="협착">협착/끼임</option>
+              <option value="화상">화상</option>
+              <option value="전도">전도/추락</option>
+            </select>
+          </div>
+          <div class="mini-actions">
+            <button class="btn" id="resetRisk">초기화</button>
+          </div>
+        </div>
+
+        <div class="table-wrap" style="margin-top:12px;">
+          <table id="riskTable">
+            <thead>
+              <tr>
+                <th style="width:110px;">재해유형</th>
+                <th style="width:90px;">공정</th>
+                <th style="width:170px;">장비</th>
+                <th>위험요인</th>
+                <th>핵심 대책(지침 기반)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-proc="운반" data-equip="덤프트럭" data-type="충돌">
+                <td><span class="tag">충돌</span></td>
+                <td>운반</td>
+                <td>덤프트럭</td>
+                <td>후진 중 근로자/장비와 접촉</td>
+                <td>유도자 배치, 호각+수신호 병용, 운전자 시야 확보, 경고음/경광등</td>
+              </tr>
+              <tr data-proc="포설" data-equip="피니셔" data-type="협착">
+                <td><span class="tag">협착/끼임</span></td>
+                <td>포설</td>
+                <td>아스팔트피니셔</td>
+                <td>호퍼 부근 접근, 덤프 공급 중 협착</td>
+                <td>유도자 위치(호퍼 부근/전방 5~10m), 덤프 후진 공급 상태 수시 확인</td>
+              </tr>
+              <tr data-proc="전압" data-equip="머캐덤롤러" data-type="충돌">
+                <td><span class="tag">충돌</span></td>
+                <td>전압</td>
+                <td>머캐덤/탠덤/타이어 롤러</td>
+                <td>피니셔 뒤 전압 중 근로자 근접</td>
+                <td>롤러–피니셔 ≥ 1m, 마무리공–롤러 2~3m, 신호 병용, 작업반경 통제</td>
+              </tr>
+              <tr data-proc="전압" data-equip="타이어롤러" data-type="충돌">
+                <td><span class="tag">충돌</span></td>
+                <td>전압</td>
+                <td>타이어롤러</td>
+                <td>동절기 살수 수증기로 시야 차단 → 접촉 위험</td>
+                <td>운전자 주의(수증기), 근로자 접근 통제, 신호 유지</td>
+              </tr>
+              <tr data-proc="살포" data-equip="디스트리뷰터" data-type="화상">
+                <td><span class="tag">화상</span></td>
+                <td>살포</td>
+                <td>디스트리뷰터</td>
+                <td>고온 재료 취급·비산으로 화상</td>
+                <td>근로자 근접 통제, 보호구 착용, 유도자 배치(부근 근로자 존재 시)</td>
+              </tr>
+              <tr data-proc="교통" data-equip="덤프트럭" data-type="충돌">
+                <td><span class="tag">충돌</span></td>
+                <td>교통혼재</td>
+                <td>작업차량 전체</td>
+                <td>개방 교통과 작업차량 혼재로 충돌</td>
+                <td>주행로 정리정돈, 통제구간 설정, 유도자/신호수 배치</td>
+              </tr>
+              <tr data-proc="전압" data-equip="머캐덤롤러" data-type="전도">
+                <td><span class="tag">전도/추락</span></td>
+                <td>전압</td>
+                <td>롤러류</td>
+                <td>경사지/연약지반 주차·작업 중 전도</td>
+                <td>주차 시 경사지·붕괴 우려 지반 회피, 제동 확인 후 받침목</td>
+              </tr>
+              <tr data-proc="운반" data-equip="덤프트럭" data-type="충돌">
+                <td><span class="tag">충돌</span></td>
+                <td>운반</td>
+                <td>덤프트럭</td>
+                <td>운전자 주변 5m/좌우 2m 내 근로자 존재 시 위험</td>
+                <td>해당 범위 근로자 확인 시 경적 등 조치, 급조작 금지</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOP -->
+    <section id="procedure">
+      <div class="container">
+        <div class="section-title">
+          <h2>작업 절차(SOP)</h2>
+          <div class="hint">전 · 중 · 후 핵심 통제</div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="no">1</div>
+            <h3>작업 전</h3>
+            <ul class="list">
+              <li>장비 점검 및 안전장치(경고음/경광등) 확인</li>
+              <li>주행로 정리정돈(장비 운전·주행 지장 제거)</li>
+              <li>근접작업 계획 수립(유도자 배치/신호방법 확정)</li>
+              <li>TBM 실시(오늘 공정/장비/특이조건 공유)</li>
+            </ul>
+          </div>
+          <div class="step">
+            <div class="no">2</div>
+            <h3>작업 중</h3>
+            <ul class="list">
+              <li>유도신호는 <b>호각+수신호 병용</b></li>
+              <li>근로자 출입 통제(근접작업은 감독자 지시 후 실시)</li>
+              <li>후진·전압 등 위험 순간은 유도자 중심으로 통제</li>
+              <li>동절기 수증기/야간 시인성 저하 시 즉시 속도·동선 재조정</li>
+            </ul>
+          </div>
+          <div class="step">
+            <div class="no">3</div>
+            <h3>작업 종료</h3>
+            <ul class="list">
+              <li>장비 주차: 경사지/붕괴 우려 지반 회피</li>
+              <li>제동 확인 후 받침목 설치, 야간 주차 표지(휀스/유도등)</li>
+              <li>현장 정리정돈 및 다음 작업 전 위험요인 공유</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 체크리스트 -->
+    <section id="checklist">
+      <div class="container">
+        <div class="section-title">
+          <h2>일일 안전점검 체크리스트</h2>
+          <div class="hint">저장 · 진행률 · 복사</div>
+        </div>
+
+        <div class="checklist">
+          <div class="toolbar" style="margin-bottom:10px;">
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+              <div class="hint" id="progressText">0 / 0 완료</div>
+            </div>
+            <div class="mini-actions">
+              <button class="btn" id="clearChecklist">초기화</button>
+              <button class="btn primary" id="copyChecklist">점검결과 복사</button>
+            </div>
+          </div>
+
+          <div class="progress"><div class="bar" id="bar"></div></div>
+
+          <div class="cl-grid" id="clGrid">
+            <!-- JS로 채움 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TBM -->
+    <section id="tbm">
+      <div class="container">
+        <div class="section-title">
+          <h2>작업 전 안전교육(TBM) 10초</h2>
+          <div class="hint">혼합 기준: 공정 + 장비 + 특이조건</div>
+        </div>
+
+        <div class="card">
+          <div class="toolbar">
+            <div class="inputs">
+              <input class="input" id="tbmSite" placeholder="현장명 (예: ○○현장)">
+              <select id="tbmProc">
+                <option value="운반">공정: 운반(덤프)</option>
+                <option value="포설">공정: 포설(피니셔)</option>
+                <option value="전압">공정: 전압(롤러)</option>
+                <option value="살포">공정: 살포(디스트리뷰터)</option>
+                <option value="교통">공정: 교통혼재</option>
+              </select>
+              <select id="tbmEquip">
+                <option value="덤프트럭">장비: 덤프트럭</option>
+                <option value="피니셔">장비: 아스팔트피니셔</option>
+                <option value="타이어롤러">장비: 타이어롤러</option>
+                <option value="머캐덤롤러">장비: 머캐덤롤러</option>
+                <option value="탠덤롤러">장비: 탠덤롤러</option>
+                <option value="디스트리뷰터">장비: 디스트리뷰터</option>
+              </select>
+              <select id="tbmCond">
+                <option value="">특이조건: 없음</option>
+                <option value="야간">특이조건: 야간작업</option>
+                <option value="동절기">특이조건: 동절기(수증기/시야)</option>
+                <option value="개방교통">특이조건: 개방교통 혼재</option>
+                <option value="근접작업">특이조건: 근접작업(마무리/보조)</option>
+              </select>
+            </div>
+            <div class="mini-actions">
+              <button class="btn primary" id="genTBM">TBM 생성</button>
+              <button class="btn" id="copyTBM">TBM 복사</button>
+            </div>
+          </div>
+
+          <textarea id="tbmOut" rows="7" placeholder="TBM 문구가 여기에 생성됩니다."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card">
+          <h3>현장 적용 팁</h3>
+          <ul class="list">
+            <li>TBM 생성 후 “오늘 통제 포인트 1개”를 작업반이 함께 합의(예: 후진 시 유도자 고정 배치)</li>
+            <li>근접작업은 “필요 시에만” 감독자 지시로 실시하고, 신호방법(호각+수신호)을 먼저 확정</li>
+            <li>전압 구간에서 마무리공이 들어가는 순간이 최고 위험구간(거리 기준을 수치로 말해주기)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* ================= Theme ================= */
+    const root = document.documentElement;
+    const THEME_KEY = "asp_pave_theme_v4";
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    if(savedTheme === "dark") root.setAttribute("data-theme","dark");
+    document.getElementById("themeBtn").addEventListener("click", ()=>{
+      const isDark = root.getAttribute("data-theme")==="dark";
+      if(isDark){ root.removeAttribute("data-theme"); localStorage.setItem(THEME_KEY,"light"); }
+      else { root.setAttribute("data-theme","dark"); localStorage.setItem(THEME_KEY,"dark"); }
+    });
+
+    /* ================= Risk filtering ================= */
+    const qEl = document.getElementById("q");
+    const fProc = document.getElementById("fProc");
+    const fEquip = document.getElementById("fEquip");
+    const fType = document.getElementById("fType");
+    const rows = Array.from(document.querySelectorAll("#riskTable tbody tr"));
+
+    function applyRiskFilter(){
+      const q = (qEl.value || "").trim();
+      const proc = fProc.value;
+      const equip = fEquip.value;
+      const type = fType.value;
+
+      rows.forEach(tr=>{
+        const okQ = !q || tr.innerText.includes(q);
+        const okP = !proc || tr.dataset.proc === proc;
+        const okE = !equip || tr.dataset.equip === equip || tr.innerText.includes(equip);
+        const okT = !type || tr.dataset.type === type || tr.innerText.includes(type);
+        tr.style.display = (okQ && okP && okE && okT) ? "" : "none";
+      });
+    }
+
+    [qEl,fProc,fEquip,fType].forEach(el=>el.addEventListener("input", applyRiskFilter));
+    document.getElementById("resetRisk").addEventListener("click", ()=>{
+      qEl.value=""; fProc.value=""; fEquip.value=""; fType.value="";
+      applyRiskFilter();
+    });
+
+    /* ================= Checklist (localStorage) ================= */
+    const CL_KEY = "asp_pave_check_v4";
+    const checklistItems = [
+      { t:"경고음/경광등", d:"후진 경고음·경광등 작동 상태 확인(불량 시 작업 금지)" },
+      { t:"주행로 정리정돈", d:"장비 운전·주행 지장물 제거, 동선 단순화" },
+      { t:"유도자 배치", d:"덤프 후진/피니셔 공급/롤러 전압 등 위험 순간 유도자 배치" },
+      { t:"신호 방법 확정", d:"호각 + 수신호 병용(야간: 전자신호봉/깃발)" },
+      { t:"유도자 위치", d:"운전자와 연락 신호 용이, 접근자 식별 가능, 진행선에서 이격" },
+      { t:"근접작업 통제", d:"작업반경 내 출입 금지(근접 필요 시 감독자 지시 후)" },
+      { t:"거리 기준(전압)", d:"롤러–피니셔 ≥ 1m / 마무리공–롤러 2~3m 유지" },
+      { t:"동절기 수증기", d:"살수 수증기로 시야 차단 가능 → 속도·동선 조정" },
+      { t:"야간 시인성", d:"반사조끼 착용, 조명·유도등 설치, 위험구간 속도 제한" },
+      { t:"주차/받침목", d:"경사지·붕괴 우려 지반 회피, 제동 확인 후 받침목 설치" },
+    ];
+
+    const clGrid = document.getElementById("clGrid");
+    const bar = document.getElementById("bar");
+    const progressText = document.getElementById("progressText");
+
+    function loadChecklistState(){
+      try { return JSON.parse(localStorage.getItem(CL_KEY) || "[]"); }
+      catch(e){ return []; }
+    }
+    function saveChecklistState(state){ localStorage.setItem(CL_KEY, JSON.stringify(state)); }
+
+    function renderChecklist(){
+      const state = loadChecklistState();
+      clGrid.innerHTML = "";
+      checklistItems.forEach((it, idx)=>{
+        const checked = state.includes(idx);
+        const el = document.createElement("label");
+        el.className = "cl-item";
+        el.innerHTML = `
+          <input type="checkbox" data-idx="${idx}" ${checked ? "checked":""} />
+          <div>
+            <b>${it.t}</b>
+            <span>${it.d}</span>
+          </div>
+        `;
+        clGrid.appendChild(el);
+      });
+
+      clGrid.querySelectorAll("input[type=checkbox]").forEach(cb=>{
+        cb.addEventListener("change", ()=>{
+          const idx = Number(cb.dataset.idx);
+          let st = loadChecklistState();
+          if(cb.checked){ if(!st.includes(idx)) st.push(idx); }
+          else { st = st.filter(x=>x!==idx); }
+          saveChecklistState(st);
+          updateProgress();
+        });
+      });
+
+      updateProgress();
+    }
+
+    function updateProgress(){
+      const st = loadChecklistState();
+      const done = st.length;
+      const total = checklistItems.length;
+      const pct = total ? Math.round(done/total*100) : 0;
+      bar.style.width = pct + "%";
+      progressText.textContent = `${done} / ${total} 완료 (${pct}%)`;
+    }
+
+    document.getElementById("clearChecklist").addEventListener("click", ()=>{
+      localStorage.removeItem(CL_KEY);
+      renderChecklist();
+    });
+
+    document.getElementById("copyChecklist").addEventListener("click", async ()=>{
+      const st = loadChecklistState();
+      const done = st.map(i=>`[✓] ${checklistItems[i].t} - ${checklistItems[i].d}`);
+      const notDone = checklistItems
+        .map((it,i)=>({it,i}))
+        .filter(x=>!st.includes(x.i))
+        .map(x=>`[ ] ${x.it.t} - ${x.it.d}`);
+
+      const text =
+`[아스팔트 포장공사 일일점검]
+- 완료: ${st.length}/${checklistItems.length}
+
+✅ 완료 항목
+${done.length ? done.join("\n") : "(없음)"}
+
+⬜ 미완료 항목
+${notDone.length ? notDone.join("\n") : "(없음)"}
+`;
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("점검결과를 복사했습니다.");
+      }catch(e){
+        prompt("복사가 차단되어 수동 복사하세요.", text);
+      }
+    });
+
+    renderChecklist();
+
+    /* ================= TBM (mixed: process+equip+condition) ================= */
+    const tbmSite = document.getElementById("tbmSite");
+    const tbmProc = document.getElementById("tbmProc");
+    const tbmEquip = document.getElementById("tbmEquip");
+    const tbmCond = document.getElementById("tbmCond");
+    const tbmOut = document.getElementById("tbmOut");
+
+    function tbmFocus(proc, equip){
+      // 지침 핵심을 “짧은 문장”으로
+      const base = [];
+      // 공정
+      if(proc==="운반") base.push("후진 충돌 위험이 크니 유도자 신호를 절대 준수합니다.");
+      if(proc==="포설") base.push("피니셔 호퍼/전방 유도자 위치를 고정하고 덤프 공급 상태를 수시 확인합니다.");
+      if(proc==="전압") base.push("전압 구간 근접 출입을 통제하고 거리 기준(1m/2~3m)을 유지합니다.");
+      if(proc==="살포") base.push("살포 구간 근접을 통제하고 고온 재료 비산/화상에 주의합니다.");
+      if(proc==="교통") base.push("교통 혼재 구간은 통제구간을 분리하고 주행로를 정리정돈합니다.");
+
+      // 장비 포인트
+      if(equip==="덤프트럭") base.push("덤프 후진 시 경고음/경광등 상태 확인, 운전자 시야 확보.");
+      if(equip==="피니셔") base.push("피니셔 호퍼 부근 접근 금지, 유도신호는 호각+수신호 병용.");
+      if(equip.includes("롤러")) base.push("롤러 주행선에서 이격, 마무리공은 2~3m 거리 유지.");
+      if(equip==="디스트리뷰터") base.push("살포 장비 주변 출입 통제, 보호구 착용.");
+
+      return base;
+    }
+
+    function tbmCondition(cond){
+      if(cond==="야간") return [
+        "야간은 반사조끼 착용, 전자신호봉/깃발로 유도합니다.",
+        "운전자·유도자 간 연락 신호가 되는 위치에서만 신호합니다."
+      ];
+      if(cond==="동절기") return [
+        "동절기는 살수 수증기로 시야가 가려질 수 있어 속도를 낮추고 동선을 재확인합니다."
+      ];
+      if(cond==="개방교통") return [
+        "개방교통 혼재 시 통제구간을 명확히 분리하고 신호수 지시에 따릅니다."
+      ];
+      if(cond==="근접작업") return [
+        "근접작업은 감독자 지시 하에만 시행하며, 작업반경 출입을 최소화합니다."
+      ];
+      return [];
+    }
+
+    document.getElementById("genTBM").addEventListener("click", ()=>{
+      const site = (tbmSite.value || "").trim() || "본 현장";
+      const proc = tbmProc.value;
+      const equip = tbmEquip.value;
+      const cond = tbmCond.value;
+
+      const lines = []
+      lines.push("지금부터 작업 전 안전교육(TBM)을 실시하겠습니다.");
+      lines.push(`여기는 ${site}이며, 오늘 공정은 '${proc}', 장비는 '${equip}'입니다.`);
+      lines.push("오늘 핵심 위험은 후진/근접작업으로 인한 충돌·협착과 고온 화상입니다.");
+
+      tbmFocus(proc, equip).forEach(x=>lines.push(x));
+      tbmCondition(cond).forEach(x=>lines.push(x));
+
+      // 지침 공통 핵심(짧게 고정)
+      lines.push("유도신호는 호각과 수신호를 병용하고, 작업반경 내 출입을 통제합니다.");
+      lines.push("이상 징후 발견 시 즉시 작업을 중지하고 관리감독자에게 보고합니다.");
+
+      tbmOut.value = lines.join("\n");
+    });
+
+    document.getElementById("copyTBM").addEventListener("click", async ()=>{
+      const text = tbmOut.value.trim();
+      if(!text){ alert("먼저 TBM을 생성하세요."); return; }
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("TBM 문구를 복사했습니다.");
+      }catch(e){
+        prompt("복사가 차단되어 수동 복사하세요.", text);
+      }
+    });
+  </script>
+</body>
+</html>

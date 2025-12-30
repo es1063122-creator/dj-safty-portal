@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>흙막이공사(C.I.P 공법) 안전보건작업 지침 | 위험요인·SOP·점검·TBM</title>
+  <meta name="description" content="KOSHA GUIDE C-63-2012 기반. CIP 흙막이공사 안전보건작업 지침: 위험요인 검색/필터, 점검 체크리스트 저장, 10초 TBM(공정+장비+특이조건 분기)." />
+  <meta name="theme-color" content="#2563eb" />
+
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+  <style>
+    :root{
+      --blue:#2563eb;
+      --blue2:#60a5fa;
+      --ink:#0b1220;
+      --muted:#5a6477;
+      --bg:#f5f8ff;
+      --card:#ffffff;
+      --line:rgba(37,99,235,.18);
+      --shadow:0 18px 60px rgba(37,99,235,.14);
+      --radius:18px;
+      --radius2:26px;
+    }
+    [data-theme="dark"]{
+      --ink:#e9f1ff; --muted:#b7c6dd;
+      --bg:#0c1423; --card:#101c33;
+      --line:rgba(96,165,250,.26);
+      --shadow:0 18px 60px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Pretendard,system-ui,-apple-system,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 15% 0%, rgba(37,99,235,.18), transparent 55%),
+        radial-gradient(900px 520px at 85% 0%, rgba(96,165,250,.18), transparent 50%),
+        var(--bg);
+      line-height:1.7;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1200px, calc(100% - 40px)); margin:0 auto}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background:linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.60));
+      border-bottom:1px solid var(--line);
+    }
+    [data-theme="dark"] .topbar{
+      background:linear-gradient(180deg, rgba(16,28,51,.86), rgba(16,28,51,.66));
+    }
+    .topbar-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:950; letter-spacing:-.02em}
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      box-shadow:0 14px 40px rgba(37,99,235,.35);
+      position:relative; overflow:hidden;
+    }
+    .logo:before{
+      content:""; position:absolute; inset:-40%;
+      background:conic-gradient(from 120deg, rgba(255,255,255,0), rgba(255,255,255,.6), rgba(255,255,255,0));
+      animation:spin 4.5s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .brand small{display:block; font-size:12px; color:var(--muted); font-weight:750}
+
+    .nav{display:flex; gap:14px; font-size:13px; font-weight:900; color:var(--muted)}
+    .nav a{padding:8px 10px; border-radius:999px}
+    .nav a:hover{background:rgba(37,99,235,.10); color:var(--ink)}
+    .actions{display:flex; gap:10px}
+    .btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.65);
+      border-radius:999px;
+      padding:10px 12px;
+      font-weight:950; cursor:pointer;
+      display:inline-flex; gap:8px; align-items:center;
+      user-select:none;
+    }
+    [data-theme="dark"] .btn{background:rgba(16,28,51,.65); color:var(--ink)}
+    .btn.primary{
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      border:none; color:#fff;
+      box-shadow:0 18px 45px rgba(37,99,235,.35);
+    }
+
+    /* Hero */
+    .hero{padding:42px 0 22px}
+    .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:22px}
+    @media(max-width:980px){.hero-grid{grid-template-columns:1fr}.nav{display:none}}
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.75));
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      padding:26px; box-shadow:var(--shadow);
+    }
+    [data-theme="dark"] .hero-card{
+      background:linear-gradient(180deg, rgba(16,28,51,.9), rgba(16,28,51,.7));
+    }
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:7px 12px; border-radius:999px;
+      background:rgba(37,99,235,.14); border:1px solid var(--line);
+      font-weight:950; font-size:12px;
+    }
+    .dot{width:8px;height:8px;border-radius:99px;background:linear-gradient(135deg,var(--blue),var(--blue2))}
+    h1{margin:14px 0 10px; font-size:36px; letter-spacing:-.03em}
+    .lead{color:var(--muted); font-weight:750}
+    .hero-kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px}
+    .kpi{
+      background:rgba(37,99,235,.12);
+      border:1px solid var(--line);
+      border-radius:16px; padding:12px;
+    }
+    .kpi b{font-size:12px; color:var(--muted)}
+    .kpi strong{display:block; font-size:18px; margin-top:4px}
+
+    /* Sections */
+    section{padding:26px 0}
+    .section-title{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:14px}
+    .section-title h2{margin:0; font-size:22px}
+    .hint{color:var(--muted); font-weight:750; font-size:13px}
+
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    @media(max-width:980px){.grid{grid-template-columns:1fr}}
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 12px 30px rgba(37,99,235,.14);
+    }
+    .card h3{margin:0 0 8px; font-size:16px; letter-spacing:-.01em}
+    .card p{margin:0; color:var(--muted); font-weight:700}
+    .list{padding-left:18px; color:var(--muted); font-weight:700}
+
+    /* Toolbar / inputs */
+    .toolbar{display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center}
+    .inputs{display:flex; gap:10px; flex-wrap:wrap; width:100%}
+    .input, select, textarea{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:10px 12px;
+      font-weight:900;
+      background:rgba(255,255,255,.7);
+      color:var(--ink);
+      outline:none;
+    }
+    [data-theme="dark"] .input,
+    [data-theme="dark"] select,
+    [data-theme="dark"] textarea{
+      background:rgba(16,28,51,.7);
+    }
+    textarea{width:100%; font-weight:800; line-height:1.65}
+    .input{flex:1; min-width:220px}
+    select{min-width:180px}
+    .mini-actions{display:flex; gap:10px; flex-wrap:wrap}
+
+    /* Risk table */
+    .table-wrap{overflow:auto; border:1px solid var(--line); border-radius:16px; background:var(--card)}
+    table{border-collapse:separate; border-spacing:0; min-width:980px; width:100%}
+    thead th{
+      position:sticky; top:0;
+      background:rgba(37,99,235,.18);
+      padding:12px;
+      font-weight:950;
+      text-align:left;
+    }
+    tbody td{
+      padding:12px;
+      border-bottom:1px solid rgba(37,99,235,.18);
+      color:var(--muted);
+      font-weight:700;
+      vertical-align:top;
+    }
+    .tag{
+      display:inline-flex; padding:6px 10px; border-radius:999px;
+      border:1px solid var(--line); background:rgba(37,99,235,.12);
+      font-weight:950; font-size:12px; color:var(--ink);
+      white-space:nowrap;
+    }
+
+    /* Steps */
+    .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    @media(max-width:980px){.steps{grid-template-columns:1fr}}
+    .step{
+      background:var(--card); border:1px solid var(--line);
+      border-radius:var(--radius); padding:18px;
+      box-shadow:0 12px 30px rgba(37,99,235,.14);
+    }
+    .no{
+      width:34px;height:34px;border-radius:12px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      color:#fff;font-weight:950;
+      margin-bottom:10px;
+    }
+
+    /* Checklist */
+    .checklist{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .progress{height:10px; background:rgba(37,99,235,.2); border-radius:999px; overflow:hidden}
+    .bar{height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--blue2))}
+    .cl-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:14px}
+    @media(max-width:980px){.cl-grid{grid-template-columns:1fr}}
+    .cl-item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px;
+      border-radius:16px;
+      background:rgba(37,99,235,.10);
+      border:1px solid rgba(37,99,235,.16);
+    }
+    .cl-item input{margin-top:4px; accent-color:var(--blue)}
+    .cl-item b{display:block}
+    .cl-item span{display:block; color:var(--muted); font-weight:700; font-size:13px}
+
+    /* Print */
+    @media print{
+      .topbar,.nav,.actions,.toolbar,.mini-actions{display:none!important}
+      body{background:#fff}
+      .card,.hero-card,.checklist,.step{box-shadow:none!important}
+      .table-wrap{border:1px solid #ddd}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="logo"></div>
+          <div>
+            흙막이공사(C.I.P 공법) 안전보건작업 지침
+            <small>붕괴·전도·협착·낙하 예방 | 개요 · 위험요인 · SOP · 점검 · TBM</small>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="#overview">개요</a>
+          <a href="#risks">위험요인</a>
+          <a href="#sop">SOP</a>
+          <a href="#check">점검</a>
+          <a href="#tbm">TBM</a>
+        </nav>
+        <div class="actions">
+          <button class="btn" id="themeBtn" title="다크모드">🌙</button>
+          <button class="btn" onclick="window.print()" title="인쇄/PDF">🖨️</button>
+          <a class="btn primary" href="#tbm">🎙️ TBM</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <span class="badge"><span class="dot"></span> 현장용 표준 지침 (CIP 공법)</span>
+          <h1>CIP 재해는<br/>“천공·인양·타설·인발”에서 터진다</h1>
+          <p class="lead">
+            작업계획 → 통제 → 점검 → TBM 순서로 바로 쓰도록 구성했습니다.
+            핵심은 <b>전도/붕괴 방지</b>와 <b>낙하·협착 통제</b>입니다.
+          </p>
+
+          <div class="hero-kpis">
+            <div class="kpi"><b>중점 재해</b><strong>전도·붕괴</strong></div>
+            <div class="kpi"><b>중점 재해</b><strong>낙하·비래</strong></div>
+            <div class="kpi"><b>중점 재해</b><strong>협착·끼임</strong></div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3 style="margin-top:0;">🎯 즉시 통제 포인트</h3>
+          <ul class="list">
+            <li>천공장비 위치 지반보강(철판 등) + 전도위험 통제</li>
+            <li>천공공 덮개/방호(추락 방지) + 슬라임 관리</li>
+            <li>인양은 체결상태 점검 + 보조로프(흔들림·충돌 방지)</li>
+            <li>레미콘 후진/굴삭기 작업은 신호수 배치</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 개요 -->
+    <section id="overview">
+      <div class="container">
+        <div class="section-title">
+          <h2>개요</h2>
+          <div class="hint">목적 · 적용범위 · 정의</div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>목적</h3>
+            <p>안전보건규칙(굴착작업 등의 위험방지)에 따라, C.I.P 흙막이공사 작업과정의 안전보건작업 지침을 정함.</p>
+          </div>
+          <div class="card">
+            <h3>적용범위</h3>
+            <p>건설공사 현장의 <b>C.I.P 흙막이공사 작업</b> 전 공정에 적용.</p>
+          </div>
+          <div class="card">
+            <h3>정의(핵심)</h3>
+            <p>C.I.P는 천공 후 H-Pile/철근망 삽입, 콘크리트/모르터 타설로 주열식 현장타설 말뚝을 형성하는 공법.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>일반사항(작업계획 필수 포함)</h3>
+          <ul class="list">
+            <li>매설물·가공물·도로구조물·지반·노면교통 등을 고려해 작업계획 수립</li>
+            <li>흙막이 구조물 시공계획(토질, 굴착규모/방법, 시공순서/시간간격, 안정성 확보)</li>
+            <li>띠장/버팀보 부재계획(재질·배치·치수·설치시기·시공순서/방법, 장비계획, 배수/안전시설)</li>
+            <li>현장조건 불일치 시 설계검토 보고서 기반으로 승인된 수정도면/검토서 적용</li>
+            <li>계측계획(수위계·경사계·침하계 등) 및 교통처리계획(교통안전요원 포함)</li>
+            <li>지하수 유출·침하·부재변형·풀림 수시점검, 이상 시 즉시 보강/안정성 재검토</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 위험요인 -->
+    <section id="risks">
+      <div class="container">
+        <div class="section-title">
+          <h2>중점 위험요인</h2>
+          <div class="hint">검색 · 필터</div>
+        </div>
+
+        <div class="toolbar">
+          <div class="inputs">
+            <input class="input" id="q" placeholder="검색 (예: 전도, 덮개, 슬라임, 체결, 보조로프, 후진, 분진, 계측)">
+            <select id="fStep">
+              <option value="">공정 전체</option>
+              <option value="준비/줄파기">준비/줄파기</option>
+              <option value="천공/케이싱">천공/케이싱</option>
+              <option value="H-Pile/철근망">H-Pile/철근망</option>
+              <option value="타설/인발">타설/인발</option>
+              <option value="두부정리/Cap">두부정리/Cap</option>
+              <option value="일반사항">일반사항</option>
+            </select>
+            <select id="fEquip">
+              <option value="">장비 전체</option>
+              <option value="천공장비">천공장비</option>
+              <option value="크레인">크레인/인양</option>
+              <option value="레미콘">레미콘 트럭</option>
+              <option value="굴삭기">굴삭기</option>
+              <option value="케이싱">케이싱</option>
+              <option value="계측">계측/측량</option>
+            </select>
+            <select id="fType">
+              <option value="">재해유형 전체</option>
+              <option value="전도/붕괴">전도/붕괴</option>
+              <option value="추락">추락</option>
+              <option value="낙하/비래">낙하/비래</option>
+              <option value="협착/끼임">협착/끼임</option>
+              <option value="분진/소음">분진/소음</option>
+              <option value="교통">교통</option>
+            </select>
+          </div>
+          <div class="mini-actions">
+            <button class="btn" id="resetRisk">초기화</button>
+          </div>
+        </div>
+
+        <div class="table-wrap" style="margin-top:12px;">
+          <table id="riskTable">
+            <thead>
+              <tr>
+                <th style="width:130px;">재해유형</th>
+                <th style="width:150px;">공정</th>
+                <th style="width:160px;">장비</th>
+                <th>위험요인</th>
+                <th>핵심 대책(지침 기반)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-step="일반사항" data-equip="계측" data-type="전도/붕괴">
+                <td><span class="tag">전도/붕괴</span></td>
+                <td>일반사항</td>
+                <td>계측/현장관리</td>
+                <td>지반 이완·침하, 부재 변형/풀림 방치</td>
+                <td>수시 점검, 이상 시 즉시 보강 + 안정성 추가 검토 + 계측계획 운영</td>
+              </tr>
+
+              <tr data-step="준비/줄파기" data-equip="계측" data-type="교통">
+                <td><span class="tag">교통</span></td>
+                <td>준비/줄파기</td>
+                <td>교통처리</td>
+                <td>줄파기/시험굴착 중 교통 혼재</td>
+                <td>가설 울타리 설치, 소정 범위 밖 작업 후 즉시 복구·노면 유지보수</td>
+              </tr>
+
+              <tr data-step="준비/줄파기" data-equip="계측" data-type="전도/붕괴">
+                <td><span class="tag">전도/붕괴</span></td>
+                <td>준비/줄파기</td>
+                <td>지하매설물</td>
+                <td>매설물 손상/누수로 인한 2차 위험</td>
+                <td>2m 이상 또는 매설물 심도 이상 줄파기 후 위치 확인, 훼손 시 응급조치·통보</td>
+              </tr>
+
+              <tr data-step="천공/케이싱" data-equip="천공장비" data-type="전도/붕괴">
+                <td><span class="tag">전도/붕괴</span></td>
+                <td>천공/케이싱</td>
+                <td>천공장비</td>
+                <td>천공장비 전도 / 매설물 보호 실패</td>
+                <td>장비 위치 지반보강(철판 등) + 현장에 적합한 장비 선정 + 수직도 관리</td>
+              </tr>
+
+              <tr data-step="천공/케이싱" data-equip="천공장비" data-type="분진/소음">
+                <td><span class="tag">분진/소음</span></td>
+                <td>천공/케이싱</td>
+                <td>천공장비</td>
+                <td>토사 비산, 분진·소음 노출</td>
+                <td>토출구 가림막 등 비산방지, 귀마개·방진마스크 착용</td>
+              </tr>
+
+              <tr data-step="천공/케이싱" data-equip="천공장비" data-type="추락">
+                <td><span class="tag">추락</span></td>
+                <td>천공/케이싱</td>
+                <td>천공공</td>
+                <td>천공공 추락</td>
+                <td>슬라임 제거/심도 확인 후 덮개 설치 등 방호조치</td>
+              </tr>
+
+              <tr data-step="천공/케이싱" data-equip="천공장비" data-type="전도/붕괴">
+                <td><span class="tag">전도/붕괴</span></td>
+                <td>천공/케이싱</td>
+                <td>지반/지하수</td>
+                <td>설계 지반조건과 차이 → 주변 침하/붕괴 위험</td>
+                <td>차이 크면 작업 중지 후 심도 재검토(전문가 자문), 충분한 깊이 확보</td>
+              </tr>
+
+              <tr data-step="H-Pile/철근망" data-equip="크레인" data-type="낙하/비래">
+                <td><span class="tag">낙하/비래</span></td>
+                <td>H-Pile/철근망</td>
+                <td>크레인/인양</td>
+                <td>인양 중 낙하, 비틀림·변형</td>
+                <td>체결상태 점검(와이어/샤클), 접합부 결속·고리 보강, 보조로프 사용</td>
+              </tr>
+
+              <tr data-step="H-Pile/철근망" data-equip="크레인" data-type="협착/끼임">
+                <td><span class="tag">협착/끼임</span></td>
+                <td>H-Pile/철근망</td>
+                <td>인양/삽입</td>
+                <td>흔들림 충돌, 삽입 중 걸림</td>
+                <td>보조로프 흔들림 방지, 수직도 유지하며 서서히 삽입, 공벽 붕괴 방지</td>
+              </tr>
+
+              <tr data-step="타설/인발" data-equip="레미콘" data-type="협착/끼임">
+                <td><span class="tag">협착/끼임</span></td>
+                <td>타설/인발</td>
+                <td>레미콘 트럭</td>
+                <td>레미콘 후진 중 협착</td>
+                <td>신호수 배치 후 신호에 따라 작업</td>
+              </tr>
+
+              <tr data-step="타설/인발" data-equip="케이싱" data-type="전도/붕괴">
+                <td><span class="tag">전도/붕괴</span></td>
+                <td>타설/인발</td>
+                <td>케이싱</td>
+                <td>케이싱 인발 속도 과다로 H-Pile 변형</td>
+                <td>타설 완료 후 인발, 인발속도 최대한 천천히, 하단 보조로프로 전도 방지</td>
+              </tr>
+
+              <tr data-step="두부정리/Cap" data-equip="굴삭기" data-type="협착/끼임">
+                <td><span class="tag">협착/끼임</span></td>
+                <td>두부정리/Cap</td>
+                <td>굴삭기</td>
+                <td>말뚝 주변 굴착 시 굴삭기 후면 협착</td>
+                <td>신호수 배치 후 신호에 따라 작업</td>
+              </tr>
+
+              <tr data-step="두부정리/Cap" data-equip="계측" data-type="추락">
+                <td><span class="tag">추락</span></td>
+                <td>두부정리/Cap</td>
+                <td>상단부</td>
+                <td>흙막이 벽 상단 추락</td>
+                <td>Cap 타설 전 안전난간 지주를 미리 설치하여 추락방지</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOP -->
+    <section id="sop">
+      <div class="container">
+        <div class="section-title">
+          <h2>작업 절차(SOP)</h2>
+          <div class="hint">전 · 중 · 후 (현장용 요약)</div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="no">1</div>
+            <h3>작업 전</h3>
+            <ul class="list">
+              <li>작업계획 수립(매설물/교통/장비/공정/계측 포함)</li>
+              <li>2m 이상 또는 매설물 심도 이상 줄파기 후 위치 확인</li>
+              <li>천공장비 위치 지반보강(철판 등) 및 전도 위험 통제</li>
+              <li>유도자/신호수 배치 계획(후진·인양·굴삭기 작업)</li>
+            </ul>
+          </div>
+          <div class="step">
+            <div class="no">2</div>
+            <h3>작업 중</h3>
+            <ul class="list">
+              <li>천공 심도·수직도 관리, 토사 비산 방지(가림막) + PPE 착용</li>
+              <li>천공공은 덮개 설치(추락방지), 슬라임 즉시 처리·침사지 운영</li>
+              <li>인양 전 체결상태 점검, 보조로프로 흔들림/충돌 방지</li>
+              <li>레미콘 후진·굴삭기 작업은 신호수 지시로만 진행</li>
+            </ul>
+          </div>
+          <div class="step">
+            <div class="no">3</div>
+            <h3>작업 종료</h3>
+            <ul class="list">
+              <li>케이싱 인발은 천천히, 이동·적재 시 전도 방지 보조로프 적용</li>
+              <li>주변 정리정돈 및 오염/슬라임 처리(하수관 유입 차단)</li>
+              <li>부재 변형/연결부 풀림/침하 이상 유무 점검 후 기록</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <h3>공정별 핵심 포인트(현장 체크용)</h3>
+          <div class="grid" style="grid-template-columns:repeat(2,1fr);">
+            <div class="card" style="box-shadow:none; margin:0;">
+              <h3 style="margin-top:0;">준비·줄파기</h3>
+              <ul class="list">
+                <li>위험요소 위치에 안전표지·차단기·조명·경고신호 설치</li>
+                <li>가설 울타리로 보행자 동선 분리</li>
+                <li>작업 후 즉시 복구, 교통소통 지장 최소화</li>
+              </ul>
+            </div>
+            <div class="card" style="box-shadow:none; margin:0;">
+              <h3 style="margin-top:0;">천공·케이싱</h3>
+              <ul class="list">
+                <li>설계 지층/지하수와 차이 시 작업 중지 후 재검토</li>
+                <li>토사 비산 방지(가림막), 분진/소음 PPE 착용</li>
+                <li>천공공 덮개 설치(추락방지) + 슬라임 관리</li>
+              </ul>
+            </div>
+            <div class="card" style="box-shadow:none; margin:0;">
+              <h3 style="margin-top:0;">H-Pile·철근망 삽입</h3>
+              <ul class="list">
+                <li>인양 전 체결상태 점검(와이어/샤클 등)</li>
+                <li>보조로프 사용(흔들림·충돌 방지)</li>
+                <li>수직 유지하며 서서히 삽입(공벽 붕괴 방지)</li>
+              </ul>
+            </div>
+            <div class="card" style="box-shadow:none; margin:0;">
+              <h3 style="margin-top:0;">타설·인발·두부정리</h3>
+              <ul class="list">
+                <li>트레미관으로 연속 타설(관 접합부 터짐/비래 주의)</li>
+                <li>레미콘 후진/굴삭기 작업 시 신호수 배치</li>
+                <li>상단 추락방지: Cap 타설 전 난간 지주 선설치</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 점검 -->
+    <section id="check">
+      <div class="container">
+        <div class="section-title">
+          <h2>일일 안전점검</h2>
+          <div class="hint">저장 · 진행률 · 복사</div>
+        </div>
+
+        <div class="checklist">
+          <div class="toolbar" style="margin-bottom:10px;">
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+              <div class="hint" id="progressText">0 / 0 완료</div>
+            </div>
+            <div class="mini-actions">
+              <button class="btn" id="clearChecklist">초기화</button>
+              <button class="btn primary" id="copyChecklist">점검결과 복사</button>
+            </div>
+          </div>
+
+          <div class="progress"><div class="bar" id="bar"></div></div>
+          <div class="cl-grid" id="clGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TBM -->
+    <section id="tbm">
+      <div class="container">
+        <div class="section-title">
+          <h2>작업 전 TBM (10초)</h2>
+          <div class="hint">혼합 분기: 공정 + 장비 + 특이조건</div>
+        </div>
+
+        <div class="card">
+          <div class="toolbar">
+            <div class="inputs">
+              <input class="input" id="tbmSite" placeholder="현장명 (예: ○○현장)">
+              <select id="tbmStep">
+                <option value="준비/줄파기">공정: 준비/줄파기</option>
+                <option value="천공/케이싱">공정: 천공/케이싱</option>
+                <option value="H-Pile/철근망">공정: H-Pile/철근망 삽입</option>
+                <option value="타설/인발">공정: 콘크리트 타설/케이싱 인발</option>
+                <option value="두부정리/Cap">공정: 두부정리/Cap 타설</option>
+              </select>
+              <select id="tbmEquip">
+                <option value="천공장비">장비: 천공장비</option>
+                <option value="크레인">장비: 크레인/인양</option>
+                <option value="레미콘">장비: 레미콘 트럭</option>
+                <option value="굴삭기">장비: 굴삭기</option>
+                <option value="케이싱">장비: 케이싱</option>
+                <option value="계측">장비: 계측/측량</option>
+              </select>
+              <select id="tbmCond">
+                <option value="">특이조건: 없음</option>
+                <option value="매설물">특이조건: 지하매설물(가스/상하수/통신)</option>
+                <option value="지하수/슬라임">특이조건: 지하수/슬라임 다량</option>
+                <option value="교통혼재">특이조건: 교통혼재(차도/보행)</option>
+                <option value="인양근접">특이조건: 인양 근접작업(협착 위험)</option>
+                <option value="야간">특이조건: 야간작업</option>
+              </select>
+            </div>
+            <div class="mini-actions">
+              <button class="btn primary" id="genTBM">TBM 생성</button>
+              <button class="btn" id="copyTBM">TBM 복사</button>
+            </div>
+          </div>
+
+          <textarea id="tbmOut" rows="8" placeholder="TBM 문구가 여기에 생성됩니다."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card">
+          <h3>현장 운영 팁</h3>
+          <ul class="list">
+            <li>오늘 공정 시작 전 “추락/낙하/협착” 중 1개를 <b>최우선 통제</b>로 지정(예: 천공공 덮개 100%).</li>
+            <li>인양은 “체결 확인 → 보조로프 → 서서히 삽입”을 TBM에서 반드시 한 번 말하기.</li>
+            <li>레미콘 후진/굴삭기 작업은 신호수 없으면 <b>작업 금지</b>로 통일.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* ================= Theme ================= */
+    const root = document.documentElement;
+    const THEME_KEY = "cip_theme_v4";
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    if(savedTheme === "dark") root.setAttribute("data-theme","dark");
+    document.getElementById("themeBtn").addEventListener("click", ()=>{
+      const isDark = root.getAttribute("data-theme")==="dark";
+      if(isDark){ root.removeAttribute("data-theme"); localStorage.setItem(THEME_KEY,"light"); }
+      else { root.setAttribute("data-theme","dark"); localStorage.setItem(THEME_KEY,"dark"); }
+    });
+
+    /* ================= Risk filtering ================= */
+    const qEl = document.getElementById("q");
+    const fStep = document.getElementById("fStep");
+    const fEquip = document.getElementById("fEquip");
+    const fType = document.getElementById("fType");
+    const rows = Array.from(document.querySelectorAll("#riskTable tbody tr"));
+
+    function applyRiskFilter(){
+      const q = (qEl.value || "").trim();
+      const step = fStep.value;
+      const equip = fEquip.value;
+      const type = fType.value;
+
+      rows.forEach(tr=>{
+        const okQ = !q || tr.innerText.includes(q);
+        const okS = !step || tr.dataset.step === step;
+        const okE = !equip || tr.dataset.equip === equip || tr.innerText.includes(equip);
+        const okT = !type || tr.dataset.type === type || tr.innerText.includes(type);
+        tr.style.display = (okQ && okS && okE && okT) ? "" : "none";
+      });
+    }
+
+    [qEl,fStep,fEquip,fType].forEach(el=>el.addEventListener("input", applyRiskFilter));
+    document.getElementById("resetRisk").addEventListener("click", ()=>{
+      qEl.value=""; fStep.value=""; fEquip.value=""; fType.value="";
+      applyRiskFilter();
+    });
+
+    /* ================= Checklist (localStorage) ================= */
+    const CL_KEY = "cip_check_v4";
+    const checklistItems = [
+      { t:"작업계획/승인", d:"현장조건 반영 작업계획(매설물·교통·장비·공정·계측) 수립 및 승인 확인" },
+      { t:"줄파기/매설물 확인", d:"2m 이상 또는 매설물 심도 이상 줄파기, 위치 확인 및 보호대책" },
+      { t:"지반보강(전도방지)", d:"천공장비 위치 지반보강(철판 등) 및 전도 위험 통제" },
+      { t:"천공심도/수직도", d:"설계깊이 이상 확보, 수직도(장비 경사계/트랜싯 등) 관리" },
+      { t:"비산·분진·소음", d:"토출구 가림막 등 비산방지, 귀마개/방진마스크 착용" },
+      { t:"천공공 덮개", d:"추락 방지: 천공공 덮개 설치 및 방호조치" },
+      { t:"슬라임/침사지", d:"슬라임 즉시 처리, 다량 발생 시 침사지 설치(하수관 유입 방지)" },
+      { t:"인양 체결점검", d:"와이어·샤클·고리 체결상태 점검, 접합부 결속/보강" },
+      { t:"보조로프", d:"H-Pile/철근망/케이싱 인양 시 보조로프로 흔들림·충돌·전도 방지" },
+      { t:"레미콘/굴삭기 신호수", d:"레미콘 후진·굴삭기 작업은 신호수 배치 후 신호에 따라 작업" },
+      { t:"케이싱 인발", d:"콘크리트 타설 완료 후 인발, 인발속도는 최대한 천천히(변형 방지)" },
+      { t:"상단 추락방지", d:"Cap 타설 전 안전난간 지주 선설치 등 추락방지 조치" },
+    ];
+
+    const clGrid = document.getElementById("clGrid");
+    const bar = document.getElementById("bar");
+    const progressText = document.getElementById("progressText");
+
+    function loadChecklistState(){
+      try { return JSON.parse(localStorage.getItem(CL_KEY) || "[]"); }
+      catch(e){ return []; }
+    }
+    function saveChecklistState(state){ localStorage.setItem(CL_KEY, JSON.stringify(state)); }
+
+    function renderChecklist(){
+      const state = loadChecklistState();
+      clGrid.innerHTML = "";
+      checklistItems.forEach((it, idx)=>{
+        const checked = state.includes(idx);
+        const el = document.createElement("label");
+        el.className = "cl-item";
+        el.innerHTML = `
+          <input type="checkbox" data-idx="${idx}" ${checked ? "checked":""} />
+          <div>
+            <b>${it.t}</b>
+            <span>${it.d}</span>
+          </div>
+        `;
+        clGrid.appendChild(el);
+      });
+
+      clGrid.querySelectorAll("input[type=checkbox]").forEach(cb=>{
+        cb.addEventListener("change", ()=>{
+          const idx = Number(cb.dataset.idx);
+          let st = loadChecklistState();
+          if(cb.checked){ if(!st.includes(idx)) st.push(idx); }
+          else { st = st.filter(x=>x!==idx); }
+          saveChecklistState(st);
+          updateProgress();
+        });
+      });
+
+      updateProgress();
+    }
+
+    function updateProgress(){
+      const st = loadChecklistState();
+      const done = st.length;
+      const total = checklistItems.length;
+      const pct = total ? Math.round(done/total*100) : 0;
+      bar.style.width = pct + "%";
+      progressText.textContent = `${done} / ${total} 완료 (${pct}%)`;
+    }
+
+    document.getElementById("clearChecklist").addEventListener("click", ()=>{
+      localStorage.removeItem(CL_KEY);
+      renderChecklist();
+    });
+
+    document.getElementById("copyChecklist").addEventListener("click", async ()=>{
+      const st = loadChecklistState();
+      const done = st.map(i=>`[✓] ${checklistItems[i].t} - ${checklistItems[i].d}`);
+      const notDone = checklistItems
+        .map((it,i)=>({it,i}))
+        .filter(x=>!st.includes(x.i))
+        .map(x=>`[ ] ${x.it.t} - ${x.it.d}`);
+
+      const text =
+`[CIP 일일점검]
+- 완료: ${st.length}/${checklistItems.length}
+
+✅ 완료 항목
+${done.length ? done.join("\n") : "(없음)"}
+
+⬜ 미완료 항목
+${notDone.length ? notDone.join("\n") : "(없음)"}
+`;
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("점검결과를 복사했습니다.");
+      }catch(e){
+        prompt("복사가 차단되어 수동 복사하세요.", text);
+      }
+    });
+
+    renderChecklist();
+
+    /* ================= TBM (mixed: step+equip+condition) ================= */
+    const tbmSite = document.getElementById("tbmSite");
+    const tbmStep = document.getElementById("tbmStep");
+    const tbmEquip = document.getElementById("tbmEquip");
+    const tbmCond = document.getElementById("tbmCond");
+    const tbmOut = document.getElementById("tbmOut");
+
+    function tbmFocus(step, equip){
+      const base = [];
+
+      // 공정 핵심
+      if(step==="준비/줄파기"){
+        base.push("매설물 손상과 교통혼재 위험이 있으니 줄파기 범위를 최소화하고 가설울타리로 보행자를 분리합니다.");
+        base.push("매설물 훼손/누수 발생 시 즉시 응급조치 후 감독자에게 통보합니다.");
+      }
+      if(step==="천공/케이싱"){
+        base.push("천공장비 전도 및 천공공 추락 위험이 있으니 지반보강(철판 등)과 덮개 설치를 철저히 합니다.");
+        base.push("설계 지반조건과 차이가 크면 작업을 중지하고 관계전문가 자문 후 심도를 재검토합니다.");
+      }
+      if(step==="H-Pile/철근망"){
+        base.push("인양 중 낙하·협착 위험이 크니 체결상태 확인 후 보조로프로 흔들림을 통제합니다.");
+        base.push("수직도를 유지하며 서서히 삽입하여 공벽 붕괴와 걸림을 방지합니다.");
+      }
+      if(step==="타설/인발"){
+        base.push("타설은 트레미관으로 연속 타설하고 관 접합부 터짐/비래 위험을 통제합니다.");
+        base.push("케이싱 인발은 최대한 천천히 하며, 이동·적재 시 보조로프로 전도를 방지합니다.");
+      }
+      if(step==="두부정리/Cap"){
+        base.push("굴삭기 후면 협착 위험이 있으니 신호수 배치 후 신호에 따라 작업합니다.");
+        base.push("상단 추락방지를 위해 Cap 타설 전 안전난간 지주를 선설치합니다.");
+      }
+
+      // 장비 포인트
+      if(equip==="천공장비") base.push("천공장비는 경사계/트랜싯 등으로 수직도를 관리하고, 토사 비산 방지를 시행합니다.");
+      if(equip==="크레인") base.push("와이어·샤클·고리 체결상태를 작업 전 점검하고, 인양 중 접근을 통제합니다.");
+      if(equip==="레미콘") base.push("레미콘 후진은 신호수 유도 하에만 진행하고 협착 위험구간을 차단합니다.");
+      if(equip==="굴삭기") base.push("굴삭기 회전 반경을 통제하고 후면 접근을 금지합니다.");
+      if(equip==="케이싱") base.push("케이싱 인양/인발 시 결속 상태와 전도 방지 보조로프를 확인합니다.");
+      if(equip==="계측") base.push("침하·변형·지하수 유출 등 이상징후를 계측/관찰하여 즉시 조치합니다.");
+
+      return base;
+    }
+
+    function tbmCondition(cond){
+      if(cond==="매설물") return [
+        "매설물(가스/상하수/통신) 구간은 입회/통보 절차를 준수하고, 이동·탈락 방지 보강대책을 시행합니다."
+      ];
+      if(cond==="지하수/슬라임") return [
+        "지하수·슬라임이 다량 발생하면 침사지를 설치하고 하수관 유입을 차단합니다."
+      ];
+      if(cond==="교통혼재") return [
+        "교통혼재 구간은 교통처리계획에 따라 통제구간을 분리하고 안전요원 지시에 따릅니다."
+      ];
+      if(cond==="인양근접") return [
+        "인양 근접작업은 접근 통제 후 실시하고, 신호체계를 단일화합니다(신호수 1인 중심)."
+      ];
+      if(cond==="야간") return [
+        "야간은 조명 확보와 시인성(반사조끼 등)을 강화하고 위험구간을 추가 차단합니다."
+      ];
+      return [];
+    }
+
+    document.getElementById("genTBM").addEventListener("click", ()=>{
+      const site = (tbmSite.value || "").trim() || "본 현장";
+      const step = tbmStep.value;
+      const equip = tbmEquip.value;
+      const cond = tbmCond.value;
+
+      const lines = [];
+      lines.push("지금부터 작업 전 안전교육(TBM)을 실시하겠습니다.");
+      lines.push(`여기는 ${site}이며, 오늘 공정은 '${step}', 주요 장비는 '${equip}'입니다.`);
+      lines.push("핵심 위험은 전도·붕괴, 낙하·비래, 협착·끼임입니다.");
+
+      tbmFocus(step, equip).forEach(x=>lines.push(x));
+      tbmCondition(cond).forEach(x=>lines.push(x));
+
+      lines.push("신호수/유도자 지시에 따르고, 위험구간 출입을 통제합니다.");
+      lines.push("이상 징후 발견 시 즉시 작업을 중지하고 관리감독자에게 보고합니다.");
+
+      tbmOut.value = lines.join("\n");
+    });
+
+    document.getElementById("copyTBM").addEventListener("click", async ()=>{
+      const text = tbmOut.value.trim();
+      if(!text){ alert("먼저 TBM을 생성하세요."); return; }
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("TBM 문구를 복사했습니다.");
+      }catch(e){
+        prompt("복사가 차단되어 수동 복사하세요.", text);
+      }
+    });
+  </script>
+</body>
+</html>

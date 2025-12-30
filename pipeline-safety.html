@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>관로공사 안전보건 작업지침 | SOP · 위험요인 · 체크리스트 · TBM</title>
+  <meta name="description" content="중소규모 관로공사(굴착·흙막이·관로부설·되메우기·맨홀) 안전보건 작업지침. 위험요인 검색, SOP, 일일점검 체크리스트 저장, 10초 TBM 자동생성." />
+  <meta name="theme-color" content="#004080" />
+
+  <!-- Pretendard -->
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+  <style>
+    :root{
+      --blue:#004080;
+      --blue2:#007bff;
+      --ink:#0b1220;
+      --muted:#5a6477;
+      --bg:#f5f8ff;
+      --card:#ffffff;
+      --line:rgba(0,64,128,.14);
+      --shadow:0 18px 60px rgba(0,64,128,.10);
+      --radius:18px;
+      --radius2:26px;
+    }
+    [data-theme="dark"]{
+      --ink:#eaf1ff;
+      --muted:#b8c4da;
+      --bg:#071225;
+      --card:#0b1b33;
+      --line:rgba(127,170,255,.18);
+      --shadow:0 18px 60px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 18% 10%, rgba(0,123,255,.18), transparent 55%),
+        radial-gradient(900px 520px at 80% 0%, rgba(0,64,128,.22), transparent 50%),
+        var(--bg);
+      line-height:1.7;
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1200px, calc(100% - 40px)); margin:0 auto}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background:linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.52));
+      border-bottom:1px solid rgba(0,64,128,.10);
+    }
+    [data-theme="dark"] .topbar{
+      background:linear-gradient(180deg, rgba(11,27,51,.78), rgba(11,27,51,.55));
+      border-bottom:1px solid rgba(127,170,255,.14);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 0;
+      gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background:linear-gradient(135deg, var(--blue), var(--blue2));
+      box-shadow:0 14px 40px rgba(0,64,128,.25);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo:before{
+      content:"";
+      position:absolute; inset:-40%;
+      background:conic-gradient(from 120deg, rgba(255,255,255,.0), rgba(255,255,255,.55), rgba(255,255,255,.0));
+      animation:spin 4.5s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .brand small{display:block; font-size:12px; color:var(--muted); font-weight:700; margin-top:2px}
+
+    .nav{
+      display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end;
+      font-size:13px; font-weight:800; color:var(--muted);
+    }
+    .nav a{
+      padding:8px 10px; border-radius:999px;
+      border:1px solid transparent;
+    }
+    .nav a:hover{border-color:var(--line); background:rgba(0,64,128,.06); color:var(--ink)}
+
+    .actions{display:flex; align-items:center; gap:10px}
+    .btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.65);
+      color:var(--ink);
+      border-radius:999px;
+      padding:10px 12px;
+      font-weight:900;
+      cursor:pointer;
+      transition:.18s ease;
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    [data-theme="dark"] .btn{background:rgba(11,27,51,.65)}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 10px 22px rgba(0,64,128,.12)}
+    .btn.primary{
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      border-color:transparent;
+      color:#fff;
+      box-shadow:0 18px 45px rgba(0,64,128,.22);
+    }
+    .btn.primary:hover{box-shadow:0 22px 55px rgba(0,64,128,.28)}
+
+    /* Hero */
+    .hero{padding:42px 0 22px}
+    .hero-grid{
+      display:grid; gap:22px;
+      grid-template-columns: 1.15fr .85fr;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .nav{display:none}
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.70));
+      border:1px solid rgba(0,64,128,.14);
+      border-radius:var(--radius2);
+      box-shadow:var(--shadow);
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+    }
+    [data-theme="dark"] .hero-card{
+      background:linear-gradient(180deg, rgba(11,27,51,.86), rgba(11,27,51,.66));
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 12px; border-radius:999px;
+      background:rgba(0,64,128,.08);
+      border:1px solid rgba(0,64,128,.14);
+      color:var(--ink);
+      font-weight:900; font-size:12px;
+    }
+    [data-theme="dark"] .badge{
+      background:rgba(127,170,255,.10);
+      border:1px solid rgba(127,170,255,.18);
+    }
+    .dot{width:8px; height:8px; border-radius:99px; background:linear-gradient(135deg,var(--blue),var(--blue2))}
+    h1{
+      margin:14px 0 10px;
+      font-size:36px;
+      letter-spacing:-.03em;
+      line-height:1.15;
+    }
+    @media (max-width: 560px){ h1{font-size:28px} }
+    .lead{margin:0; color:var(--muted); font-weight:700}
+    .hero-kpis{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+      margin-top:18px;
+    }
+    .kpi{
+      background:rgba(0,64,128,.06);
+      border:1px solid rgba(0,64,128,.12);
+      border-radius:16px;
+      padding:12px;
+    }
+    [data-theme="dark"] .kpi{
+      background:rgba(127,170,255,.08);
+      border-color:rgba(127,170,255,.16);
+    }
+    .kpi b{display:block; font-size:12px; color:var(--muted)}
+    .kpi strong{display:block; margin-top:4px; font-size:18px}
+
+    .hero-side{
+      display:grid; gap:14px;
+      align-content:start;
+    }
+    .mini{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:0 12px 34px rgba(0,64,128,.08);
+      padding:16px;
+    }
+    .mini h3{margin:0 0 8px; font-size:14px}
+    .mini p{margin:0; color:var(--muted); font-weight:650; font-size:13px}
+
+    /* Sections */
+    section{padding:26px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+      margin:0 0 14px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-.02em;
+    }
+    .section-title .hint{color:var(--muted); font-weight:700; font-size:13px}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 12px 30px rgba(0,64,128,.08);
+    }
+    .card h3{margin:0 0 10px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-weight:650}
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted); font-weight:650}
+    .list li{margin:6px 0}
+
+    /* Risk table */
+    .toolbar{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      margin:10px 0 12px;
+    }
+    .search{
+      flex:1;
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .input, select, textarea{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.7);
+      color:var(--ink);
+      border-radius:12px;
+      padding:10px 12px;
+      font-weight:800;
+      outline:none;
+      min-width: 180px;
+      font-family:inherit;
+    }
+    [data-theme="dark"] .input, [data-theme="dark"] select, [data-theme="dark"] textarea{
+      background:rgba(11,27,51,.7);
+    }
+    .input{flex:1; min-width:220px}
+    .table-wrap{
+      overflow:auto;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:var(--card);
+    }
+    table{
+      border-collapse:separate;
+      border-spacing:0;
+      width:100%;
+      min-width:900px;
+      font-size:13px;
+    }
+    thead th{
+      position:sticky; top:0;
+      background:linear-gradient(180deg, rgba(0,64,128,.10), rgba(0,64,128,.06));
+      color:var(--ink);
+      text-align:left;
+      padding:12px 12px;
+      border-bottom:1px solid var(--line);
+      font-weight:950;
+      z-index:1;
+    }
+    tbody td{
+      padding:12px 12px;
+      border-bottom:1px solid rgba(0,64,128,.10);
+      color:var(--muted);
+      vertical-align:top;
+      font-weight:650;
+    }
+    tbody tr:hover td{background:rgba(0,64,128,.04); color:var(--ink)}
+    .tag{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(0,64,128,.14);
+      background:rgba(0,64,128,.06);
+      color:var(--ink);
+      font-weight:950;
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    /* Steps */
+    .steps{
+      display:grid; gap:14px;
+      grid-template-columns:repeat(3,1fr);
+    }
+    @media (max-width: 980px){ .steps{grid-template-columns:1fr} }
+    .step{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 12px 30px rgba(0,64,128,.08);
+    }
+    .step .no{
+      width:34px; height:34px; border-radius:12px;
+      display:grid; place-items:center;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      color:#fff; font-weight:950;
+      box-shadow:0 14px 30px rgba(0,64,128,.18);
+    }
+    .step h3{margin:10px 0 8px; font-size:16px}
+    .step ul{margin:0; padding-left:18px; color:var(--muted); font-weight:650}
+    .step li{margin:6px 0}
+
+    /* Checklist */
+    .checklist{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .cl-head{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+    .cl-head h3{margin:0; font-size:16px}
+    .cl-meta{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .cl-meta .input{min-width:180px; flex:unset}
+    .cl-items{
+      display:grid; gap:10px;
+    }
+    .cl-item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid rgba(0,64,128,.12);
+      background:rgba(0,64,128,.05);
+    }
+    [data-theme="dark"] .cl-item{
+      border-color:rgba(127,170,255,.16);
+      background:rgba(127,170,255,.08);
+    }
+    .cl-item input[type="checkbox"]{
+      margin-top:4px;
+      width:18px; height:18px;
+      accent-color: var(--blue2);
+      cursor:pointer;
+    }
+    .cl-item b{display:block; font-size:13px}
+    .cl-item small{display:block; color:var(--muted); font-weight:650; margin-top:2px}
+    .progress{
+      height:10px;
+      background:rgba(0,64,128,.10);
+      border:1px solid rgba(0,64,128,.12);
+      border-radius:999px;
+      overflow:hidden;
+    }
+    .bar{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,var(--blue),var(--blue2));
+      transition:width .25s ease;
+    }
+
+    /* TBM */
+    .tbm{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .tbm-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 980px){ .tbm-grid{grid-template-columns:1fr} }
+
+    /* Footer */
+    footer{
+      padding:26px 0 40px;
+      color:var(--muted);
+      font-weight:700;
+      font-size:12px;
+    }
+    .foot{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(0,64,128,.12);
+      padding-top:16px;
+    }
+
+    /* Print */
+    @media print{
+      .topbar, .actions, .nav, .btn, .toolbar, .hint, .hero-side { display:none !important; }
+      body{background:#fff}
+      .hero{padding:0}
+      .hero-card, .card, .step, .checklist, .tbm { box-shadow:none !important; }
+      .container{width:100%}
+      a{color:#000}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            관로공사 안전보건 작업지침
+            <small>굴착·흙막이·관로부설·되메우기·맨홀 | SOP · 체크리스트 · TBM</small>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="주요 메뉴">
+          <a href="#overview">개요</a>
+          <a href="#risks">위험요인/대책</a>
+          <a href="#procedure">작업절차(SOP)</a>
+          <a href="#checklist">일일점검</a>
+          <a href="#tbm">TBM 10초</a>
+        </nav>
+
+        <div class="actions">
+          <button class="btn" id="themeBtn" type="button" title="다크모드 전환">🌙 테마</button>
+          <button class="btn" id="printBtn" type="button" title="인쇄/저장(PDF)">🖨️ 인쇄</button>
+          <a class="btn primary" href="#tbm" title="바로 TBM">🎙️ TBM</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <span class="badge"><span class="dot"></span> 현장 적용형 · 관로공사 표준 안전작업</span>
+          <h1>관로공사 재해를<br/>“붕괴·충돌·질식”부터 끊습니다.</h1>
+          <p class="lead">
+            굴착·흙막이·관로부설·되메우기 공정은 <b>토사 붕괴(매몰)</b>와 <b>장비 충돌</b>,
+            맨홀·관내는 <b>산소결핍·유해가스</b>가 핵심 위험입니다.
+            이 페이지는 <b>작업계획→통제→점검→TBM</b> 순으로 바로 쓰게 구성했습니다.
+          </p>
+
+          <div class="hero-kpis" role="list">
+            <div class="kpi" role="listitem">
+              <b>중점 재해유형</b>
+              <strong>붕괴·매몰</strong>
+            </div>
+            <div class="kpi" role="listitem">
+              <b>중점 재해유형</b>
+              <strong>충돌·끼임</strong>
+            </div>
+            <div class="kpi" role="listitem">
+              <b>중점 재해유형</b>
+              <strong>질식</strong>
+            </div>
+          </div>
+
+          <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn" href="#risks">⚠️ 위험요인 보기</a>
+            <a class="btn" href="#procedure">🧭 SOP 보기</a>
+            <a class="btn" href="#checklist">🧾 점검 시작</a>
+          </div>
+
+          <p style="margin:14px 0 0; color:var(--muted); font-weight:700; font-size:12px;">
+            ※ 본 페이지는 “관로공사” 현장 운영을 위해 지침을 실무형(교육/점검/TBM)으로 재구성한 템플릿입니다.
+          </p>
+        </div>
+
+        <aside class="hero-side" aria-label="핵심 운영 포인트">
+          <div class="mini">
+            <h3>🎯 작업계획 핵심</h3>
+            <p>지하매설물 확인 → 굴착방법/흙막이 계획 → 교통처리 → 밀폐공간 여부 판단</p>
+          </div>
+          <div class="mini">
+            <h3>🛑 즉시 통제 3가지</h3>
+            <p>① 굴착부 접근 통제 ② 장비 후진 유도 ③ 맨홀 산소측정·환기</p>
+          </div>
+          <div class="mini">
+            <h3>📌 현장 기준</h3>
+            <p>“근로자 접근 가능한 굴착부”는 반드시 흙막이/출입통제/승강설비를 세트로 운영</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <div class="container">
+        <div class="section-title">
+          <h2>개요</h2>
+          <div class="hint">목적·적용범위·핵심 공정</div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>1) 목적</h3>
+            <p>관로공사 중 토사 붕괴(매몰), 장비 충돌, 중량물 취급 끼임, 맨홀 질식 등 중대재해를 예방합니다.</p>
+          </div>
+          <div class="card">
+            <h3>2) 적용범위</h3>
+            <p>상·하수도, 통신, 전기, 가스 등 관로 매설 공사 전 공정(굴착·흙막이·부설·되메우기·복구) 및 맨홀 작업.</p>
+          </div>
+          <div class="card">
+            <h3>3) 공정 흐름</h3>
+            <p>조사·계획 → 굴착 → 흙막이 → 관로 인양/부설 → 되메우기/다짐 → 포장복구 → 정리/기록.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RISKS -->
+    <section id="risks">
+      <div class="container">
+        <div class="section-title">
+          <h2>중점 위험요인 및 안전대책</h2>
+          <div class="hint">TBM/교육에 바로 쓰는 검색 표</div>
+        </div>
+
+        <div class="toolbar">
+          <div class="search">
+            <input class="input" id="q" placeholder="예) 붕괴, 흙막이, 후진, 크레인, 맨홀, 산소결핍…" />
+            <select id="type">
+              <option value="">재해유형(전체)</option>
+              <option value="붕괴·매몰">붕괴·매몰</option>
+              <option value="충돌">충돌</option>
+              <option value="끼임">끼임</option>
+              <option value="질식">질식</option>
+              <option value="낙하·비래">낙하·비래</option>
+              <option value="감전">감전</option>
+              <option value="화재·폭발">화재·폭발</option>
+            </select>
+            <select id="phase">
+              <option value="">공정(전체)</option>
+              <option value="사전조사/계획">사전조사/계획</option>
+              <option value="굴착">굴착</option>
+              <option value="흙막이">흙막이</option>
+              <option value="관로부설">관로부설</option>
+              <option value="되메우기/복구">되메우기/복구</option>
+              <option value="맨홀/관내">맨홀/관내</option>
+              <option value="운반/하역">운반/하역</option>
+            </select>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn" id="reset" type="button">↺ 초기화</button>
+          </div>
+        </div>
+
+        <div class="table-wrap" role="region" aria-label="위험요인 및 안전대책 표" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:140px">재해유형</th>
+                <th style="width:140px">공정</th>
+                <th>위험요인(현장 상황)</th>
+                <th>안전대책(핵심 통제)</th>
+              </tr>
+            </thead>
+            <tbody id="riskBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCEDURE -->
+    <section id="procedure">
+      <div class="container">
+        <div class="section-title">
+          <h2>작업절차(SOP)</h2>
+          <div class="hint">작업계획 → 작업 전 → 작업 중</div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="no">1</div>
+            <h3>작업계획 수립</h3>
+            <ul>
+              <li>지하매설물(상·하수/가스/전기/통신) 위치 확인 및 표시</li>
+              <li>굴착깊이·지반상태에 따른 굴착방법/흙막이 계획 수립</li>
+              <li>교통처리계획(차단·우회·신호수)과 출입통제구역 설정</li>
+              <li>맨홀/관내는 밀폐공간 여부 판단 및 환기·측정·구조계획 준비</li>
+            </ul>
+          </div>
+
+          <div class="step">
+            <div class="no">2</div>
+            <h3>작업 전 준수사항</h3>
+            <ul>
+              <li>관리감독자: TBM 실시(오늘 공정·위험·통제·비상절차)</li>
+              <li>장비/차량 후진경보기·경광등·후방카메라 점검</li>
+              <li>굴착부 주변 낙하 방지(방호울/콘/바리케이드) 설치</li>
+              <li>흙막이 자재·지보재 상태 확인(변형/결손/부식)</li>
+              <li>맨홀 작업은 산소/가스 측정기, 송풍기, 구조장비 준비</li>
+            </ul>
+          </div>
+
+          <div class="step">
+            <div class="no">3</div>
+            <h3>작업 중 준수사항</h3>
+            <ul>
+              <li>굴착면 붕괴 징후(균열·침하·용수) 발견 시 즉시 중지</li>
+              <li>작업반경 출입통제 + 장비 후진 시 유도자 신호 준수</li>
+              <li>중량 관로 인양·하역 시 하부 출입 금지(신호수 배치)</li>
+              <li>맨홀/관내: 측정→환기→감시인 배치→비상구조체계 유지</li>
+              <li>되메우기/다짐 장비 운행로 분리(근로자 동선 분리)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:14px" class="card">
+          <h3>작업 종료</h3>
+          <ul class="list">
+            <li>굴착부 개구부 방호(덮개/난간/조명) 유지, 야간 경고등 설치</li>
+            <li>장비는 평탄한 장소 주차, 버킷/블레이드 하강 후 키 제거</li>
+            <li>당일 이상징후·변경사항 기록(붕괴징후/지하수/민원/교통)</li>
+            <li>정리정돈(자재 적치, 통로 확보, 미끄럼 요인 제거)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECKLIST -->
+    <section id="checklist">
+      <div class="container">
+        <div class="section-title">
+          <h2>관로공사 안전점검 체크리스트</h2>
+          <div class="hint">체크 상태는 브라우저에 저장됩니다</div>
+        </div>
+
+        <div class="checklist">
+          <div class="cl-head">
+            <h3>✅ 오늘 점검</h3>
+            <div class="cl-meta">
+              <input class="input" id="site" placeholder="현장명 (예: ○○시 하수관로)" />
+              <input class="input" id="zone" placeholder="구간/공구 (예: A-3구간)" />
+              <input class="input" id="inspector" placeholder="점검자 (예: 김대홍)" />
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button class="btn" id="saveMeta" type="button">💾 정보 저장</button>
+              <button class="btn" id="clearAll" type="button">🧹 전체 해제</button>
+              <button class="btn primary" id="exportTxt" type="button">📄 결과 복사</button>
+            </div>
+          </div>
+
+          <div class="progress" aria-label="점검 진행률">
+            <div class="bar" id="bar"></div>
+          </div>
+
+          <div style="height:10px"></div>
+          <div class="cl-items" id="cl"></div>
+
+          <p style="margin:12px 0 0; color:var(--muted); font-weight:700; font-size:12px;">
+            ※ 체크리스트는 관로공정(굴착/흙막이/부설/되메우기/맨홀) 기준으로 실무형으로 구성했습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TBM -->
+    <section id="tbm">
+      <div class="container">
+        <div class="section-title">
+          <h2>작업 전 안전교육(TBM) 10초 스크립트</h2>
+          <div class="hint">현장명/작업내용 입력 → 즉시 생성/복사</div>
+        </div>
+
+        <div class="tbm">
+          <div class="tbm-grid">
+            <input class="input" id="tbmSite" placeholder="현장명 (예: ○○시 하수관로 공사)" />
+            <input class="input" id="tbmWork" placeholder="오늘 작업내용 (예: 관로 부설 및 되메우기)" />
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+            <select class="input" id="tbmType" style="flex:1; min-width:260px;">
+              <option value="general">일반 관로공사(혼재)</option>
+              <option value="excavation">굴착 작업</option>
+              <option value="shoring">흙막이지보공 설치·해체</option>
+              <option value="laying">관로 인양·부설·연결</option>
+              <option value="backfill">되메우기·다짐·복구</option>
+              <option value="manhole">맨홀·관내(밀폐공간)</option>
+              <option value="traffic">도로/교통 통제 작업</option>
+            </select>
+
+            <button class="btn primary" id="genTBM" type="button">🎙️ 10초 TBM 생성</button>
+            <button class="btn" id="copyTBM" type="button">📋 문구 복사</button>
+          </div>
+
+          <textarea id="tbmResult" rows="7"
+            style="margin-top:12px; width:100%; border-radius:14px; padding:12px; font-weight:800; line-height:1.6;"
+            placeholder="여기에 TBM 문구가 생성됩니다."></textarea>
+
+          <p style="margin:10px 0 0; color:var(--muted); font-weight:700; font-size:12px;">
+            팁: “오늘 작업내용”을 구체적으로(예: ‘흙막이 버팀대 해체’, ‘맨홀 내부 점검’) 쓰면 문구가 더 정확해집니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div>© 2010–2025 DONGJIN CONSTRUCTION Co., Ltd. · Pipeline Safety Guidance UI</div>
+          <div>본 페이지는 현장 운영(교육/점검/TBM) 목적의 템플릿입니다.</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // -------------------------------
+    // Theme / Print
+    // -------------------------------
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const savedTheme = localStorage.getItem('pl_theme');
+    if(savedTheme){ root.setAttribute('data-theme', savedTheme); }
+    themeBtn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('pl_theme', cur);
+    });
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+    // -------------------------------
+    // Risk data
+    // -------------------------------
+    const risks = [
+      { type:"붕괴·매몰", phase:"굴착", hazard:"굴착면 균열·침하·용수 발생 후 계속 작업", measure:"징후 발생 즉시 작업중지 → 배수/보강/흙막이 재검토 후 재개" },
+      { type:"붕괴·매몰", phase:"굴착", hazard:"굴착토/자재를 굴착면 가장자리에 적치", measure:"굴착면 상단 적치 금지, 이격 적치 및 낙하방지" },
+      { type:"붕괴·매몰", phase:"흙막이", hazard:"흙막이 지보재(버팀대/토류판) 변형·풀림 상태 방치", measure:"설치 상태 수시점검, 변형/풀림 시 즉시 보강·교체" },
+      { type:"붕괴·매몰", phase:"사전조사/계획", hazard:"지하매설물 미확인으로 굴착 중 파손/붕괴 위험", measure:"도면/탐사로 위치 확인 후 표지, 근접부는 수작업 병행" },
+      { type:"충돌", phase:"운반/하역", hazard:"덤프·장비 후진 중 유도자 없이 이동", measure:"유도자 배치·신호체계 통일, 후진경보기/후방카메라 확인" },
+      { type:"충돌", phase:"되메우기/복구", hazard:"다짐장비/롤러와 근로자 동선 혼재", measure:"장비 운행로·보행로 분리, 작업구간 출입통제" },
+      { type:"끼임", phase:"관로부설", hazard:"관로 삽입/연결 중 손 끼임(가스켓/벨/클램프)", measure:"손 끼임 구간 표시, 지그/레버/로프 사용, 손 위치 원칙 교육" },
+      { type:"낙하·비래", phase:"관로부설", hazard:"관로 인양 중 하부에 근로자 위치", measure:"인양하부 출입금지, 신호수 배치, 체결상태(샤클/와이어) 점검" },
+      { type:"질식", phase:"맨홀/관내", hazard:"산소결핍·유해가스 환경에서 무측정 진입", measure:"측정→환기→감시인 배치→구조장비 준비, 필요 시 송기마스크" },
+      { type:"질식", phase:"맨홀/관내", hazard:"맨홀 작업 중 2차 구조자 투입(무방비)으로 연쇄재해", measure:"구조계획/비상연락체계 확립, 구조장비로 구조(무작정 진입 금지)" },
+      { type:"감전", phase:"굴착", hazard:"전기/통신 관로 근접부 기계굴착", measure:"근접부는 수작업 병행, 관로 표시·감시자 배치, 절연 보호" },
+      { type:"화재·폭발", phase:"맨홀/관내", hazard:"가스관 인근/밀폐공간에서 불꽃 작업", measure:"가스농도 확인, 점화원 통제, 허가절차(Hot Work) 적용" },
+      { type:"충돌", phase:"도로/교통 통제 작업", hazard:"차량 통행 도로에서 작업구간 표지/콘 부족", measure:"교통처리계획(차단·우회·신호수), 야간 경광등·조명 설치" },
+    ];
+
+    const riskBody = document.getElementById('riskBody');
+    const q = document.getElementById('q');
+    const typeSel = document.getElementById('type');
+    const phaseSel = document.getElementById('phase');
+    const resetBtn = document.getElementById('reset');
+
+    function esc(s){
+      return String(s)
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'","&#039;");
+    }
+
+    function renderRisks(){
+      const keyword = q.value.trim().toLowerCase();
+      const t = typeSel.value;
+      const p = phaseSel.value;
+
+      const filtered = risks.filter(r => {
+        const okType = !t || r.type === t;
+        const okPhase = !p || r.phase === p;
+        const hay = (r.type + " " + r.phase + " " + r.hazard + " " + r.measure).toLowerCase();
+        const okKey = !keyword || hay.includes(keyword);
+        return okType && okPhase && okKey;
+      });
+
+      riskBody.innerHTML = filtered.map(r => `
+        <tr>
+          <td><span class="tag">${esc(r.type)}</span></td>
+          <td><span class="tag">${esc(r.phase)}</span></td>
+          <td>${esc(r.hazard)}</td>
+          <td>${esc(r.measure)}</td>
+        </tr>
+      `).join('') || `
+        <tr><td colspan="4" style="padding:18px;color:var(--muted);font-weight:800;">
+          검색 결과가 없습니다. 다른 키워드로 시도해보세요.
+        </td></tr>
+      `;
+    }
+
+    q.addEventListener('input', renderRisks);
+    typeSel.addEventListener('change', renderRisks);
+    phaseSel.addEventListener('change', renderRisks);
+    resetBtn.addEventListener('click', () => {
+      q.value = "";
+      typeSel.value = "";
+      phaseSel.value = "";
+      renderRisks();
+    });
+    renderRisks();
+
+    // -------------------------------
+    // Checklist (localStorage)
+    // -------------------------------
+    const checklist = [
+      {
+        title:"작업계획/사전조사",
+        items:[
+          {k:"지하매설물(가스/전기/통신/상하수) 위치 확인·표시", d:"도면+탐사, 근접부 수작업 계획"},
+          {k:"굴착깊이/지반상태에 따른 굴착방법·흙막이 계획 수립", d:"변경 시 재검토"},
+          {k:"교통처리계획(차단·우회·신호수) 수립", d:"도로 작업 시 필수"},
+          {k:"맨홀/관내 작업 ‘밀폐공간’ 여부 판단 및 계획", d:"측정·환기·감시인·구조"},
+        ]
+      },
+      {
+        title:"굴착/흙막이(붕괴·매몰)",
+        items:[
+          {k:"굴착면 주변 출입통제(바리케이드/콘/표지)", d:"낙하·추락·접근 예방"},
+          {k:"굴착토·자재를 굴착면 가장자리 적치 금지", d:"이격 적치"},
+          {k:"균열·침하·용수 유입 징후 수시 확인", d:"징후 시 즉시 중지"},
+          {k:"흙막이 지보재 변형/풀림/부식 점검", d:"보강·교체"},
+          {k:"승강설비(사다리 등) 확보 및 통로 유지", d:"출입 안전"},
+        ]
+      },
+      {
+        title:"운반/하역/장비(충돌·끼임)",
+        items:[
+          {k:"후진경보기·경광등·후방카메라·후사경 작동 확인", d:"차량/장비 공통"},
+          {k:"후진/회전 작업 시 유도자 배치 및 신호체계 통일", d:"무유도 후진 금지"},
+          {k:"장비 운행로와 보행로 분리", d:"되메우기/다짐 포함"},
+          {k:"작업반경 내 관계자 외 출입 금지", d:"혼재작업 통제"},
+        ]
+      },
+      {
+        title:"관로 인양·부설·연결(낙하·끼임)",
+        items:[
+          {k:"인양 장비(크레인/체결구) 상태 점검", d:"샤클·와이어·훅 해지장치"},
+          {k:"인양 하부 출입금지 및 신호수 배치", d:"낙하·맞음 예방"},
+          {k:"연결 작업 시 손 끼임 구간 관리", d:"지그/레버/로프 활용"},
+          {k:"관로 적치장은 굴착면에서 이격·평탄 유지", d:"전도·낙하 예방"},
+        ]
+      },
+      {
+        title:"맨홀/관내(질식·폭발)",
+        items:[
+          {k:"산소/유해가스 측정 후 작업(기록)", d:"측정→환기→재측정"},
+          {k:"송풍기 등 환기설비 설치 및 지속 환기", d:"작업 중 유지"},
+          {k:"감시인 배치 및 비상연락/구조장비 확보", d:"연쇄재해 방지"},
+          {k:"필요 시 호흡보호구(송기마스크 등) 적용", d:"작업허가 포함"},
+          {k:"불꽃작업(Hot Work) 점화원 통제", d:"가스관 인근/밀폐공간 주의"},
+        ]
+      },
+    ];
+
+    const cl = document.getElementById('cl');
+    const bar = document.getElementById('bar');
+
+    const KEY = "pl_checklist_v2";
+    const META = "pl_meta_v2";
+
+    function loadState(){
+      try{ return JSON.parse(localStorage.getItem(KEY) || "{}"); }catch(e){ return {}; }
+    }
+    function saveState(state){
+      localStorage.setItem(KEY, JSON.stringify(state));
+    }
+
+    function flatten(){
+      const flat = [];
+      checklist.forEach((g, gi) => {
+        g.items.forEach((it, ii) => flat.push({gi, ii, group:g.title, ...it}));
+      });
+      return flat;
+    }
+
+    function renderChecklist(){
+      const state = loadState();
+
+      cl.innerHTML = checklist.map((g, gi) => {
+        const items = g.items.map((it, ii) => {
+          const id = `${gi}-${ii}`;
+          const checked = !!state[id];
+          return `
+            <label class="cl-item">
+              <input type="checkbox" data-id="${id}" ${checked ? "checked":""} />
+              <div>
+                <b>${esc(it.k)}</b>
+                <small>${esc(it.d)}</small>
+              </div>
+            </label>
+          `;
+        }).join("");
+
+        return `
+          <div class="card" style="box-shadow:none; margin:0; padding:14px 14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+              <div style="font-weight:950">${esc(g.title)}</div>
+              <button class="btn" type="button" data-group="${gi}" style="padding:8px 10px;font-size:12px;">그룹 전체체크</button>
+            </div>
+            <div style="height:10px"></div>
+            <div style="display:grid; gap:10px;">${items}</div>
+          </div>
+        `;
+      }).join("");
+
+      cl.querySelectorAll('input[type="checkbox"][data-id]').forEach(cb => {
+        cb.addEventListener('change', (e) => {
+          const id = e.target.getAttribute('data-id');
+          const s = loadState();
+          s[id] = e.target.checked;
+          saveState(s);
+          updateProgress();
+        });
+      });
+
+      cl.querySelectorAll('button[data-group]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const gi = btn.getAttribute('data-group');
+          const s = loadState();
+          checklist[gi].items.forEach((_, ii) => { s[`${gi}-${ii}`] = true; });
+          saveState(s);
+          renderChecklist();
+          updateProgress();
+        });
+      });
+
+      updateProgress();
+    }
+
+    function updateProgress(){
+      const state = loadState();
+      const flat = flatten();
+      const total = flat.length;
+      const done = flat.filter(x => state[`${x.gi}-${x.ii}`]).length;
+      const pct = total ? Math.round((done/total)*100) : 0;
+      bar.style.width = pct + "%";
+      bar.title = `진행률 ${pct}% (${done}/${total})`;
+    }
+
+    // Meta
+    const site = document.getElementById('site');
+    const zone = document.getElementById('zone');
+    const inspector = document.getElementById('inspector');
+
+    function loadMeta(){
+      try{ return JSON.parse(localStorage.getItem(META) || "{}"); }catch(e){ return {}; }
+    }
+    function applyMeta(){
+      const m = loadMeta();
+      if(m.site) site.value = m.site;
+      if(m.zone) zone.value = m.zone;
+      if(m.inspector) inspector.value = m.inspector;
+    }
+    document.getElementById('saveMeta').addEventListener('click', () => {
+      localStorage.setItem(META, JSON.stringify({
+        site: site.value.trim(),
+        zone: zone.value.trim(),
+        inspector: inspector.value.trim()
+      }));
+      alert("점검 정보가 저장되었습니다.");
+    });
+
+    document.getElementById('clearAll').addEventListener('click', () => {
+      if(!confirm("체크를 모두 해제할까요?")) return;
+      localStorage.removeItem(KEY);
+      renderChecklist();
+    });
+
+    document.getElementById('exportTxt').addEventListener('click', async () => {
+      const m = loadMeta();
+      const metaText = [
+        `현장명: ${site.value.trim() || m.site || "-"}`,
+        `구간/공구: ${zone.value.trim() || m.zone || "-"}`,
+        `점검자: ${inspector.value.trim() || m.inspector || "-"}`,
+        `일시: ${new Date().toLocaleString()}`
+      ].join("\n");
+
+      const state = loadState();
+      const flat = flatten();
+      const done = [];
+      const notyet = [];
+      flat.forEach((it) => {
+        const id = `${it.gi}-${it.ii}`;
+        (state[id] ? done : notyet).push(`- [${state[id] ? "x":" "}] (${it.group}) ${it.k}`);
+      });
+
+      const text = [
+        "관로공사 안전점검 결과",
+        "====================",
+        metaText,
+        "",
+        "완료 항목",
+        "--------",
+        done.join("\n") || "(없음)",
+        "",
+        "미완료 항목",
+        "----------",
+        notyet.join("\n") || "(없음)",
+      ].join("\n");
+
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("점검결과가 클립보드에 복사되었습니다.");
+      }catch(e){
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        alert("점검결과가 복사되었습니다.");
+      }
+    });
+
+    // -------------------------------
+    // TBM Generator
+    // -------------------------------
+    const tbmTemplates = {
+      general: [
+        "오늘 공정은 관로공사(굴착·흙막이·부설·되메우기 혼재)입니다.",
+        "핵심 위험은 토사 붕괴(매몰), 장비 충돌, 중량물 낙하, 맨홀 질식입니다.",
+        "굴착부 접근 통제, 장비 후진 유도, 인양 하부 출입금지, 맨홀 측정·환기를 철저히 하십시오."
+      ],
+      excavation: [
+        "오늘 공정은 굴착 작업입니다.",
+        "핵심 위험은 굴착면 붕괴로 인한 매몰입니다.",
+        "굴착면 균열·침하·용수 유입 시 즉시 중지하고, 출입통제·이격적치·승강설비를 확인하십시오."
+      ],
+      shoring: [
+        "오늘 공정은 흙막이지보공 설치/해체 작업입니다.",
+        "핵심 위험은 붕괴 및 지보재 낙하·끼임입니다.",
+        "설치 순서 준수, 변형/풀림 점검, 해체 구역 출입통제, 신호체계를 철저히 하십시오."
+      ],
+      laying: [
+        "오늘 공정은 관로 인양·부설·연결 작업입니다.",
+        "핵심 위험은 인양물 낙하·맞음과 손 끼임입니다.",
+        "인양 하부 출입금지, 신호수 배치, 체결구 점검, 끼임 구간 손 위치 원칙을 준수하십시오."
+      ],
+      backfill: [
+        "오늘 공정은 되메우기·다짐·복구 작업입니다.",
+        "핵심 위험은 장비 충돌과 동선 혼재입니다.",
+        "장비 운행로/보행로 분리, 유도자 배치, 작업구간 출입통제를 철저히 하십시오."
+      ],
+      manhole: [
+        "오늘 공정은 맨홀/관내 작업(밀폐공간)입니다.",
+        "핵심 위험은 산소결핍 및 유해가스로 인한 질식입니다.",
+        "측정→환기→감시인 배치→구조장비 준비 순서를 지키고, 이상 시 즉시 중지·보고하십시오."
+      ],
+      traffic: [
+        "오늘 공정은 도로/교통 통제 구간 작업입니다.",
+        "핵심 위험은 일반차량과의 충돌 및 야간 시야 불량입니다.",
+        "교통처리계획 준수, 콘·표지·경광등 설치, 신호수 배치로 작업구간을 확실히 분리하십시오."
+      ],
+    };
+
+    const genTBM = document.getElementById("genTBM");
+    const copyTBM = document.getElementById("copyTBM");
+
+    genTBM.addEventListener("click", () => {
+      const site = document.getElementById("tbmSite").value.trim() || "본 현장";
+      const work = document.getElementById("tbmWork").value.trim() || "관로공사 작업";
+      const type = document.getElementById("tbmType").value;
+      const lines = tbmTemplates[type] || tbmTemplates.general;
+
+      const script = `
+지금부터 작업 전 안전교육(TBM)을 실시하겠습니다.
+
+여기는 ${site}이며,
+오늘 작업은 ${work}입니다.
+
+${lines.join("\n")}
+
+모든 작업자는 보호구를 철저히 착용하고,
+이상 발생 시 즉시 작업을 중지하고 보고 바랍니다.
+      `.trim();
+
+      document.getElementById("tbmResult").value = script;
+    });
+
+    copyTBM.addEventListener("click", async () => {
+      const text = document.getElementById("tbmResult").value;
+      if (!text) {
+        alert("먼저 TBM 문구를 생성하세요.");
+        return;
+      }
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("TBM 문구가 복사되었습니다.");
+      }catch(e){
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        alert("TBM 문구가 복사되었습니다.");
+      }
+    });
+
+    // Init
+    applyMeta();
+    renderChecklist();
+  </script>
+</body>
+</html>

@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>안전대 사용지침 | SOP · 점검체크 · TBM 10초</title>
+  <meta name="description" content="안전대(전신형/랜야드/안전블록) 선정·착용·걸이·점검·보관 기준. 체크리스트 저장, 진행률, 결과복사, 10초 TBM 자동 생성." />
+  <meta name="theme-color" content="#004080" />
+
+  <!-- Pretendard -->
+  <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+  <style>
+    :root{
+      --blue:#004080;
+      --blue2:#007bff;
+      --ink:#0b1220;
+      --muted:#5a6477;
+      --bg:#f5f8ff;
+      --card:#ffffff;
+      --line:rgba(0,64,128,.14);
+      --shadow:0 18px 60px rgba(0,64,128,.10);
+      --radius:18px;
+      --radius2:26px;
+    }
+    [data-theme="dark"]{
+      --ink:#eaf1ff;
+      --muted:#b8c4da;
+      --bg:#071225;
+      --card:#0b1b33;
+      --line:rgba(127,170,255,.18);
+      --shadow:0 18px 60px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Pretendard,system-ui,-apple-system,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 18% 10%, rgba(0,123,255,.18), transparent 55%),
+        radial-gradient(900px 520px at 80% 0%, rgba(0,64,128,.22), transparent 50%),
+        var(--bg);
+      line-height:1.7;
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1200px, calc(100% - 40px)); margin:0 auto}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background:linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.52));
+      border-bottom:1px solid rgba(0,64,128,.10);
+    }
+    [data-theme="dark"] .topbar{
+      background:linear-gradient(180deg, rgba(11,27,51,.78), rgba(11,27,51,.55));
+      border-bottom:1px solid rgba(127,170,255,.14);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 0; gap:16px;
+    }
+    .brand{display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:-.02em}
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background:linear-gradient(135deg, var(--blue), var(--blue2));
+      box-shadow:0 14px 40px rgba(0,64,128,.25);
+      position:relative; overflow:hidden;
+    }
+    .logo:before{
+      content:""; position:absolute; inset:-40%;
+      background:conic-gradient(from 120deg, rgba(255,255,255,.0), rgba(255,255,255,.55), rgba(255,255,255,.0));
+      animation:spin 4.5s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .brand small{display:block; font-size:12px; color:var(--muted); font-weight:700; margin-top:2px}
+
+    .nav{
+      display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end;
+      font-size:13px; font-weight:800; color:var(--muted);
+    }
+    .nav a{padding:8px 10px; border-radius:999px}
+    .nav a:hover{background:rgba(0,64,128,.06); color:var(--ink)}
+
+    .actions{display:flex; align-items:center; gap:10px}
+    .btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.65);
+      color:var(--ink);
+      border-radius:999px;
+      padding:10px 12px;
+      font-weight:900;
+      cursor:pointer;
+      transition:.18s ease;
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    [data-theme="dark"] .btn{background:rgba(11,27,51,.65)}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 10px 22px rgba(0,64,128,.12)}
+    .btn.primary{
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      border-color:transparent;
+      color:#fff;
+      box-shadow:0 18px 45px rgba(0,64,128,.22);
+    }
+
+    /* Hero */
+    .hero{padding:42px 0 22px}
+    .hero-grid{display:grid; gap:22px; grid-template-columns:1.15fr .85fr; align-items:stretch}
+    @media (max-width: 980px){ .hero-grid{grid-template-columns:1fr} .nav{display:none} }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.70));
+      border:1px solid rgba(0,64,128,.14);
+      border-radius:var(--radius2);
+      box-shadow:var(--shadow);
+      padding:26px;
+    }
+    [data-theme="dark"] .hero-card{
+      background:linear-gradient(180deg, rgba(11,27,51,.86), rgba(11,27,51,.66));
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 12px; border-radius:999px;
+      background:rgba(0,64,128,.08);
+      border:1px solid rgba(0,64,128,.14);
+      color:var(--ink);
+      font-weight:900; font-size:12px;
+    }
+    .dot{width:8px;height:8px;border-radius:99px;background:linear-gradient(135deg,var(--blue),var(--blue2))}
+    h1{margin:14px 0 10px; font-size:36px; letter-spacing:-.03em; line-height:1.15}
+    @media (max-width:560px){ h1{font-size:28px} }
+    .lead{margin:0; color:var(--muted); font-weight:700}
+    .hero-kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px}
+    .kpi{
+      background:rgba(0,64,128,.06);
+      border:1px solid rgba(0,64,128,.12);
+      border-radius:16px;
+      padding:12px;
+    }
+    [data-theme="dark"] .kpi{background:rgba(127,170,255,.08); border-color:rgba(127,170,255,.16)}
+    .kpi b{display:block; font-size:12px; color:var(--muted)}
+    .kpi strong{display:block; margin-top:4px; font-size:18px}
+
+    /* Sections */
+    section{padding:26px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+      margin:0 0 14px;
+    }
+    .section-title h2{margin:0; font-size:22px; letter-spacing:-.02em}
+    .hint{color:var(--muted); font-weight:700; font-size:13px}
+
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    @media (max-width:980px){ .grid{grid-template-columns:1fr} }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 12px 30px rgba(0,64,128,.08);
+    }
+    .card h3{margin:0 0 10px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-weight:650}
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted); font-weight:650}
+    .list li{margin:6px 0}
+
+    /* Risk table */
+    .toolbar{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between; margin:10px 0 12px}
+    .search{flex:1; display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .input, select, textarea{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.7);
+      color:var(--ink);
+      border-radius:12px;
+      padding:10px 12px;
+      font-weight:800;
+      outline:none;
+      min-width:180px;
+      font-family:inherit;
+    }
+    [data-theme="dark"] .input, [data-theme="dark"] select, [data-theme="dark"] textarea{background:rgba(11,27,51,.7)}
+    .input{flex:1; min-width:220px}
+    .table-wrap{overflow:auto; border-radius:16px; border:1px solid var(--line); background:var(--card)}
+    table{border-collapse:separate; border-spacing:0; width:100%; min-width:900px; font-size:13px}
+    thead th{
+      position:sticky; top:0;
+      background:linear-gradient(180deg, rgba(0,64,128,.10), rgba(0,64,128,.06));
+      text-align:left; padding:12px 12px; border-bottom:1px solid var(--line);
+      font-weight:950; z-index:1;
+    }
+    tbody td{padding:12px 12px; border-bottom:1px solid rgba(0,64,128,.10); color:var(--muted); vertical-align:top; font-weight:650}
+    tbody tr:hover td{background:rgba(0,64,128,.04); color:var(--ink)}
+    .tag{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(0,64,128,.14);
+      background:rgba(0,64,128,.06);
+      color:var(--ink);
+      font-weight:950; font-size:12px; white-space:nowrap;
+    }
+
+    /* Steps */
+    .steps{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
+    @media (max-width:980px){ .steps{grid-template-columns:1fr} }
+    .step{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 12px 30px rgba(0,64,128,.08);
+    }
+    .no{
+      width:34px; height:34px; border-radius:12px;
+      display:grid; place-items:center;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      color:#fff; font-weight:950;
+      box-shadow:0 14px 30px rgba(0,64,128,.18);
+    }
+    .step h3{margin:10px 0 8px; font-size:16px}
+    .step ul{margin:0; padding-left:18px; color:var(--muted); font-weight:650}
+    .step li{margin:6px 0}
+
+    /* Checklist */
+    .checklist{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .cl-head{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:12px}
+    .cl-head h3{margin:0; font-size:16px}
+    .cl-meta{display:flex; gap:10px; flex-wrap:wrap}
+    .cl-meta .input{min-width:180px; flex:unset}
+    .cl-items{display:grid; gap:10px}
+    .cl-item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid rgba(0,64,128,.12);
+      background:rgba(0,64,128,.05);
+    }
+    [data-theme="dark"] .cl-item{border-color:rgba(127,170,255,.16); background:rgba(127,170,255,.08)}
+    .cl-item input[type="checkbox"]{margin-top:4px; width:18px; height:18px; accent-color:var(--blue2); cursor:pointer}
+    .cl-item b{display:block; font-size:13px}
+    .cl-item small{display:block; color:var(--muted); font-weight:650; margin-top:2px}
+    .progress{height:10px; background:rgba(0,64,128,.10); border:1px solid rgba(0,64,128,.12); border-radius:999px; overflow:hidden}
+    .bar{height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--blue2)); transition:width .25s ease}
+
+    /* TBM */
+    .tbm{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .tbm-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    @media (max-width:980px){ .tbm-grid{grid-template-columns:1fr} }
+
+    /* Footer */
+    footer{padding:26px 0 40px; color:var(--muted); font-weight:700; font-size:12px}
+    .foot{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; border-top:1px solid rgba(0,64,128,.12); padding-top:16px}
+
+    /* Print */
+    @media print{
+      .topbar, .actions, .nav, .btn, .toolbar, .hint { display:none !important; }
+      body{background:#fff}
+      .hero{padding:0}
+      .hero-card,.card,.step,.checklist,.tbm{box-shadow:none!important}
+      .container{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            안전대 사용지침
+            <small>추락 예방 | 선정 · 착용 · 걸이 · 점검 · TBM</small>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="주요 메뉴">
+          <a href="#overview">개요</a>
+          <a href="#risks">위험요인/대책</a>
+          <a href="#procedure">SOP</a>
+          <a href="#checklist">일일점검</a>
+          <a href="#tbm">TBM 10초</a>
+        </nav>
+
+        <div class="actions">
+          <button class="btn" id="themeBtn" type="button" title="다크모드 전환">🌙 테마</button>
+          <button class="btn" id="printBtn" type="button" title="인쇄/저장(PDF)">🖨️ 인쇄</button>
+          <a class="btn primary" href="#tbm" title="바로 TBM">🎙️ TBM</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <span class="badge"><span class="dot"></span> 추락 재해 “0”을 위한 필수 기준</span>
+          <h1>안전대는 “착용”보다<br/>“걸이점·충격거리·점검”이 핵심입니다.</h1>
+          <p class="lead">
+            고소작업 추락사고는 대부분 <b>걸이점 부적정</b>, <b>충격거리 미확보</b>,
+            <b>랜야드/훅 손상</b>, <b>미점검</b>에서 시작됩니다.
+            이 페이지는 현장에서 바로 쓰는 <b>점검·교육·TBM</b>까지 포함합니다.
+          </p>
+
+          <div class="hero-kpis" role="list">
+            <div class="kpi" role="listitem"><b>중점 위험</b><strong>추락</strong></div>
+            <div class="kpi" role="listitem"><b>중점 위험</b><strong>충격거리</strong></div>
+            <div class="kpi" role="listitem"><b>중점 위험</b><strong>걸이점</strong></div>
+          </div>
+
+          <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn" href="#risks">⚠️ 위험요인</a>
+            <a class="btn" href="#checklist">🧾 점검 시작</a>
+            <a class="btn" href="#tbm">🎙️ TBM</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h3 style="margin:0 0 8px; font-size:16px;">🎯 현장 핵심 5원칙</h3>
+          <ul class="list" style="margin:0;">
+            <li>전신형(하네스) 우선</li>
+            <li>걸이점은 “허리보다 높게”</li>
+            <li>충ീവ്거리(낙하거리+여유) 확보</li>
+            <li>2중 훅(이동 시) 또는 안전블록 활용</li>
+            <li>사용 전·후 점검 + 손상 즉시 폐기</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <div class="container">
+        <div class="section-title">
+          <h2>개요</h2>
+          <div class="hint">목적 · 적용범위 · 용어</div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>1) 목적</h3>
+            <p>추락 위험 작업에서 안전대를 올바르게 선정·착용·사용·점검하여 추락 재해를 예방합니다.</p>
+          </div>
+          <div class="card">
+            <h3>2) 적용범위</h3>
+            <p>난간/발판이 불완전한 고소작업, 개구부 주변, 철골·비계·사다리 작업 등 추락 위험 작업 전반.</p>
+          </div>
+          <div class="card">
+            <h3>3) 핵심 용어</h3>
+            <p><b>걸이점(Anchor)</b> / <b>랜야드(Lanyard)</b> / <b>쇼크업소버</b> / <b>안전블록(SRL)</b></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RISKS -->
+    <section id="risks">
+      <div class="container">
+        <div class="section-title">
+          <h2>중점 위험요인 및 안전대책</h2>
+          <div class="hint">TBM/교육에 바로 쓰는 검색 표</div>
+        </div>
+
+        <div class="toolbar">
+          <div class="search">
+            <input class="input" id="q" placeholder="예) 걸이점, 훅, 쇼크업소버, 충격거리, 하네스…" />
+            <select id="type">
+              <option value="">유형(전체)</option>
+              <option value="선정">선정</option>
+              <option value="착용">착용</option>
+              <option value="걸이점">걸이점</option>
+              <option value="충격거리">충격거리</option>
+              <option value="점검">점검</option>
+              <option value="보관/폐기">보관/폐기</option>
+            </select>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn" id="reset" type="button">↺ 초기화</button>
+          </div>
+        </div>
+
+        <div class="table-wrap" role="region" aria-label="안전대 위험요인 및 대책 표" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:140px">유형</th>
+                <th>위험요인(현장 상황)</th>
+                <th>안전대책(핵심 통제)</th>
+              </tr>
+            </thead>
+            <tbody id="riskBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCEDURE -->
+    <section id="procedure">
+      <div class="container">
+        <div class="section-title">
+          <h2>작업절차(SOP)</h2>
+          <div class="hint">선정 → 착용 → 걸이 → 작업 → 종료/보관</div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="no">1</div>
+            <h3>선정</h3>
+            <ul>
+              <li>고소작업은 전신형(하네스) 기본</li>
+              <li>이동/수평 이동이 많으면 2중 훅 또는 안전블록</li>
+              <li>작업환경(모서리/열/약품/용접불꽃)에 적합한 재질 선택</li>
+            </ul>
+          </div>
+
+          <div class="step">
+            <div class="no">2</div>
+            <h3>착용</h3>
+            <ul>
+              <li>가슴/다리 스트랩 조임 상태 확인(헐거움 금지)</li>
+              <li>D링 위치가 중앙에 오도록 조정</li>
+              <li>버클/재봉부/웨빙 손상 여부 점검 후 착용</li>
+            </ul>
+          </div>
+
+          <div class="step">
+            <div class="no">3</div>
+            <h3>걸이 및 작업</h3>
+            <ul>
+              <li>걸이점은 가능하면 “허리보다 높게”</li>
+              <li>충격거리 확보(낙하거리 + 완충 + 신장 + 여유)</li>
+              <li>이동 시 2중 훅으로 항상 1개 이상 걸림 유지</li>
+              <li>훅은 잠금장치(게이트) 완전 체결 확인</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:14px" class="card">
+          <h3>작업 종료/보관</h3>
+          <ul class="list">
+            <li>사용 후 오염(유류/시멘트/약품) 제거 및 자연 건조</li>
+            <li>직사광선·고온·습기·화기 없는 장소 보관</li>
+            <li>추락 충격 이력 또는 손상 발견 시 즉시 폐기(재사용 금지)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECKLIST -->
+    <section id="checklist">
+      <div class="container">
+        <div class="section-title">
+          <h2>안전대 일일점검 체크리스트</h2>
+          <div class="hint">체크 상태는 브라우저에 저장됩니다</div>
+        </div>
+
+        <div class="checklist">
+          <div class="cl-head">
+            <h3>✅ 오늘 점검</h3>
+            <div class="cl-meta">
+              <input class="input" id="site" placeholder="현장명 (예: ○○현장)" />
+              <input class="input" id="work" placeholder="작업 (예: 철골 조립)" />
+              <input class="input" id="inspector" placeholder="점검자 (예: 김대홍)" />
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button class="btn" id="saveMeta" type="button">💾 정보 저장</button>
+              <button class="btn" id="clearAll" type="button">🧹 전체 해제</button>
+              <button class="btn primary" id="exportTxt" type="button">📄 결과 복사</button>
+            </div>
+          </div>
+
+          <div class="progress" aria-label="점검 진행률">
+            <div class="bar" id="bar"></div>
+          </div>
+
+          <div style="height:10px"></div>
+          <div class="cl-items" id="cl"></div>
+
+          <p style="margin:12px 0 0; color:var(--muted); font-weight:700; font-size:12px;">
+            ※ “걸이점/충격거리/훅 체결” 항목은 TBM에서 반드시 재확인하십시오.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TBM -->
+    <section id="tbm">
+      <div class="container">
+        <div class="section-title">
+          <h2>작업 전 안전교육(TBM) 10초 스크립트</h2>
+          <div class="hint">현장명/작업내용 입력 → 즉시 생성/복사</div>
+        </div>
+
+        <div class="tbm">
+          <div class="tbm-grid">
+            <input class="input" id="tbmSite" placeholder="현장명 (예: ○○현장)" />
+            <input class="input" id="tbmWork" placeholder="오늘 작업내용 (예: 외벽 도장 고소작업)" />
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+            <select class="input" id="tbmType" style="flex:1; min-width:260px;">
+              <option value="general">일반 고소작업(안전대 기본)</option>
+              <option value="move">이동/수평 이동 작업(2중 훅)</option>
+              <option value="srl">안전블록(SRL) 사용 작업</option>
+              <option value="edge">모서리/철골(절단 위험) 작업</option>
+              <option value="ladder">사다리 작업(권장: 작업발판 우선)</option>
+            </select>
+
+            <button class="btn primary" id="genTBM" type="button">🎙️ 10초 TBM 생성</button>
+            <button class="btn" id="copyTBM" type="button">📋 문구 복사</button>
+          </div>
+
+          <textarea id="tbmResult" rows="7"
+            style="margin-top:12px; width:100%; border-radius:14px; padding:12px; font-weight:800; line-height:1.6;"
+            placeholder="여기에 TBM 문구가 생성됩니다."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="foot">
+          <div>© 2010–2025 DONGJIN CONSTRUCTION Co., Ltd. · Safety Harness Guidance UI</div>
+          <div>본 페이지는 현장 운영(교육/점검/TBM) 목적의 템플릿입니다.</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Theme / Print
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const savedTheme = localStorage.getItem('sb_theme');
+    if(savedTheme){ root.setAttribute('data-theme', savedTheme); }
+    themeBtn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('sb_theme', cur);
+    });
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+    // Risks
+    const risks = [
+      { type:"선정", hazard:"작업 특성(이동/모서리/용접불꽃)에 맞지 않는 안전대 사용", measure:"전신형 기본, 이동은 2중훅/안전블록, 모서리·열·약품 환경은 적합 재질 선택" },
+      { type:"착용", hazard:"하네스 스트랩이 헐겁거나 비틀린 상태", measure:"가슴/다리 스트랩 조임 확인, 비틀림 제거, D링 중앙 정렬" },
+      { type:"걸이점", hazard:"걸이점이 허리보다 낮아 낙하거리 증가", measure:"가능하면 허리보다 높게 걸고, 낙하거리 최소화" },
+      { type:"걸이점", hazard:"임시 구조물/난간 등에 걸이(강도 불명)", measure:"안전한 앵커(구조체/인증 앵커) 사용, 강도 확보 확인" },
+      { type:"충격거리", hazard:"작업면/장애물까지 여유거리 부족(추락 시 충돌)", measure:"낙하거리+완충+신장+여유거리 계산 후 작업위치 조정" },
+      { type:"점검", hazard:"훅 잠금장치 불량·게이트 미체결", measure:"훅 잠금/복귀 확인, 체결 후 당김 테스트" },
+      { type:"점검", hazard:"웨빙(띠) 마모/찢김/재봉부 풀림", measure:"손상 즉시 사용중지·폐기, 정기점검 기록" },
+      { type:"보관/폐기", hazard:"직사광선·고열·약품 노출로 재질 열화", measure:"그늘/통풍 보관, 오염 제거 후 자연건조, 추락충격 이력 제품은 즉시 폐기" },
+    ];
+    const riskBody = document.getElementById('riskBody');
+    const q = document.getElementById('q');
+    const typeSel = document.getElementById('type');
+    const resetBtn = document.getElementById('reset');
+
+    function esc(s){
+      return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')
+        .replaceAll('"','&quot;').replaceAll("'","&#039;");
+    }
+    function renderRisks(){
+      const keyword = q.value.trim().toLowerCase();
+      const t = typeSel.value;
+      const filtered = risks.filter(r=>{
+        const okType = !t || r.type===t;
+        const hay=(r.type+" "+r.hazard+" "+r.measure).toLowerCase();
+        const okKey=!keyword || hay.includes(keyword);
+        return okType && okKey;
+      });
+      riskBody.innerHTML = filtered.map(r=>`
+        <tr>
+          <td><span class="tag">${esc(r.type)}</span></td>
+          <td>${esc(r.hazard)}</td>
+          <td>${esc(r.measure)}</td>
+        </tr>
+      `).join('') || `<tr><td colspan="3" style="padding:18px;color:var(--muted);font-weight:800;">검색 결과가 없습니다.</td></tr>`;
+    }
+    q.addEventListener('input', renderRisks);
+    typeSel.addEventListener('change', renderRisks);
+    resetBtn.addEventListener('click', ()=>{ q.value=""; typeSel.value=""; renderRisks(); });
+    renderRisks();
+
+    // Checklist
+    const checklist = [
+      { title:"선정(작업 적합성)",
+        items:[
+          {k:"전신형(하네스) 사용(요구 작업에 적합)", d:"고소작업 기본"},
+          {k:"이동 작업은 2중 훅 또는 안전블록(SRL) 적용", d:"항상 1개 이상 걸림 유지"},
+          {k:"모서리/열/약품 환경에 적합한 랜야드 선택", d:"절단·열화 위험 관리"},
+        ]},
+      { title:"착용(피팅)",
+        items:[
+          {k:"가슴/다리 스트랩 조임 상태 양호(헐거움 없음)", d:"비틀림 제거"},
+          {k:"D링 위치 중앙 정렬, 버클 체결 정상", d:"체결 후 당김 확인"},
+        ]},
+      { title:"걸이점/충격거리",
+        items:[
+          {k:"걸이점은 가능한 허리보다 높게 확보", d:"낙하거리 최소화"},
+          {k:"충격거리(낙하거리+완충+신장+여유) 확보", d:"충돌 위험 제거"},
+          {k:"걸이점 강도 확보(구조체/인증 앵커)", d:"임시 난간/배관 금지"},
+        ]},
+      { title:"점검(사용 전)",
+        items:[
+          {k:"훅 잠금장치 정상(게이트 자동복귀·잠금)", d:"체결 후 당김 테스트"},
+          {k:"웨빙 마모/찢김/재봉부 풀림 없음", d:"손상 즉시 폐기"},
+          {k:"쇼크업소버(완충장치) 변형/전개 흔적 없음", d:"전개 흔적=사용중지"},
+        ]},
+      { title:"작업 종료/보관",
+        items:[
+          {k:"오염 제거 후 자연건조(직사광선/열원 금지)", d:"재질 열화 방지"},
+          {k:"보관장소 습기/약품/화기 없음", d:"통풍 유지"},
+          {k:"추락 충격 이력 또는 이상 발견 시 즉시 폐기", d:"재사용 금지"},
+        ]},
+    ];
+
+    const cl = document.getElementById('cl');
+    const bar = document.getElementById('bar');
+
+    const KEY = "sb_checklist_v2";
+    const META = "sb_meta_v2";
+
+    function loadState(){ try{return JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){return{}} }
+    function saveState(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
+
+    function flatten(){
+      const flat=[];
+      checklist.forEach((g,gi)=>g.items.forEach((it,ii)=>flat.push({gi,ii,group:g.title,...it})));
+      return flat;
+    }
+
+    function renderChecklist(){
+      const state = loadState();
+      cl.innerHTML = checklist.map((g,gi)=>{
+        const items = g.items.map((it,ii)=>{
+          const id=`${gi}-${ii}`;
+          const checked=!!state[id];
+          return `
+            <label class="cl-item">
+              <input type="checkbox" data-id="${id}" ${checked?"checked":""}/>
+              <div>
+                <b>${esc(it.k)}</b>
+                <small>${esc(it.d)}</small>
+              </div>
+            </label>
+          `;
+        }).join("");
+        return `
+          <div class="card" style="box-shadow:none;margin:0;padding:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+              <div style="font-weight:950">${esc(g.title)}</div>
+              <button class="btn" type="button" data-group="${gi}" style="padding:8px 10px;font-size:12px;">그룹 전체체크</button>
+            </div>
+            <div style="height:10px"></div>
+            <div style="display:grid;gap:10px;">${items}</div>
+          </div>
+        `;
+      }).join("");
+
+      cl.querySelectorAll('input[type="checkbox"][data-id]').forEach(cb=>{
+        cb.addEventListener('change',(e)=>{
+          const id=e.target.getAttribute('data-id');
+          const s=loadState();
+          s[id]=e.target.checked;
+          saveState(s);
+          updateProgress();
+        });
+      });
+
+      cl.querySelectorAll('button[data-group]').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          const gi=btn.getAttribute('data-group');
+          const s=loadState();
+          checklist[gi].items.forEach((_,ii)=>{ s[`${gi}-${ii}`]=true; });
+          saveState(s);
+          renderChecklist();
+          updateProgress();
+        });
+      });
+
+      updateProgress();
+    }
+
+    function updateProgress(){
+      const state=loadState();
+      const flat=flatten();
+      const total=flat.length;
+      const done=flat.filter(x=>state[`${x.gi}-${x.ii}`]).length;
+      const pct= total ? Math.round((done/total)*100) : 0;
+      bar.style.width = pct+"%";
+      bar.title = `진행률 ${pct}% (${done}/${total})`;
+    }
+
+    // Meta
+    const site = document.getElementById('site');
+    const work = document.getElementById('work');
+    const inspector = document.getElementById('inspector');
+
+    function loadMeta(){ try{return JSON.parse(localStorage.getItem(META)||"{}")}catch(e){return{}} }
+    function applyMeta(){
+      const m=loadMeta();
+      if(m.site) site.value=m.site;
+      if(m.work) work.value=m.work;
+      if(m.inspector) inspector.value=m.inspector;
+    }
+
+    document.getElementById('saveMeta').addEventListener('click',()=>{
+      localStorage.setItem(META, JSON.stringify({
+        site: site.value.trim(),
+        work: work.value.trim(),
+        inspector: inspector.value.trim(),
+      }));
+      alert("점검 정보가 저장되었습니다.");
+    });
+
+    document.getElementById('clearAll').addEventListener('click',()=>{
+      if(!confirm("체크를 모두 해제할까요?")) return;
+      localStorage.removeItem(KEY);
+      renderChecklist();
+    });
+
+    document.getElementById('exportTxt').addEventListener('click', async ()=>{
+      const m=loadMeta();
+      const metaText=[
+        `현장명: ${site.value.trim() || m.site || "-"}`,
+        `작업: ${work.value.trim() || m.work || "-"}`,
+        `점검자: ${inspector.value.trim() || m.inspector || "-"}`,
+        `일시: ${new Date().toLocaleString()}`
+      ].join("\n");
+
+      const state=loadState();
+      const flat=flatten();
+      const done=[], notyet=[];
+      flat.forEach(it=>{
+        const id=`${it.gi}-${it.ii}`;
+        (state[id] ? done : notyet).push(`- [${state[id]?"x":" "}] (${it.group}) ${it.k}`);
+      });
+
+      const text=[
+        "안전대 일일점검 결과",
+        "===================",
+        metaText,
+        "",
+        "완료 항목",
+        "--------",
+        done.join("\n") || "(없음)",
+        "",
+        "미완료 항목",
+        "----------",
+        notyet.join("\n") || "(없음)",
+      ].join("\n");
+
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("점검결과가 복사되었습니다.");
+      }catch(e){
+        const ta=document.createElement('textarea');
+        ta.value=text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); ta.remove();
+        alert("점검결과가 복사되었습니다.");
+      }
+    });
+
+    // TBM
+    const tbmTemplates = {
+      general: [
+        "오늘 작업은 고소작업으로 추락 위험이 있습니다.",
+        "안전대는 전신형(하네스) 착용 상태를 확인합니다.",
+        "걸이점은 허리보다 높게, 훅 잠금장치 체결, 충격거리 확보를 철저히 하십시오."
+      ],
+      move: [
+        "오늘 작업은 이동/수평 이동이 있는 고소작업입니다.",
+        "항상 2중 훅으로 최소 1개 이상 걸림 상태를 유지하십시오.",
+        "걸이점은 견고한 구조체에 걸고, 이동 시 무걸이 상태를 만들지 마십시오."
+      ],
+      srl: [
+        "오늘 작업은 안전블록(SRL) 사용 작업입니다.",
+        "블록 작동상태와 걸이점 강도를 확인하고, 라인 꼬임을 방지하십시오.",
+        "추락 시 충돌 여유거리 확보 및 사용 전 점검을 철저히 하십시오."
+      ],
+      edge: [
+        "오늘 작업은 철골/모서리 구간 작업으로 랜야드 절단 위험이 있습니다.",
+        "모서리 보호 및 적합 재질 랜야드를 사용하고, 날카로운 부위 접촉을 피하십시오.",
+        "걸이점 상부 확보, 훅 체결 확인 후 작업하십시오."
+      ],
+      ladder: [
+        "오늘 작업은 사다리 작업입니다.",
+        "사다리는 전도 방지(고정/각도) 후 사용하고, 가능하면 작업발판을 우선 적용하십시오.",
+        "안전대는 상부 걸이점 확보 후 사용하며 무리한 체중 이동을 금지합니다."
+      ],
+    };
+
+    document.getElementById("genTBM").addEventListener("click", ()=>{
+      const s = document.getElementById("tbmSite").value.trim() || "본 현장";
+      const w = document.getElementById("tbmWork").value.trim() || "고소작업";
+      const type = document.getElementById("tbmType").value;
+      const lines = tbmTemplates[type] || tbmTemplates.general;
+
+      document.getElementById("tbmResult").value = `
+지금부터 작업 전 안전교육(TBM)을 실시하겠습니다.
+
+여기는 ${s}이며,
+오늘 작업은 ${w}입니다.
+
+${lines.join("\n")}
+
+작업 전 안전대 점검을 완료하고,
+이상 발생 시 즉시 작업을 중지하고 보고 바랍니다.
+      `.trim();
+    });
+
+    document.getElementById("copyTBM").addEventListener("click", async ()=>{
+      const text = document.getElementById("tbmResult").value;
+      if(!text){ alert("먼저 TBM 문구를 생성하세요."); return; }
+      try{ await navigator.clipboard.writeText(text); alert("TBM 문구가 복사되었습니다."); }
+      catch(e){
+        const ta=document.createElement('textarea');
+        ta.value=text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); ta.remove();
+        alert("TBM 문구가 복사되었습니다.");
+      }
+    });
+
+    // Init
+    applyMeta();
+    renderChecklist();
+  </script>
+</body>
+</html>

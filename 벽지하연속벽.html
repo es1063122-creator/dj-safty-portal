@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>지하연속벽(슬러리월) 안전보건작업 지침 | 개요·위험요인·SOP·점검·TBM</title>
+<meta name="description" content="KOSHA GUIDE C-72-2012 기반. 지하연속벽(Slurry Wall) 공사 안전보건작업 지침: 위험요인 검색/필터, 저장형 점검, TBM 혼합 분기."/>
+<meta name="theme-color" content="#2563eb"/>
+
+<link rel="stylesheet" as="style" crossorigin
+href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"/>
+
+<style>
+/* ===== CIP급 공통 토큰 ===== */
+:root{
+  --blue:#2563eb; --blue2:#60a5fa; --ink:#0b1220; --muted:#5a6477;
+  --bg:#f5f8ff; --card:#fff; --line:rgba(37,99,235,.18);
+  --shadow:0 18px 60px rgba(37,99,235,.14); --r:18px; --r2:26px;
+}
+[data-theme="dark"]{
+  --ink:#e9f1ff; --muted:#b7c6dd; --bg:#0c1423; --card:#101c33;
+  --line:rgba(96,165,250,.26); --shadow:0 18px 60px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:Pretendard,system-ui,sans-serif; color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 15% 0%, rgba(37,99,235,.18), transparent 55%),
+    radial-gradient(900px 520px at 85% 0%, rgba(96,165,250,.18), transparent 50%),
+    var(--bg);
+  line-height:1.7;
+}
+a{color:inherit;text-decoration:none}
+.container{width:min(1200px, calc(100% - 40px)); margin:0 auto}
+
+/* ===== Topbar ===== */
+.topbar{position:sticky; top:0; z-index:50; backdrop-filter: blur(14px);
+  background:linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.60));
+  border-bottom:1px solid var(--line);}
+[data-theme="dark"] .topbar{
+  background:linear-gradient(180deg, rgba(16,28,51,.86), rgba(16,28,51,.66));
+}
+.topbar-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+.brand{display:flex; align-items:center; gap:12px; font-weight:950}
+.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--blue2)); box-shadow:0 14px 40px rgba(37,99,235,.35)}
+.brand small{display:block; font-size:12px; color:var(--muted); font-weight:800}
+.nav{display:flex; gap:14px; font-size:13px; font-weight:900; color:var(--muted)}
+.nav a{padding:8px 10px; border-radius:999px}
+.nav a:hover{background:rgba(37,99,235,.10); color:var(--ink)}
+.actions{display:flex; gap:10px}
+.btn{border:1px solid var(--line); background:rgba(255,255,255,.65);
+  border-radius:999px; padding:10px 12px; font-weight:950; cursor:pointer}
+[data-theme="dark"] .btn{background:rgba(16,28,51,.65)}
+.btn.primary{background:linear-gradient(135deg,var(--blue),var(--blue2)); color:#fff; border:none; box-shadow:0 18px 45px rgba(37,99,235,.35)}
+
+/* ===== Hero ===== */
+.hero{padding:42px 0 22px}
+.hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:22px}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr}.nav{display:none}}
+.hero-card{
+  background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.75));
+  border:1px solid var(--line); border-radius:var(--r2); padding:26px; box-shadow:var(--shadow)
+}
+[data-theme="dark"] .hero-card{background:linear-gradient(180deg, rgba(16,28,51,.9), rgba(16,28,51,.7))}
+.badge{display:inline-flex; gap:8px; align-items:center; padding:7px 12px; border-radius:999px;
+  background:rgba(37,99,235,.14); border:1px solid var(--line); font-weight:950; font-size:12px}
+.dot{width:8px;height:8px;border-radius:99px;background:linear-gradient(135deg,var(--blue),var(--blue2))}
+h1{margin:14px 0 10px; font-size:36px; letter-spacing:-.03em}
+.lead{color:var(--muted); font-weight:800}
+.hero-kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px}
+.kpi{background:rgba(37,99,235,.12); border:1px solid var(--line); border-radius:16px; padding:12px}
+.kpi b{font-size:12px; color:var(--muted)} .kpi strong{display:block; font-size:18px; margin-top:4px}
+
+/* ===== Sections ===== */
+section{padding:26px 0}
+.section-title{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:14px}
+.section-title h2{margin:0; font-size:22px}
+.hint{color:var(--muted); font-weight:800; font-size:13px}
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+@media(max-width:980px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card); border:1px solid var(--line); border-radius:var(--r);
+  padding:18px; box-shadow:0 12px 30px rgba(37,99,235,.14)}
+.card h3{margin:0 0 8px; font-size:16px}
+.card p{margin:0; color:var(--muted); font-weight:800}
+.list{padding-left:18px; color:var(--muted); font-weight:800}
+
+/* ===== Toolbar & inputs ===== */
+.toolbar{display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center}
+.inputs{display:flex; gap:10px; flex-wrap:wrap; width:100%}
+.input, select, textarea{
+  border:1px solid var(--line); border-radius:12px; padding:10px 12px;
+  font-weight:900; background:rgba(255,255,255,.7); color:var(--ink); outline:none}
+[data-theme="dark"] .input,[data-theme="dark"] select,[data-theme="dark"] textarea{background:rgba(16,28,51,.7)}
+textarea{width:100%; font-weight:800}
+.input{flex:1; min-width:220px}
+select{min-width:180px}
+.mini-actions{display:flex; gap:10px; flex-wrap:wrap}
+
+/* ===== Risk table ===== */
+.table-wrap{overflow:auto; border:1px solid var(--line); border-radius:16px; background:var(--card)}
+table{border-collapse:separate; border-spacing:0; min-width:980px; width:100%}
+thead th{position:sticky; top:0; background:rgba(37,99,235,.18); padding:12px; font-weight:950; text-align:left}
+tbody td{padding:12px; border-bottom:1px solid rgba(37,99,235,.18); color:var(--muted); font-weight:800; vertical-align:top}
+.tag{display:inline-flex; padding:6px 10px; border-radius:999px; border:1px solid var(--line);
+  background:rgba(37,99,235,.12); font-weight:950; font-size:12px}
+
+/* ===== SOP ===== */
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+@media(max-width:980px){.steps{grid-template-columns:1fr}}
+.step{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:18px; box-shadow:0 12px 30px rgba(37,99,235,.14)}
+.no{width:34px;height:34px;border-radius:12px; display:grid;place-items:center; background:linear-gradient(135deg,var(--blue),var(--blue2)); color:#fff; font-weight:950; margin-bottom:10px}
+
+/* ===== Checklist ===== */
+.checklist{background:var(--card); border:1px solid var(--line); border-radius:var(--r2); padding:18px; box-shadow:var(--shadow)}
+.progress{height:10px; background:rgba(37,99,235,.2); border-radius:999px; overflow:hidden}
+.bar{height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--blue2))}
+.cl-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:14px}
+@media(max-width:980px){.cl-grid{grid-template-columns:1fr}}
+.cl-item{display:flex; gap:10px; align-items:flex-start; padding:12px; border-radius:16px; background:rgba(37,99,235,.10); border:1px solid rgba(37,99,235,.16)}
+.cl-item input{margin-top:4px; accent-color:var(--blue)}
+.cl-item b{display:block} .cl-item span{display:block; color:var(--muted); font-weight:800; font-size:13px}
+
+/* ===== Print ===== */
+@media print{
+  .topbar,.nav,.actions,.toolbar,.mini-actions{display:none!important}
+  body{background:#fff}
+  .card,.hero-card,.checklist,.step{box-shadow:none!important}
+  .table-wrap{border:1px solid #ddd}
+}
+</style>
+</head>
+
+<body>
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          지하연속벽(슬러리월) 안전보건작업 지침
+          <small>붕괴·전도·추락·협착 예방 | 개요 · 위험요인 · SOP · 점검 · TBM</small>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#overview">개요</a>
+        <a href="#risks">위험요인</a>
+        <a href="#sop">SOP</a>
+        <a href="#check">점검</a>
+        <a href="#tbm">TBM</a>
+      </nav>
+      <div class="actions">
+        <button class="btn" id="themeBtn">🌙</button>
+        <button class="btn" onclick="window.print()">🖨️</button>
+        <a class="btn primary" href="#tbm">🎙️ TBM</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-card">
+        <span class="badge"><span class="dot"></span> 현장 표준(CIP급)</span>
+        <h1>지하연속벽 재해는<br/>“트렌치·안정액·인양·타설”에서 발생</h1>
+        <p class="lead">안내벽 → 선행/본굴착 → 안정액 관리 → 철근망/트레미 → 연속타설 순서로 바로 쓰도록 구성했습니다.</p>
+        <div class="hero-kpis">
+          <div class="kpi"><b>중점 재해</b><strong>붕괴·전도</strong></div>
+          <div class="kpi"><b>중점 재해</b><strong>추락</strong></div>
+          <div class="kpi"><b>중점 재해</b><strong>협착·낙하</strong></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3 style="margin-top:0;">🎯 즉시 통제 포인트</h3>
+        <ul class="list">
+          <li>트렌치 안정액 수위 유지(안내벽 상단까지)</li>
+          <li>천공/본굴착 수직도 상시 계측·보정</li>
+          <li>트렌치 개구부 덮개·난간(야간 경광)</li>
+          <li>인양 체결 확인 + 보조로프</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- 개요 -->
+<section id="overview">
+  <div class="container">
+    <div class="section-title"><h2>개요</h2><div class="hint">목적 · 적용 · 정의</div></div>
+    <div class="grid">
+      <div class="card"><h3>목적</h3><p>안전보건규칙에 따라 지하연속벽 공사 중 산업재해를 예방.</p></div>
+      <div class="card"><h3>적용범위</h3><p>트렌치 굴착·안정액 병행·철근망·콘크리트 타설 전 공정.</p></div>
+      <div class="card"><h3>정의(핵심)</h3><p>안내벽 설치 후 안정액으로 공벽을 지지하며 연속 RC벽체 형성.</p></div>
+    </div>
+    <div class="card">
+      <h3>일반사항(계획 필수)</h3>
+      <ul class="list">
+        <li>현장여건 반영 설계·작업계획 수립(매설물·교통·지반·계측)</li>
+        <li>플랜트/가설전기 전도 방지 기초 확보</li>
+        <li>안정액 MSDS 관리 및 취급자 보호구</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 위험요인 -->
+<section id="risks">
+  <div class="container">
+    <div class="section-title"><h2>중점 위험요인</h2><div class="hint">검색 · 필터</div></div>
+    <div class="toolbar">
+      <div class="inputs">
+        <input class="input" id="q" placeholder="검색(예: 안정액, 수직도, 트레미, 인양, 전도)">
+        <select id="fStep">
+          <option value="">공정 전체</option>
+          <option value="안내벽">안내벽</option>
+          <option value="플랜트">플랜트</option>
+          <option value="선행/본굴착">선행/본굴착</option>
+          <option value="디샌딩">디샌딩</option>
+          <option value="철근망/트레미">철근망/트레미</option>
+          <option value="타설">타설</option>
+        </select>
+        <select id="fEquip">
+          <option value="">장비 전체</option>
+          <option value="트렌치커터">트렌치커터</option>
+          <option value="행그래브">행그래브</option>
+          <option value="크레인">크레인</option>
+          <option value="플랜트">플랜트</option>
+        </select>
+        <select id="fType">
+          <option value="">재해유형 전체</option>
+          <option value="붕괴/전도">붕괴/전도</option>
+          <option value="추락">추락</option>
+          <option value="협착/낙하">협착/낙하</option>
+        </select>
+      </div>
+      <div class="mini-actions"><button class="btn" id="resetRisk">초기화</button></div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:12px;">
+      <table id="riskTable">
+        <thead><tr><th>유형</th><th>공정</th><th>장비</th><th>위험요인</th><th>대책</th></tr></thead>
+        <tbody>
+          <tr data-step="선행/본굴착" data-equip="트렌치커터" data-type="붕괴/전도">
+            <td><span class="tag">붕괴/전도</span></td><td>선행/본굴착</td><td>트렌치커터</td>
+            <td>수직도 불량·지반 침하</td><td>수직도 계측 유지, 이동경로 콘크리트/철판 보강</td>
+          </tr>
+          <tr data-step="선행/본굴착" data-equip="행그래브" data-type="추락">
+            <td><span class="tag">추락</span></td><td>선행/본굴착</td><td>행그래브</td>
+            <td>트렌치 개구부 추락</td><td>덮개·난간·야간 경광 설치</td>
+          </tr>
+          <tr data-step="디샌딩" data-equip="플랜트" data-type="협착/낙하">
+            <td><span class="tag">협착/낙하</span></td><td>디샌딩</td><td>플랜트</td>
+            <td>배관 유동·벨트 끼임</td><td>배관 고정, 구동벨트 철망 방호</td>
+          </tr>
+          <tr data-step="철근망/트레미" data-equip="크레인" data-type="협착/낙하">
+            <td><span class="tag">협착/낙하</span></td><td>철근망/트레미</td><td>크레인</td>
+            <td>인양 중 변형·낙하</td><td>체결 확인, 가이드프레임·보조로프</td>
+          </tr>
+          <tr data-step="타설" data-equip="플랜트" data-type="붕괴/전도">
+            <td><span class="tag">붕괴/전도</span></td><td>타설</td><td>플랜트</td>
+            <td>안정액 품질 저하</td><td>비중·점성·샌드함량 관리, 연속타설</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SOP -->
+<section id="sop">
+  <div class="container">
+    <div class="section-title"><h2>SOP</h2><div class="hint">전 · 중 · 후</div></div>
+    <div class="steps">
+      <div class="step"><div class="no">1</div><h3>작업 전</h3>
+        <ul class="list"><li>안내벽·플랜트 기초 안정</li><li>안정액 품질기준 설정</li><li>계측 계획 수립</li></ul>
+      </div>
+      <div class="step"><div class="no">2</div><h3>작업 중</h3>
+        <ul class="list"><li>수직도 상시 관리</li><li>안정액 수위 유지</li><li>인양 신호수 배치</li></ul>
+      </div>
+      <div class="step"><div class="no">3</div><h3>작업 종료</h3>
+        <ul class="list"><li>연속타설 완료</li><li>트렌치 개구부 즉시 차단</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 점검 -->
+<section id="check">
+  <div class="container">
+    <div class="section-title"><h2>일일 점검</h2><div class="hint">저장 · 진행률</div></div>
+    <div class="checklist">
+      <div class="toolbar"><div id="progressText">0 / 0</div>
+        <div class="mini-actions">
+          <button class="btn" id="clearChecklist">초기화</button>
+          <button class="btn primary" id="copyChecklist">복사</button>
+        </div>
+      </div>
+      <div class="progress"><div class="bar" id="bar"></div></div>
+      <div class="cl-grid" id="clGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TBM -->
+<section id="tbm">
+  <div class="container">
+    <div class="section-title"><h2>TBM (10초)</h2><div class="hint">혼합 분기</div></div>
+    <div class="card">
+      <div class="toolbar">
+        <div class="inputs">
+          <input class="input" id="tbmSite" placeholder="현장명">
+          <select id="tbmStep"><option>선행/본굴착</option><option>디샌딩</option><option>철근망/트레미</option><option>타설</option></select>
+          <select id="tbmEquip"><option>트렌치커터</option><option>행그래브</option><option>크레인</option><option>플랜트</option></select>
+          <select id="tbmCond"><option value="">특이조건 없음</option><option>야간</option><option>교통혼재</option></select>
+        </div>
+        <div class="mini-actions">
+          <button class="btn primary" id="genTBM">생성</button>
+          <button class="btn" id="copyTBM">복사</button>
+        </div>
+      </div>
+      <textarea id="tbmOut" rows="7"></textarea>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+/* Theme */
+const root=document.documentElement, THEME="sw_theme";
+if(localStorage.getItem(THEME)==="dark") root.setAttribute("data-theme","dark");
+themeBtn.onclick=()=>{const d=root.getAttribute("data-theme")==="dark";
+d?root.removeAttribute("data-theme"):root.setAttribute("data-theme","dark");
+localStorage.setItem(THEME,d?"light":"dark");};
+
+/* Risk filter */
+const q=qEl=document.getElementById("q"),
+fS=fStep=document.getElementById("fStep"),
+fE=fEquip=document.getElementById("fEquip"),
+fT=fType=document.getElementById("fType"),
+rows=[...document.querySelectorAll("#riskTable tbody tr")];
+function rf(){rows.forEach(tr=>{
+const okQ=!q.value||tr.innerText.includes(q.value);
+const okS=!fS.value||tr.dataset.step===fS.value;
+const okE=!fE.value||tr.dataset.equip===fE.value;
+const okT=!fT.value||tr.dataset.type===fT.value;
+tr.style.display=(okQ&&okS&&okE&&okT)?"":"none";});}
+[q,fS,fE,fT].forEach(x=>x.addEventListener("input",rf));
+resetRisk.onclick=()=>{q.value=fS.value=fE.value=fT.value="";rf();};
+
+/* Checklist */
+const CL="sw_check", items=[
+"안내벽·난간 설치","플랜트 기초 전도방지","안정액 품질 확인","수직도 계측",
+"트렌치 덮개","인양 체결 확인","연속타설 유지"
+];
+const cl=document.getElementById("clGrid"), bar=document.getElementById("bar"), txt=document.getElementById("progressText");
+function load(){return JSON.parse(localStorage.getItem(CL)||"[]");}
+function save(s){localStorage.setItem(CL,JSON.stringify(s));}
+function render(){
+  const s=load(); cl.innerHTML="";
+  items.forEach((t,i)=>{
+    const c=s.includes(i);
+    const el=document.createElement("label"); el.className="cl-item";
+    el.innerHTML=`<input type=checkbox ${c?"checked":""} data-i=${i}><div><b>${t}</b></div>`;
+    cl.appendChild(el);
+  });
+  cl.querySelectorAll("input").forEach(x=>x.onchange=()=>{
+    let s=load(), i=+x.dataset.i;
+    x.checked?(!s.includes(i)&&s.push(i)):(s=s.filter(v=>v!==i));
+    save(s); upd();
+  });
+  upd();
+}
+function upd(){
+  const s=load(), p=Math.round(s.length/items.length*100);
+  bar.style.width=p+"%"; txt.textContent=`${s.length} / ${items.length} (${p}%)`;
+}
+clearChecklist.onclick=()=>{localStorage.removeItem(CL);render();}
+copyChecklist.onclick=async()=>{
+  const s=load().map(i=>`[✓] ${items[i]}`).join("\n");
+  await navigator.clipboard.writeText(s||"(없음)");
+  alert("복사 완료");
+};
+render();
+
+/* TBM */
+genTBM.onclick=()=>{
+  tbmOut.value=`지금부터 TBM 실시합니다.
+현장: ${tbmSite.value||"본 현장"}
+공정: ${tbmStep.value}, 장비: ${tbmEquip.value}
+핵심 위험은 붕괴·전도·추락·협착입니다.
+안정액 수위 유지, 수직도 계측, 인양 체결 확인을 철저히 합니다.
+이상 시 즉시 작업 중지 후 보고합니다.`;
+};
+copyTBM.onclick=async()=>{await navigator.clipboard.writeText(tbmOut.value); alert("TBM 복사");};
+</script>
+</body>
+</html>

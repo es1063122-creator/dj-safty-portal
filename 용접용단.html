@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>건설현장 용접·용단(화기작업) 안전보건작업 지침 | 개요·위험요인·SOP·점검·TBM</title>
+<meta name="description" content="KOSHA GUIDE C-108-2017 기반. 용접·용단(화기작업) 안전보건작업 지침: 위험요인 검색/필터, 저장형 체크리스트, TBM 혼합 분기, 즉시중지 기준."/>
+<meta name="theme-color" content="#2563eb"/>
+
+<link rel="stylesheet" as="style" crossorigin
+href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"/>
+
+<style>
+:root{
+  --blue:#2563eb; --blue2:#60a5fa; --ink:#0b1220; --muted:#5a6477;
+  --bg:#f5f8ff; --card:#fff; --line:rgba(37,99,235,.18);
+  --shadow:0 18px 60px rgba(37,99,235,.14); --r:18px; --r2:26px;
+  --danger:#ef4444; --warn:#f59e0b; --ok:#22c55e;
+}
+[data-theme="dark"]{
+  --ink:#e9f1ff; --muted:#b7c6dd; --bg:#0c1423; --card:#101c33;
+  --line:rgba(96,165,250,.26); --shadow:0 18px 60px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:Pretendard,system-ui,sans-serif; color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 15% 0%, rgba(37,99,235,.18), transparent 55%),
+    radial-gradient(900px 520px at 85% 0%, rgba(96,165,250,.18), transparent 50%),
+    var(--bg);
+  line-height:1.72;
+}
+a{color:inherit;text-decoration:none}
+.container{width:min(1200px, calc(100% - 40px)); margin:0 auto}
+
+/* Topbar */
+.topbar{position:sticky; top:0; z-index:50; backdrop-filter: blur(14px);
+  background:linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.62));
+  border-bottom:1px solid var(--line);}
+[data-theme="dark"] .topbar{
+  background:linear-gradient(180deg, rgba(16,28,51,.88), rgba(16,28,51,.66));
+}
+.topbar-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+.brand{display:flex; align-items:center; gap:12px; font-weight:950}
+.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--blue2)); box-shadow:0 14px 40px rgba(37,99,235,.35)}
+.brand small{display:block; font-size:12px; color:var(--muted); font-weight:800}
+.nav{display:flex; gap:14px; font-size:13px; font-weight:900; color:var(--muted)}
+.nav a{padding:8px 10px; border-radius:999px}
+.nav a:hover{background:rgba(37,99,235,.10); color:var(--ink)}
+.actions{display:flex; gap:10px}
+.btn{
+  border:1px solid var(--line); background:rgba(255,255,255,.70);
+  border-radius:999px; padding:10px 12px; font-weight:950; cursor:pointer
+}
+[data-theme="dark"] .btn{background:rgba(16,28,51,.70)}
+.btn.primary{background:linear-gradient(135deg,var(--blue),var(--blue2)); color:#fff; border:none; box-shadow:0 18px 45px rgba(37,99,235,.35)}
+.btn.danger{background:linear-gradient(135deg, #ef4444, #fb7185); color:#fff; border:none}
+@media(max-width:980px){.nav{display:none}}
+
+/* Hero */
+.hero{padding:42px 0 20px}
+.hero-grid{display:grid; grid-template-columns:1.12fr .88fr; gap:22px}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr}}
+.hero-card{
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.76));
+  border:1px solid var(--line); border-radius:var(--r2); padding:26px; box-shadow:var(--shadow)
+}
+[data-theme="dark"] .hero-card{background:linear-gradient(180deg, rgba(16,28,51,.92), rgba(16,28,51,.70))}
+.badge{display:inline-flex; gap:8px; align-items:center; padding:7px 12px; border-radius:999px;
+  background:rgba(37,99,235,.14); border:1px solid var(--line); font-weight:950; font-size:12px}
+.dot{width:8px;height:8px;border-radius:99px;background:linear-gradient(135deg,var(--blue),var(--blue2))}
+h1{margin:14px 0 10px; font-size:36px; letter-spacing:-.03em}
+.lead{color:var(--muted); font-weight:850}
+.hero-kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px}
+.kpi{background:rgba(37,99,235,.12); border:1px solid var(--line); border-radius:16px; padding:12px}
+.kpi b{font-size:12px; color:var(--muted)} .kpi strong{display:block; font-size:18px; margin-top:4px}
+
+/* Sections */
+section{padding:26px 0}
+.section-title{display:flex; justify-content:space-between; align-items:flex-end; gap:14px; margin-bottom:14px}
+.section-title h2{margin:0; font-size:22px}
+.hint{color:var(--muted); font-weight:850; font-size:13px}
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+@media(max-width:980px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card); border:1px solid var(--line); border-radius:var(--r);
+  padding:18px; box-shadow:0 12px 30px rgba(37,99,235,.14)}
+.card h3{margin:0 0 8px; font-size:16px}
+.card p{margin:0; color:var(--muted); font-weight:850}
+.list{padding-left:18px; color:var(--muted); font-weight:850}
+.hr{height:1px; background:rgba(37,99,235,.18); margin:14px 0}
+
+/* Callouts */
+.callout{
+  border-radius:18px; padding:14px 16px; border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(37,99,235,.10), rgba(37,99,235,.06));
+}
+.callout.danger{
+  border-color:rgba(239,68,68,.35);
+  background:linear-gradient(180deg, rgba(239,68,68,.16), rgba(239,68,68,.06));
+}
+.callout .title{font-weight:950; display:flex; gap:10px; align-items:center}
+.callout .desc{color:var(--muted); font-weight:850; margin-top:6px}
+
+/* Toolbar & inputs */
+.toolbar{display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center}
+.inputs{display:flex; gap:10px; flex-wrap:wrap; width:100%}
+.input, select, textarea{
+  border:1px solid var(--line); border-radius:12px; padding:10px 12px;
+  font-weight:900; background:rgba(255,255,255,.72); color:var(--ink); outline:none}
+[data-theme="dark"] .input,[data-theme="dark"] select,[data-theme="dark"] textarea{background:rgba(16,28,51,.72)}
+textarea{width:100%; font-weight:850}
+.input{flex:1; min-width:220px}
+select{min-width:180px}
+.mini-actions{display:flex; gap:10px; flex-wrap:wrap}
+
+/* Risk table */
+.table-wrap{overflow:auto; border:1px solid var(--line); border-radius:16px; background:var(--card)}
+table{border-collapse:separate; border-spacing:0; min-width:1050px; width:100%}
+thead th{position:sticky; top:0; background:rgba(37,99,235,.18); padding:12px; font-weight:950; text-align:left}
+tbody td{padding:12px; border-bottom:1px solid rgba(37,99,235,.18); color:var(--muted); font-weight:850; vertical-align:top}
+.tag{display:inline-flex; padding:6px 10px; border-radius:999px; border:1px solid var(--line);
+  background:rgba(37,99,235,.12); font-weight:950; font-size:12px; color:var(--ink)}
+.tag.red{background:rgba(239,68,68,.14); border-color:rgba(239,68,68,.32)}
+.tag.ylw{background:rgba(245,158,11,.16); border-color:rgba(245,158,11,.34)}
+.tag.grn{background:rgba(34,197,94,.14); border-color:rgba(34,197,94,.32)}
+
+/* SOP */
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+@media(max-width:980px){.steps{grid-template-columns:1fr}}
+.step{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:18px; box-shadow:0 12px 30px rgba(37,99,235,.14)}
+.no{width:34px;height:34px;border-radius:12px; display:grid;place-items:center; background:linear-gradient(135deg,var(--blue),var(--blue2)); color:#fff; font-weight:950; margin-bottom:10px}
+.step h4{margin:0 0 8px; font-size:15px}
+.step ul{margin:0; padding-left:18px; color:var(--muted); font-weight:850}
+
+/* Checklist */
+.checklist{background:var(--card); border:1px solid var(--line); border-radius:var(--r2); padding:18px; box-shadow:var(--shadow)}
+.progress{height:10px; background:rgba(37,99,235,.20); border-radius:999px; overflow:hidden}
+.bar{height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--blue2))}
+.cl-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:14px}
+@media(max-width:980px){.cl-grid{grid-template-columns:1fr}}
+.cl-item{display:flex; gap:10px; align-items:flex-start; padding:12px; border-radius:16px;
+  background:rgba(37,99,235,.10); border:1px solid rgba(37,99,235,.16)}
+.cl-item input{margin-top:4px; accent-color:var(--blue)}
+.cl-item b{display:block} .cl-item span{display:block; color:var(--muted); font-weight:850; font-size:13px}
+.group-title{margin:14px 0 6px; font-weight:950; color:var(--ink)}
+
+/* Print */
+@media print{
+  .topbar,.nav,.actions,.toolbar,.mini-actions{display:none!important}
+  body{background:#fff}
+  .card,.hero-card,.checklist,.step{box-shadow:none!important}
+  .table-wrap{border:1px solid #ddd}
+}
+</style>
+</head>
+
+<body>
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          건설현장 용접·용단(화기작업) 안전보건작업 지침
+          <small>화재·폭발·감전·질식/흄·유해광선 예방 | 개요 · 위험요인 · SOP · 점검 · TBM</small>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#overview">개요</a>
+        <a href="#risks">위험요인</a>
+        <a href="#sop">SOP</a>
+        <a href="#check">점검</a>
+        <a href="#tbm">TBM</a>
+      </nav>
+      <div class="actions">
+        <button class="btn" id="themeBtn" title="다크모드">🌙</button>
+        <button class="btn" onclick="window.print()" title="인쇄/PDF">🖨️</button>
+        <a class="btn primary" href="#tbm" title="TBM로 이동">🎙️ TBM</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hero -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-card">
+        <span class="badge"><span class="dot"></span> 현장 표준(CIP Master)</span>
+        <h1>용접·용단 재해는<br/>“불티·가스·전기·밀폐공간”에서 시작합니다.</h1>
+        <p class="lead">
+          본 지침은 건설현장 용접·용단(화기작업)에서 반복되는 핵심 재해를
+          <b>화재예방(11m 격리·화재감시인) → 폭발예방(가스누출·역화) → 감전예방(자동전격방지기) → 작업자보호(가스측정·환기·흄/보안면·소음)</b>
+          순으로 바로 적용하도록 구성했습니다.
+        </p>
+        <div class="hero-kpis">
+          <div class="kpi"><b>중점 재해</b><strong>화재</strong></div>
+          <div class="kpi"><b>중점 재해</b><strong>폭발</strong></div>
+          <div class="kpi"><b>중점 재해</b><strong>감전·질식</strong></div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3 style="margin-top:0;">🚨 즉시중지(Stop Work) 기준</h3>
+        <div class="callout danger">
+          <div class="title">🛑 “이상 징후”가 보이면 즉시 중지</div>
+          <div class="desc">
+            가스 냄새/누출, 호스 균열·이탈, 역화(노즐로 화염 역류),
+            불티 비산 제어 불가, 산소·유해가스 농도 기준 불만족,
+            전기 절연 손상/누전 의심, 인화물 격리 미확보 시<br/>
+            <b>작업중지 → 가스/전원 차단 → 접근통제 → 보고 후 재개</b>.
+           </div>
+        </div>
+        <div class="hr"></div>
+        <h3 style="margin:0 0 10px;">🎯 즉시 통제 포인트</h3>
+        <ul class="list">
+          <li><b>동일 높이 불티 수평 비산 11m</b> 격리(인화·가연물)</li>
+          <li>격리/방호 어려우면 <b>화재감시인 배치</b></li>
+          <li>가스용접·용단은 <b>역화방지기</b> 설치/정상 작동 /li>
+          <li>전기용접은 <b>자동전격방지기(무부하 30V↓)</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- 개요 -->
+<section id="overview">
+  <div class="container">
+    <div class="section-title">
+      <h2>개요</h2>
+      <div class="hint">목적 · 적용 · 용어 · 핵심 기준</div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>목적</h3>
+        <p>건설현장 용접·용단 작업 시 근로자의 안전보건 확보를 위한 기술지침.</p>
+      </div>
+      <div class="card">
+        <h3>적용범위</h3>
+        <p>다른 작업 인접, 밀폐된 장소, 인화·가연물 인접 등에서 수행하는 용접·용단 작업.</p>
+      </div>
+      <div class="card">
+        <h3>핵심 기준(현장)</h3>
+        <p><b>11m 격리</b> + 방호 어려우면 <b>화재감시인</b> + <b>가스/전원 즉시 차단</b>.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>용어(실무 핵심)</h3>
+      <ul class="list">
+        <li><b>화기작업</b>: 용접·용단 등 화염/스파크로 인화성·가연성 물질 점화원이 될 수 있는 작업 </li>
+        <li><b>밀폐공간</b>: 환기 불충분으로 산소결핍·유해가스 중독·화재·폭발 위험이 있는 장소(별표 18)</li>
+        <li><b>역화</b>: 노즐 화염이 취관 쪽으로 되돌아오는 현상 :contentReference[oaicite:12]{index=12}</li>
+        <li><b>용접흄</b>: 용접 시 금속 증기 응축/산화 반응 등으로 생기는 고체 미립자</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 위험요인 -->
+<section id="risks">
+  <div class="container">
+    <div class="section-title">
+      <h2>중점 위험요인</h2>
+      <div class="hint">검색 · 필터</div>
+    </div>
+
+    <div class="toolbar">
+      <div class="inputs">
+        <input class="input" id="q" placeholder="검색(예: 11m, 화재감시인, 역화, 누출, 자동전격, 밀폐공간, 흄)">
+        <select id="fStep">
+          <option value="">구분 전체</option>
+          <option value="화재예방">화재예방</option>
+          <option value="폭발예방">폭발예방</option>
+          <option value="감전예방">감전예방</option>
+          <option value="작업자보호">작업자보호</option>
+        </select>
+        <select id="fWork">
+          <option value="">작업유형 전체</option>
+          <option value="전기용접">전기용접</option>
+          <option value="가스용접">가스용접</option>
+          <option value="가스용단">가스용단</option>
+          <option value="공통">공통</option>
+        </select>
+        <select id="fType">
+          <option value="">재해유형 전체</option>
+          <option value="화재">화재</option>
+          <option value="폭발">폭발</option>
+          <option value="감전">감전</option>
+          <option value="질식/중독">질식/중독</option>
+          <option value="화상/유해광선">화상/유해광선</option>
+          <option value="소음">소음</option>
+        </select>
+      </div>
+
+      <div class="mini-actions">
+        <button class="btn" id="resetRisk">초기화</button>
+        <button class="btn danger" id="copyRiskTop">핵심 5줄 복사</button>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:12px;">
+      <table id="riskTable">
+        <thead>
+          <tr>
+            <th style="width:130px;">재해유형</th>
+            <th style="width:120px;">구분</th>
+            <th style="width:120px;">작업유형</th>
+            <th>위험요인(상황)</th>
+            <th>통제대책(핵심)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 화재예방 -->
+          <tr data-step="화재예방" data-work="공통" data-type="화재">
+            <td><span class="tag red">화재</span></td>
+            <td>화재예방</td><td>공통</td>
+            <td>작업 전 인화·가연물 존재/불티 접촉</td>
+            <td>위험성평가로 위험요인 제거·방호 후 작업</td>
+          </tr>
+          <tr data-step="화재예방" data-work="공통" data-type="화재">
+            <td><span class="tag red">화재</span></td>
+            <td>화재예방</td><td>공통</td>
+            <td>불티 수평 비산/개구부로 불티 유입</td>
+            <td>동일 높이 기준 <b>11m 이상 격리</b>, 개구부 방염시트 방호 </td>
+          </tr>
+          <tr data-step="화재예방" data-work="공통" data-type="화재">
+            <td><span class="tag ylw">화재</span></td>
+            <td>화재예방</td><td>공통</td>
+            <td>격리/폐쇄 어려운 조건에서 화기작업</td>
+            <td><b>화재감시인 배치</b>(반경 11m, 개구부 방호 곤란 등) </td>
+          </tr>
+          <tr data-step="화재예방" data-work="공통" data-type="화재">
+            <td><span class="tag ylw">화재</span></td>
+            <td>화재예방</td><td>공통</td>
+            <td>가연성 단열재·샌드위치패널·폼 인접</td>
+            <td>가능 시 제거, 불꽃/불티 접촉 금지, 붙티받이포 설치 </td>
+          </tr>
+
+          <!-- 폭발예방 -->
+          <tr data-step="폭발예방" data-work="가스용접" data-type="폭발">
+            <td><span class="tag red">폭발</span></td>
+            <td>폭발예방</td><td>가스용접</td>
+            <td>가스용기/호스/밸브 누출</td>
+            <td>작업 전 구성품 점검·기밀시험, 누출 시 개방장소로 이동 수리 </td>
+          </tr>
+          <tr data-step="폭발예방" data-work="가스용단" data-type="폭발">
+            <td><span class="tag red">폭발</span></td>
+            <td>폭발예방</td><td>가스용단</td>
+            <td>역화로 인한 화염 역류</td>
+            <td><b>역화방지기 설치</b>(압력조절기~호스 사이) 및 정상 작동 확인 </td>
+          </tr>
+          <tr data-step="폭발예방" data-work="가스용접" data-type="폭발">
+            <td><span class="tag ylw">폭발</span></td>
+            <td>폭발예방</td><td>가스용접</td>
+            <td>가스용기 전도·충격</td>
+            <td>용기 세워 보관, 굴림/어깨 운반 금지, 전용 운반장비 사용 </td>
+          </tr>
+
+          <!-- 감전예방 -->
+          <tr data-step="감전예방" data-work="전기용접" data-type="감전">
+            <td><span class="tag red">감전</span></td>
+            <td>감전예방</td><td>전기용접</td>
+            <td>젖은 의복/습도, 홀더·케이블 절연 불량</td>
+            <td>건조상태 유지, 훼손 케이블 교체/보수, 절연 홀더 사용</td>
+          </tr>
+          <tr data-step="감전예방" data-work="전기용접" data-type="감전">
+            <td><span class="tag red">감전</span></td>
+            <td>감전예방</td><td>전기용접</td>
+            <td>무부하 전압으로 감전 위험</td>
+            <td><b>자동전격방지기</b>로 무부하 전압 30V 이하 유지, 작동 수시 확인 </td>
+          </tr>
+
+          <!-- 작업자보호 -->
+          <tr data-step="작업자보호" data-work="공통" data-type="질식/중독">
+            <td><span class="tag red">질식/중독</span></td>
+            <td>작업자보호</td><td>공통</td>
+            <td>밀폐공간에서 산소결핍/유해가스</td>
+            <td>작업 전 산소·유해가스 농도 측정, 환기/배기 유지 </td>
+          </tr>
+          <tr data-step="작업자보호" data-work="공통" data-type="질식/중독">
+            <td><span class="tag ylw">질식/중독</span></td>
+            <td>작업자보호</td><td>공통</td>
+            <td>용접 흄/유해가스 발생</td>
+            <td>국소/전체 환기시설, 호흡용 보호구(방독/송기) 비치·착용</td>
+          </tr>
+          <tr data-step="작업자보호" data-work="전기용접" data-type="화상/유해광선">
+            <td><span class="tag ylw">화상/유해광선</span></td>
+            <td>작업자보호</td><td>전기용접</td>
+            <td>아크광(자외선/적외선)으로 눈·피부 손상</td>
+            <td>안전인증 차광 보안면/보안경, 인접 근로자 차폐시설 설치</td>
+          </tr>
+          <tr data-step="작업자보호" data-work="공통" data-type="소음">
+            <td><span class="tag grn">소음</span></td>
+            <td>작업자보호</td><td>공통</td>
+            <td>용접·용단 소음(난청 위험)</td>
+            <td>소음 85 dB 이상이면 귀마개 등 차음보호구 착용</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>현장 “숫자 3개”만 기억</h3>
+      <ul class="list">
+        <li><b>11m</b>: 인화·가연물 수평 격리(불티 비산) </li>
+        <li><b>30V</b>: 전기용접 무부하 전압(자동전격방지기) </li>
+        <li><b>밀폐공간</b>: 산소·유해가스 측정/환기 없으면 작업 금지 </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SOP -->
+<section id="sop">
+  <div class="container">
+    <div class="section-title">
+      <h2>SOP</h2>
+      <div class="hint">화기작업 “허가–방호–감시–복구”</div>
+    </div>
+
+    <div class="callout">
+      <div class="title">✅ 운영 원칙</div>
+      <div class="desc">
+        용접·용단은 “작업 자체”보다 <b>주변 조건(인화물/개구부/밀폐/전기/가스)</b>이 사고를 만듭니다.
+        따라서 SOP는 <b>화재예방 → 폭발예방 → 감전예방 → 작업자보호</b> 순으로 끊습니다. 
+      </div>
+    </div>
+
+    <div style="margin-top:14px" class="steps">
+      <div class="step">
+        <div class="no">1</div>
+        <h4>작업 전(허가·격리·방호)</h4>
+        <ul>
+          <li>작업조건/주변 인화·가연물 조사 후 위험성평가</li>
+          <li>작업구역 설정·출입통제·경고표지 설치 </li>
+          <li>11m 격리(불티 비산), 개구부 방염시트 방호</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="no">2</div>
+        <h4>작업 준비(가스/전기 장비점검)</h4>
+        <ul>
+          <li>가스용기·호스·밸브 누출 점검(기밀) </li>
+          <li>역화방지기 설치 및 작동 확인</li>
+          <li>전기용접 케이블/홀더 절연 확인, 자동전격방지기 확인</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="no">3</div>
+        <h4>작업 중(감시·통제·불티관리)</h4>
+        <ul>
+          <li>격리/방호 곤란 조건이면 <b>화재감시인 배치</b> </li>
+          <li>불티 비산 차단막/방염시트 설치(가스용단은 비산 확대) </li>
+          <li>아크광 차폐시설로 인접 근로자 보호 </li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="no">4</div>
+        <h4>밀폐공간(가스측정·환기·대응)</h4>
+        <ul>
+          <li>작업 전/중 산소·유해가스 농도 측정 </li>
+          <li>환기/배기 중단 금지, 비상 연락/사다리/로프 준비 </li>
+          <li>방독/송기마스크 등 호흡보호구 즉시 사용 가능 상태 유지 </li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="no">5</div>
+        <h4>작업 종료(차단·정리·잔불 확인)</h4>
+        <ul>
+          <li>가스 차단 또는 전원 차단 후 정리, 잔불/훈소 여부 확인 </li>
+          <li>불티 유입 가능 개구부/덕트 주변 재확인(화재감시 포함)</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <div class="no">6</div>
+        <h4>비상대응(공통)</h4>
+        <ul>
+          <li>위험 높으면 즉시 작업중단, 가스/전원 차단 후 대피 </li>
+          <li>경보 설비/도구 비치로 신속 전파 </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 점검 -->
+<section id="check">
+  <div class="container">
+    <div class="section-title">
+      <h2>일일 점검(저장형)</h2>
+      <div class="hint">진행률 · 저장 · 복사</div>
+    </div>
+
+    <div class="checklist">
+      <div class="toolbar">
+        <div id="progressText">0 / 0</div>
+        <div class="mini-actions">
+          <button class="btn" id="clearChecklist">초기화</button>
+          <button class="btn primary" id="copyChecklist">복사</button>
+        </div>
+      </div>
+
+      <div class="progress"><div class="bar" id="bar"></div></div>
+
+      <div class="group-title">A. 화재예방(11m·방호·감시인)</div>
+      <div class="cl-grid" id="clGridA"></div>
+
+      <div class="group-title">B. 폭발예방(누출·역화·용기관리)</div>
+      <div class="cl-grid" id="clGridB"></div>
+
+      <div class="group-title">C. 감전예방(절연·자동전격·접지)</div>
+      <div class="cl-grid" id="clGridC"></div>
+
+      <div class="group-title">D. 작업자보호(밀폐공간·환기·보호구)</div>
+      <div class="cl-grid" id="clGridD"></div>
+
+      <div class="hr"></div>
+
+      <div class="callout danger">
+        <div class="title">🧨 치명 항목 1개라도 미충족이면?</div>
+        <div class="desc"><b>작업중지 → 가스/전원 차단 → 통제/보고 → 조치 후 재개</b>가 원칙입니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TBM -->
+<section id="tbm">
+  <div class="container">
+    <div class="section-title">
+      <h2>TBM (10초 자동 생성)</h2>
+      <div class="hint">작업유형 + 장소 + 조건 혼합 분기</div>
+    </div>
+
+    <div class="card">
+      <div class="toolbar">
+        <div class="inputs">
+          <input class="input" id="tbmSite" placeholder="현장명 (예: ○○ 현장)">
+          <select id="tbmWork">
+            <option value="전기용접">전기용접(아크)</option>
+            <option value="가스용접">가스용접</option>
+            <option value="가스용단">가스용단(절단)</option>
+          </select>
+          <select id="tbmPlace">
+            <option value="일반">일반 작업장</option>
+            <option value="인화물인접">인화·가연물 인접</option>
+            <option value="개구부/덕트">개구부/덕트/틈새 존재</option>
+            <option value="고소">고소/상부 작업</option>
+            <option value="밀폐공간">밀폐공간</option>
+          </select>
+          <select id="tbmCond">
+            <option value="">특이조건 없음</option>
+            <option value="야간">야간</option>
+            <option value="바람">바람(불티 비산)</option>
+            <option value="습윤">습윤(감전 위험)</option>
+            <option value="동시작업">동시작업(인접공정)</option>
+          </select>
+        </div>
+
+        <div class="mini-actions">
+          <button class="btn primary" id="genTBM">생성</button>
+          <button class="btn" id="copyTBM">복사</button>
+        </div>
+      </div>
+
+      <textarea id="tbmOut" rows="9" placeholder="TBM 생성 결과가 여기에 표시됩니다."></textarea>
+
+      <div class="hr"></div>
+      <div class="callout">
+        <div class="title">💡 팁</div>
+        <div class="desc">화기작업은 <b>11m 격리</b> + <b>화재감시인</b> + <b>가스/전원 차단</b> 3개를 TBM에 반드시 포함하세요.</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+/* Theme */
+const root=document.documentElement, THEME="hotwork_theme";
+const themeBtn=document.getElementById("themeBtn");
+if(localStorage.getItem(THEME)==="dark") root.setAttribute("data-theme","dark");
+themeBtn.onclick=()=>{
+  const dark = root.getAttribute("data-theme")==="dark";
+  dark ? root.removeAttribute("data-theme") : root.setAttribute("data-theme","dark");
+  localStorage.setItem(THEME, dark ? "light" : "dark");
+};
+
+/* Risk Filter */
+const q=document.getElementById("q");
+const fStep=document.getElementById("fStep");
+const fWork=document.getElementById("fWork");
+const fType=document.getElementById("fType");
+const rows=[...document.querySelectorAll("#riskTable tbody tr")];
+
+function applyRisk(){
+  const kw=(q.value||"").trim();
+  rows.forEach(tr=>{
+    const okQ = !kw || tr.innerText.includes(kw);
+    const okS = !fStep.value || tr.dataset.step===fStep.value;
+    const okW = !fWork.value || tr.dataset.work===fWork.value;
+    const okT = !fType.value || tr.dataset.type===fType.value;
+    tr.style.display = (okQ && okS && okW && okT) ? "" : "none";
+  });
+}
+[q,fStep,fWork,fType].forEach(el=>el.addEventListener("input", applyRisk));
+document.getElementById("resetRisk").onclick=()=>{
+  q.value=""; fStep.value=""; fWork.value=""; fType.value="";
+  applyRisk();
+};
+document.getElementById("copyRiskTop").onclick = async ()=>{
+  const visible = rows.filter(tr=>tr.style.display!=="none");
+  const top = visible.slice(0,5).map(tr=>{
+    const tds=[...tr.querySelectorAll("td")].map(td=>td.innerText.trim());
+    return `- [${tds[1]}/${tds[2]}] ${tds[3]} → ${tds[4]}`;
+  }).join("\n") || "(표시된 항목 없음)";
+  await navigator.clipboard.writeText(top);
+  alert("핵심 위험 5줄 복사 완료");
+};
+
+/* Checklist (Saved) */
+const CL="hotwork_check_v1";
+const groups = {
+  A: [
+    {t:"작업 전 위험성평가(인화·가연물/개구부/동시작업) 완료", d:"조건 조사 후 작업"},
+    {t:"작업구역 설정·출입통제·경고표지 설치", d:"인접 작업자 보호"},
+    {t:"인화·가연물 11m 이상 격리(또는 방염시트 방호)", d:"불티 수평 비산"},
+    {t:"격리/방호 곤란 조건이면 화재감시인 배치", d:"반경/개구부/열전도 조건 등"},
+    {t:"붙티받이포/차단막 설치(특히 고소/용단)", d:"불티 낙하·비산 차단"},
+  ],
+  B: [
+    {t:"가스용기·압력조절기·호스·취관 누출 점검(기밀)", d:"작업 전 점검"},
+    {t:"호스 연결부 조임물로 견고히, 균열/열화 즉시 교체", d:"누출 방지"},
+    {t:"역화방지기 설치 및 정상 작동 확인", d:"역화 차단"},
+    {t:"가스용기 세워 보관·전도방지·전용 운반장비 사용", d:"굴림/어깨 운반 금지"},
+  ],
+  C: [
+    {t:"케이블/홀더/용접봉 등 건조 상태 유지", d:"습윤 감전 예방"},
+    {t:"자동전격방지기 설치·작동 확인(무부하 30V↓)", d:"감전 핵심"},
+    {t:"피복 손상 케이블 교체/절연 보수", d:"과전류 열손상 포함"},
+    {t:"접지클램프는 모재에 접지(주변 구조물 X)", d:"누설전류 방지"},
+  ],
+  D: [
+    {t:"밀폐공간은 작업 전 산소·유해가스 농도 측정", d:"안전 확인 후 작업"},
+    {t:"환기/배기 지속 유지(전원 중단 방지)", d:"균일 환기"},
+    {t:"호흡보호구(방독/송기) 비치·착용 관리", d:"유해가스/흄 대응"},
+    {t:"보안면/보안경/보호복/내열장갑 지급·착용", d:"화상·아크광 방호"},
+    {t:"소음 85dB↑ 시 귀마개 착용", d:"난청 예방"},
+  ]
+};
+
+function loadChecklist(){ return JSON.parse(localStorage.getItem(CL) || "[]"); }
+function saveChecklist(arr){ localStorage.setItem(CL, JSON.stringify(arr)); }
+
+const groupIndex = { A:0, B:100, C:200, D:300 };
+
+function allKeys(){
+  return [
+    ...groups.A.map((_,i)=>groupIndex.A+i),
+    ...groups.B.map((_,i)=>groupIndex.B+i),
+    ...groups.C.map((_,i)=>groupIndex.C+i),
+    ...groups.D.map((_,i)=>groupIndex.D+i),
+  ];
+}
+
+function renderGroup(gridId, baseIndex, items){
+  const grid=document.getElementById(gridId);
+  grid.innerHTML="";
+  const saved=loadChecklist();
+  items.forEach((it,idx)=>{
+    const key=baseIndex+idx;
+    const checked=saved.includes(key);
+    const el=document.createElement("label");
+    el.className="cl-item";
+    el.innerHTML = `
+      <input type="checkbox" data-k="${key}" ${checked?"checked":""}/>
+      <div>
+        <b>${it.t}</b>
+        <span>${it.d||""}</span>
+      </div>`;
+    grid.appendChild(el);
+  });
+
+  grid.querySelectorAll("input").forEach(inp=>{
+    inp.onchange=()=>{
+      let saved=loadChecklist();
+      const k=+inp.dataset.k;
+      if(inp.checked){ if(!saved.includes(k)) saved.push(k); }
+      else saved=saved.filter(x=>x!==k);
+      saveChecklist(saved);
+      updateProgress();
+    };
+  });
+}
+
+function updateProgress(){
+  const saved=loadChecklist();
+  const keys=allKeys();
+  const done=keys.filter(k=>saved.includes(k)).length;
+  const total=keys.length;
+  const pct=Math.round(done/total*100);
+  document.getElementById("bar").style.width = pct+"%";
+  document.getElementById("progressText").textContent = `${done} / ${total} (${pct}%)`;
+}
+
+function initChecklist(){
+  renderGroup("clGridA", groupIndex.A, groups.A);
+  renderGroup("clGridB", groupIndex.B, groups.B);
+  renderGroup("clGridC", groupIndex.C, groups.C);
+  renderGroup("clGridD", groupIndex.D, groups.D);
+  updateProgress();
+}
+
+document.getElementById("clearChecklist").onclick=()=>{
+  localStorage.removeItem(CL);
+  initChecklist();
+};
+
+document.getElementById("copyChecklist").onclick=async()=>{
+  const saved=loadChecklist();
+  const lines=[];
+  const push=(title, base, arr)=>{
+    const checked = arr
+      .map((it,i)=>({it, key:base+i}))
+      .filter(x=>saved.includes(x.key))
+      .map(x=>`[✓] ${x.it.t}`);
+    lines.push(`■ ${title}`);
+    lines.push(checked.length?checked.join("\n"):"(체크 없음)");
+    lines.push("");
+  };
+  push("A. 화재예방", groupIndex.A, groups.A);
+  push("B. 폭발예방", groupIndex.B, groups.B);
+  push("C. 감전예방", groupIndex.C, groups.C);
+  push("D. 작업자보호", groupIndex.D, groups.D);
+
+  await navigator.clipboard.writeText(lines.join("\n").trim());
+  alert("점검 결과 복사 완료");
+};
+initChecklist();
+
+/* TBM Generator (Branching) */
+const tbmSite=document.getElementById("tbmSite");
+const tbmWork=document.getElementById("tbmWork");
+const tbmPlace=document.getElementById("tbmPlace");
+const tbmCond=document.getElementById("tbmCond");
+const tbmOut=document.getElementById("tbmOut");
+
+function controlsByWork(work){
+  const map = {
+    "전기용접": [
+      "케이블/홀더 절연 상태 확인, 자동전격방지기 작동 확인(30V↓)",
+      "접지클램프는 모재에 접지(구조물 접지 금지)",
+      "보안면/차광보안경 착용 및 아크광 차폐"
+    ],
+    "가스용접": [
+      "용기·압력조절기·호스·취관 누출 점검(기밀)",
+      "역화방지기 설치 및 정상 작동 확인",
+      "용기 전도방지, 기름 묻은 손/장갑으로 산소계통 취급 금지"
+    ],
+    "가스용단": [
+      "불티 비산 차단막/방염시트 설치(비산 확대)",
+      "용기·호스·밸브 누출 점검 + 역화방지기 확인",
+      "작업반경 통제 및 붙티받이포 설치"
+    ]
+  };
+  return map[work] || ["작업조건 확인", "격리/통제", "이상 시 중지"];
+}
+
+function controlsByPlace(place){
+  const map = {
+    "인화물인접": [
+      "인화·가연물 11m 격리 또는 방염시트 방호",
+      "격리/방호 곤란 시 화재감시인 배치",
+      "윤활유/유류 오염 표면에서는 작업 금지"
+    ],
+    "개구부/덕트": [
+      "개구부/틈새를 방염시트로 빈틈없이 방호",
+      "불티 유입 가능부 주변 잔불 확인",
+      "통행자 보호를 위해 구역 설정·표지"
+    ],
+    "고소": [
+      "붙티받이포 설치로 불티 낙하 방지",
+      "추락방지(난간/안전대) 확보",
+      "하부 출입통제 및 신호수"
+    ],
+    "밀폐공간": [
+      "작업 전/중 산소·유해가스 농도 측정",
+      "환기/배기 지속 유지(전원 중단 방지)",
+      "호흡용 보호구(방독/송기) 준비 및 비상연락/사다리/로프"
+    ],
+    "일반": [
+      "작업구역 설정·출입통제·경고표지",
+      "보호구 착용(내열장갑·보호복·보안면)",
+      "이상 징후 시 즉시 중지"
+    ]
+  };
+  return map[place] || ["구역 설정", "보호구", "중지 기준 공유"];
+}
+
+function addByCond(cond){
+  if(cond==="야간") return "야간이므로 조명/경광등 확보, 시야불량 구간 통제.";
+  if(cond==="바람") return "바람으로 불티 비산 가능 → 비산 차단막 강화, 제어 불가 시 작업 중지.";
+  if(cond==="습윤") return "습윤 상태는 감전 위험 증가 → 건조 조치, 절연/전격방지 재확인.";
+  if(cond==="동시작업") return "인접 동시작업 → 구역 분리, 통행자 차단, 화재감시인 운영.";
+  return "";
+}
+
+document.getElementById("genTBM").onclick=()=>{
+  const site=(tbmSite.value||"본 현장").trim();
+  const work=tbmWork.value;
+  const place=tbmPlace.value;
+  const cond=tbmCond.value;
+
+  const w = controlsByWork(work);
+  const p = controlsByPlace(place);
+  const extra = addByCond(cond);
+
+  const toLine = (arr)=>arr.map((v,i)=>`${i+1}) ${v}`).join(" ");
+
+  tbmOut.value =
+`지금부터 작업 전 TBM 실시합니다.
+현장: ${site} / 작업: ${work} / 장소: ${place}${cond?` / 조건: ${cond}`:""}
+오늘 핵심 위험은 화재·폭발·감전·질식(밀폐공간)입니다.
+[작업유형 통제] ${toLine(w)}
+[장소 통제] ${toLine(p)}
+${extra?`[추가주의] ${extra}`:""}
+가스 누출·역화·불티 제어 불가·가스농도 부적합·절연 손상 등 이상 시 즉시 작업중지하고 가스/전원을 차단한 뒤 보고하겠습니다.`;
+};
+
+document.getElementById("copyTBM").onclick=async()=>{
+  await navigator.clipboard.writeText(tbmOut.value || "");
+  alert("TBM 복사 완료");
+};
+
+applyRisk();
+</script>
+</body>
+</html>
