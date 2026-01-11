@@ -39,9 +39,9 @@
     }
 
     .top-logo img {
-      height: 42px;              /* 기존보다 조금 작게 */
-      opacity: 0.95;             /* 살짝 밝게 */
-      filter: brightness(1.2);   /* 밝기 업 */
+      height: 42px;
+      opacity: 0.95;
+      filter: brightness(1.2);
     }
 
     /* ===== 홈 버튼 (우측 상단) ===== */
@@ -68,10 +68,10 @@
       color: #ffffff;
     }
 
-    /* ===== 메인 비주얼 이미지 ===== */
+    /* ===== 메인 비주얼 ===== */
     .main-visual {
       width: 100%;
-      margin-top: 70px; /* 상단 로고/버튼 아래 여백 */
+      margin-top: 70px;
       padding: 0 16px;
       display: flex;
       justify-content: center;
@@ -84,7 +84,7 @@
       box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
     }
 
-    /* ===== 메인 컨테이너 ===== */
+    /* ===== 컨테이너 ===== */
     .container {
       width: 100%;
       max-width: 520px;
@@ -108,7 +108,7 @@
       margin-bottom: 16px;
     }
 
-    /* ===== 메뉴 그리드 ===== */
+    /* ===== 메뉴 ===== */
     .menu {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -133,21 +133,12 @@
       transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
     }
 
-    .item .icon {
-      font-size: 22px;
-    }
-
     .item:hover {
       transform: translateY(-3px);
       box-shadow: 0 14px 30px rgba(15, 76, 129, 0.6);
     }
 
-    .item:active {
-      transform: translateY(0);
-      opacity: 0.9;
-    }
-
-    /* ===== 소개 섹션 ===== */
+    /* ===== 소개 ===== */
     .intro {
       margin-top: 10px;
       padding-top: 12px;
@@ -155,22 +146,9 @@
       text-align: left;
     }
 
-    .intro h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .intro p {
-      font-size: 14px;
-      color: #4b5563;
-      line-height: 1.6;
-    }
-
-    /* ===== 하단 동영상 ===== */
+    /* ===== 동영상 ===== */
     .video-container {
       margin: 30px 0 10px;
-      text-align: center;
-      width: 100%;
       padding: 0 16px;
     }
 
@@ -191,28 +169,6 @@
       line-height: 1.5;
     }
 
-    /* ===== 반응형 ===== */
-    @media (max-width: 480px) {
-      .main-visual {
-        margin-top: 68px;
-      }
-
-      .container {
-        margin-top: 18px;
-        padding: 22px 16px 24px;
-        border-radius: 20px;
-      }
-
-      .menu {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-
-      .item {
-        font-size: 13px;
-        padding: 14px 8px 12px;
-      }
-    }
   </style>
 </head>
 
@@ -223,18 +179,14 @@
     <img src="https://raw.githubusercontent.com/es1063122-creator/ani/main/djlogo.png" alt="동진안전 로고">
   </div>
 
-  <!-- 홈으로 가기 버튼 -->
-  <a href="https://es1063122-creator.github.io/djweb2/" 
-     class="home-btn" 
-     target="_blank"> 🏠 홈으로 가기 </a>
+  <!-- 홈 버튼 -->
+  <a href="https://es1063122-creator.github.io/djweb2/" class="home-btn" target="_blank">🏠 홈으로 가기</a>
 
-  <!-- 메인 비주얼 이미지 -->
+  <!-- 메인 이미지 -->
   <div class="main-visual">
-    <img src="https://raw.githubusercontent.com/es1063122-creator/dj-safty-portal/main/safe-main.png"
-         alt="동진 스마트 안전 메인">
+    <img src="https://raw.githubusercontent.com/es1063122-creator/dj-safty-portal/main/safe-main.png" alt="동진 스마트 안전 메인">
   </div>
 
-  <!-- 메인 컨텐츠 -->
   <div class="container">
 
     <h2>동진안전 통합 포털</h2>
@@ -272,16 +224,17 @@
         안전보건작업지침
       </div>
 
-     <div class="item" onclick="openApp('https://es1063122-creator.github.io/kdh-safety/')">
-       <div class="icon">🤖</div>
-       AI 위험성평가
-     </div>
+      <div class="item" onclick="openApp('https://es1063122-creator.github.io/kdh-safety/')">
+        <div class="icon">🤖</div>
+        AI 위험성평가
+      </div>
 
-     <div class="item" onclick="openApp('https://es1063122-creator.github.io/dj-risk-Sharing/')">
+      <!-- ⭐ 새로 추가된 버튼 ⭐ -->
+      <div class="item" onclick="openApp('https://es1063122-creator.github.io/dj-risk-Sharing/')">
         <div class="icon">📤</div>
         위험성평가 공유
       </div>
-      
+
     </div>
 
     <div class="intro">
@@ -294,37 +247,23 @@
 
   </div>
 
-  <!-- 하단 동영상 -->
   <div class="video-container">
     <video autoplay muted loop playsinline>
-      <source src="https://raw.githubusercontent.com/es1063122-creator/ani/main/Hailuo_Video_A%20cute%20cartoon%20construction%20wo_445532137642283012.mp4" 
-              type="video/mp4">
+      <source src="https://raw.githubusercontent.com/es1063122-creator/ani/main/Hailuo_Video_A%20cute%20cartoon%20construction%20wo_445532137642283012.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
 
-  <!-- 푸터 -->
   <footer>
     ⓒ 2025 Dongjin Safety(KDH). All Rights Reserved.<br>
     문의: es5183@djenc.co.kr / 031-792-8361
   </footer>
 
   <script>
-    // 앱 열기 (새 탭)
     function openApp(url) {
       window.open(url, "_blank");
-    }
-
-    // (선택) 서비스 워커 등록 - PWA 대응
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker
-          .register("./sw.js")
-          .catch(err => console.log("Service Worker 등록 실패:", err));
-      });
     }
   </script>
 
 </body>
 </html>
-
