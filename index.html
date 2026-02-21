@@ -247,6 +247,10 @@
      <div class="item" onclick="openApp('https://script.google.com/macros/s/AKfycbwLxyQuuAro7xHe2Jfm7wlf1FLDyS3XNhw_yFfjhE_86AXcERMP8_si_-AXlDg_WjxwvA/exec')">
         🎓 직무교육 관리
       </div>
+<div class="item" onclick="openApp('https://es1063122-creator.github.io/ai-bot/')">
+  <div class="icon">🤖</div>
+  동진 AI 챗봇
+</div>
 
     </div>
 
@@ -319,13 +323,11 @@ renderer.domElement.style.top = "100px";   // 카드 상단 근처
 renderer.domElement.style.zIndex = "999";
 renderer.domElement.style.pointerEvents = "none";
 
-renderer.domElement.style.top = "10px";
-renderer.domElement.style.right = "10px";
+renderer.domElement.style.position = "fixed";
+renderer.domElement.style.top = "100px";
+renderer.domElement.style.right = "20px";
+renderer.domElement.style.zIndex = "999";
 renderer.domElement.style.pointerEvents = "none";
-renderer.domElement.style.zIndex = "10";
-
-renderer.domElement.style.pointerEvents="none";
-renderer.domElement.style.zIndex="999";
 
 
 document.querySelector(".container").appendChild(renderer.domElement);
@@ -334,17 +336,17 @@ document.querySelector(".container").appendChild(renderer.domElement);
 
   const loader=new THREE.TextureLoader();
   const texture=loader.load(
-  "https://raw.githubusercontent.com/es1063122-creator/djweb2/main/dj-bot.png"
-  );
+"https://raw.githubusercontent.com/es1063122-creator/ai-bot/main/dj-ai-default.png"
+);
 
   const material=new THREE.MeshBasicMaterial({
   map:texture,
   transparent:true
   });
 
-  const geometry=new THREE.PlaneGeometry(4,4);
+  const geometry=new THREE.PlaneGeometry(8,8);
   const bot=new THREE.Mesh(geometry,material);
-  bot.position.set(0,5,0);
+  bot.position.set(0,0,0);
   scene.add(bot);
 
   const mouse={x:0,y:0};
