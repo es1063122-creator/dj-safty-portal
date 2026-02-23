@@ -280,6 +280,36 @@
       border-bottom: 2px solid rgba(0,0,0,0.25);
       pointer-events: none;
     }
+/* ============================= */
+/* 📱 모바일 카카오톡 앱 모드 */
+/* ============================= */
+
+#bot-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+  z-index: 1999;
+  display: none;
+}
+
+@media (max-width: 768px){
+
+  body.bot-open{
+    overflow: hidden;
+  }
+
+  #bot-popup{
+    width: 100vw !important;
+    height: 100vh !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: auto !important;
+    border-radius: 0 !important;
+    resize: none;
+  }
+
+}
   </style>
 </head>
 
@@ -406,6 +436,7 @@
     ⓒ 2025 Dongjin Safety(KDH). All Rights Reserved.<br>
     문의: es5183@djenc.co.kr / 031-792-8361
   </footer>
+  <div id="bot-overlay"></div>
 
   <script>
     function openApp(url) {
@@ -413,15 +444,31 @@
     }
 
     /* ===== 팝업 열기 (메뉴 버튼에서도 호출 가능) ===== */
-    function openBotPopup() {
-      const popup = document.getElementById("bot-popup");
-      popup.classList.add("open");
-    }
+function openBotPopup() {
+
+  const popup   = document.getElementById("bot-popup");
+  const overlay = document.getElementById("bot-overlay");
+
+  popup.classList.add("open");
+
+  if(window.innerWidth <= 768){
+    document.body.classList.add("bot-open");
+    overlay.style.display = "block";
+  }
+
+}
 
     /* ===== 팝업 닫기 ===== */
-    function closeBotPopup() {
-      document.getElementById("bot-popup").classList.remove("open");
-    }
+function closeBotPopup() {
+
+  const popup   = document.getElementById("bot-popup");
+  const overlay = document.getElementById("bot-overlay");
+
+  popup.classList.remove("open");
+  document.body.classList.remove("bot-open");
+  overlay.style.display = "none";
+
+}
 
     /* ===== 팝업 드래그 이동 ===== */
     (function () {
@@ -503,17 +550,31 @@
     document.body.appendChild(renderer.domElement);
 
     /* 캐릭터 클릭 → 팝업 열기 */
-    renderer.domElement.addEventListener("click", () => {
-      openBotPopup();
-      /* 팝업 위치: 캐릭터 왼쪽 */
-      const popup = document.getElementById("bot-popup");
-      const rect  = renderer.domElement.getBoundingClientRect();
-      popup.style.width  = "700px";
-      popup.style.height = "650px";
-      popup.style.top    = rect.top + "px";
-      popup.style.right  = "";
-      popup.style.left   = Math.max(8, rect.left - 355) + "px";
-    });
+renderer.domElement.addEventListener("click", () => {
+
+  openBotPopup();
+
+  const popup = document.getElementById("bot-popup");
+  const rect  = renderer.domElement.getBoundingClientRect();
+
+  if(window.innerWidth <= 768){
+
+    popup.style.width  = "100vw";
+    popup.style.height = "100vh";
+    popup.style.top    = "0px";
+    popup.style.left   = "0px";
+
+  } else {
+
+    popup.style.width  = "700px";
+    popup.style.height = "650px";
+    popup.style.top    = rect.top + "px";
+    popup.style.right  = "";
+    popup.style.left   = Math.max(8, rect.left - 355) + "px";
+
+  }
+
+});
 
     /* 조명 */
     scene.add(new THREE.AmbientLight(0xffffff, 1.4));
